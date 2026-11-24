@@ -153,6 +153,9 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2 md:gap-3">
+                    <a href="concientizacion.html" class="text-xs md:text-sm font-semibold text-slate-600 hover:text-primary hidden md:flex items-center gap-1 transition-colors">
+                        <span class="material-symbols-outlined text-[18px]">eco</span> Concientización
+                    </a>
                     <button onclick="abrirConsulta()" class="text-xs md:text-sm font-semibold text-slate-600 hover:text-primary hidden sm:flex items-center gap-1 transition-colors">
                         <span class="material-symbols-outlined text-[18px]">search</span> Consultar mi folio
                     </button>
@@ -169,43 +172,66 @@
     <!-- Main Content -->
     <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col gap-6 md:gap-8">
 
-        <!-- Hero Section -->
-        <section class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-6 md:p-12 text-white shadow-xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
+        <!-- Hero Section (Dividido en ¿Qué hacemos? y Concientización) -->
+        <section class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-6 md:p-10 text-white shadow-xl relative overflow-hidden">
             <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-            <div class="relative z-10 w-full lg:max-w-2xl text-center lg:text-left">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-wider mb-4 border border-white/30 backdrop-blur-sm">
-                    <span class="material-symbols-outlined text-[14px] normal-case">water</span> Monitoreo y Protección de Ríos
-                </span>
-                <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">Puebla: Cuidemos Nuestros Ríos</h2>
-                <p class="text-sm md:text-lg text-white/90 mb-6 lg:mb-8 leading-relaxed">
-                    Reporta descargas contaminantes, basura, espuma, malos olores o afectaciones en los ríos de Puebla (Atoyac, Alseseca, Zahuapan, Nexapa y afluentes). Tu queja llega directo al panel de atención ambiental.
-                </p>
-                <button onclick="irCrearReporte()" class="bg-cdmx-gold hover:bg-yellow-600 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl shadow-lg transition-transform transform active:scale-95 flex items-center justify-center lg:justify-start gap-2 text-sm md:text-lg mx-auto lg:mx-0 w-full sm:w-auto">
-                    <span class="material-symbols-outlined">add_circle</span>
-                    Registrar Queja Ambiental
-                </button>
-            </div>
-            <div class="relative z-10 hidden lg:block w-full max-w-sm">
-                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl shadow-2xl ml-auto">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center border border-green-400/50">
-                            <span class="material-symbols-outlined text-green-400">check_circle</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch relative z-10">
+                <!-- Mitad Izquierda: ¿Qué hacemos? -->
+                <div class="flex flex-col justify-between text-center lg:text-left">
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-wider mb-4 border border-white/30 backdrop-blur-sm">
+                            <span class="material-symbols-outlined text-[14px] normal-case">water</span> Herramienta Ciudadana · Ríos de Puebla
+                        </span>
+                        <h2 class="text-2xl md:text-4xl font-bold mb-4 tracking-tight leading-tight">Visibilicemos la Contaminación en los Ríos de Puebla</h2>
+                        <p class="text-sm md:text-base text-white/90 mb-6 leading-relaxed">
+                            Somos una herramienta digital de apoyo ciudadano para visibilizar, ubicar en el mapa y dar seguimiento a descargas residuales, basura y afectaciones en los ríos Atoyac, Alseseca, Zahuapan, Nexapa y Prieto.
+                        </p>
+                    </div>
+                    <div>
+                        <button onclick="irCrearReporte()" class="bg-cdmx-gold hover:bg-yellow-600 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl shadow-lg transition-transform transform active:scale-95 flex items-center justify-center gap-2 text-sm md:text-base mx-auto lg:mx-0 w-full sm:w-auto">
+                            <span class="material-symbols-outlined">add_circle</span>
+                            Registrar Queja Ambiental
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mitad Derecha: Concientización Ambiental -->
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col justify-between gap-5">
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-white text-[10px] md:text-xs font-bold uppercase tracking-wider mb-3 border border-white/20">
+                            <span class="material-symbols-outlined text-[14px] normal-case">volunteer_activism</span> Educación y Prevención
+                        </span>
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 tracking-tight">Concientización y Cuidado del Agua</h3>
+                        <p class="text-xs md:text-sm text-white/90 leading-relaxed">
+                            Conoce por qué se deterioran nuestras cuencas, cómo funciona el semáforo de calidad del agua de la CONAGUA y qué acciones podemos tomar hoy para proteger nuestros ríos.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-white/10 border border-white/15 rounded-xl p-3 flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-full bg-green-500/20 flex items-center justify-center border border-green-400/50 shrink-0">
+                                <span class="material-symbols-outlined text-green-300 text-[18px]">check_circle</span>
+                            </div>
+                            <div>
+                                <p class="text-[11px] text-white/75 leading-tight">Quejas atendidas</p>
+                                <p class="text-lg font-bold text-white leading-tight" id="hero-concluidas-count">0</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-sm text-white/70">Quejas atendidas</p>
-                            <p class="text-2xl font-bold text-white" id="hero-concluidas-count">0</p>
+                        <div class="bg-white/10 border border-white/15 rounded-xl p-3 flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-400/50 shrink-0">
+                                <span class="material-symbols-outlined text-blue-300 text-[18px]">waves</span>
+                            </div>
+                            <div>
+                                <p class="text-[11px] text-white/75 leading-tight">Ríos monitoreados</p>
+                                <p class="text-lg font-bold text-white leading-tight">5 cuencas</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="h-px w-full bg-white/20 my-4"></div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-400/50">
-                            <span class="material-symbols-outlined text-blue-400">waves</span>
-                        </div>
-                        <div>
-                            <p class="text-sm text-white/70">Cobertura estatal</p>
-                            <p class="text-xl font-bold text-white">Cuencas de Puebla</p>
-                        </div>
-                    </div>
+
+                    <a href="concientizacion.html" class="w-full bg-white hover:bg-slate-100 text-primary font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all transform active:scale-95 flex items-center justify-center gap-2 text-sm md:text-base">
+                        <span class="material-symbols-outlined">eco</span>
+                        Ir a Concientización
+                    </a>
                 </div>
             </div>
         </section>
