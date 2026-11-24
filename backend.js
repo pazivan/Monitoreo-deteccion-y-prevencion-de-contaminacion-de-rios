@@ -204,14 +204,14 @@ app.get('/api/reportes', async (req, res) => {
 // Función interna para el acuse de recibo
 async function enviarCorreoAcuse(correo, folio, categoria, ubicacion, descripcion) {
     const info = await transporter.sendMail({
-      from: '"Servicios Urbanos CDMX" <departamentodesoporteymantimie@gmail.com>',
+      from: '"Monitoreo de Ríos Puebla" <departamentodesoporteymantimie@gmail.com>',
       to: correo,
       subject: `Acuse de Recibo - Folio de Reporte: ${folio}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
             <div style="background-color: #9F2241; color: white; padding: 20px; text-align: center;">
                 <h1 style="margin: 0; font-size: 24px;">Confirmación de Reporte</h1>
-                <p style="margin: 5px 0 0 0; opacity: 0.9;">Servicios Urbanos CDMX</p>
+                <p style="margin: 5px 0 0 0; opacity: 0.9;">Gobierno del Estado de Puebla</p>
             </div>
             <div style="padding: 30px;">
                 <p style="font-size: 16px; color: #334155;">Hola,</p>
@@ -261,14 +261,14 @@ app.post('/api/notificar-estado', async (req, res) => {
     // Solo enviar correo si hay dirección de correo
     if (correo && correo.trim() !== '') {
       const info = await transporter.sendMail({
-        from: '"Servicios Urbanos CDMX" <departamentodesoporteymantimie@gmail.com>',
+        from: '"Monitoreo de Ríos Puebla" <departamentodesoporteymantimie@gmail.com>',
         to: correo,
         subject: `Actualización de Folio: ${folio} - ${nuevoEstado}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
               <div style="background-color: #bc955c; color: white; padding: 20px; text-align: center;">
                   <h1 style="margin: 0; font-size: 24px;">Actualización de Solicitud</h1>
-                  <p style="margin: 5px 0 0 0; opacity: 0.9;">Servicios Urbanos CDMX</p>
+                  <p style="margin: 5px 0 0 0; opacity: 0.9;">Gobierno del Estado de Puebla</p>
               </div>
               <div style="padding: 30px;">
                   <p style="font-size: 16px; color: #334155;">Te informamos que tu reporte ha cambiado de estado.</p>
@@ -299,5 +299,5 @@ app.post('/api/notificar-estado', async (req, res) => {
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`✅ Servidor Backend CDMX corriendo en http://localhost:${PORT}`);
+  console.log(`✅ Servidor Backend Puebla corriendo en http://localhost:${PORT}`);
 });

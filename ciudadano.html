@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Portal Ciudadano - Servicios Urbanos CDMX</title>
+    <title>Portal Ciudadano - Monitoreo y Protección de Ríos | Puebla</title>
     
     <!-- Fuentes y Material Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -21,10 +21,10 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#9F2241",      /* Guinda CDMX */
+                        "primary": "#9F2241",      /* Guinda Institucional */
                         "primary-dark": "#7a1a32",
                         "background-light": "#f8f6f6",
-                        "cdmx-gold": "#bc955c",    /* Dorado CDMX */
+                        "cdmx-gold": "#bc955c",    /* Dorado Institucional */
                         "success": "#2e7d32",
                         "warning": "#ed6c02",
                     },
@@ -89,7 +89,7 @@
                     <div class="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-r border-slate-200"></div>
                     <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-l border-slate-200"></div>
                     <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Tu número de folio es</p>
-                    <p id="ticket-folio" class="text-2xl font-black text-primary tracking-widest font-mono">CDMX-2026-000</p>
+                    <p id="ticket-folio" class="text-2xl font-black text-primary tracking-widest font-mono">INC-PUE-000</p>
                 </div>
                 
                 <p class="text-xs text-slate-500 mb-6 text-left">
@@ -120,7 +120,7 @@
                 <p class="text-sm text-slate-500 mb-6">Ingresa tu número de folio para verificar el estado de tu solicitud de servicio.</p>
                 
                 <div class="flex gap-2 mb-6">
-                    <input type="text" id="input-buscar-folio" class="w-full rounded-xl border-slate-200 bg-slate-50 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-slate-400 uppercase font-mono" placeholder="Ej. CDMX-2026-105" />
+                    <input type="text" id="input-buscar-folio" class="w-full rounded-xl border-slate-200 bg-slate-50 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-slate-400 uppercase font-mono" placeholder="Ej. INC-PUE-105" />
                     <button type="button" onclick="buscarFolio()" class="bg-primary hover:bg-primary-dark text-white rounded-xl px-4 flex items-center justify-center transition-colors">
                         <span class="material-symbols-outlined">search</span>
                     </button>
@@ -164,12 +164,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-4">
-                    <img alt="Gobierno de la CDMX" class="h-10 md:h-12 w-auto object-contain"
-                        src="./src/assets/logo-cdmx.png" />
+                    <img alt="Gobierno del Estado de Puebla" class="h-10 md:h-12 w-auto object-contain"
+                        src="./src/assets/logo-puebla.jpg" />
                     <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
                     <div class="hidden md:block">
-                        <h1 class="text-lg md:text-xl font-bold text-slate-800 leading-tight">Servicios Urbanos</h1>
-                        <p class="text-xs text-slate-500">Agencia Digital de Innovación Pública</p>
+                        <h1 class="text-lg md:text-xl font-bold text-slate-800 leading-tight">Monitoreo de Ríos y Servicios</h1>
+                        <p class="text-xs text-slate-500">Gobierno del Estado de Puebla</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2 md:gap-3">
@@ -196,9 +196,9 @@
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-wider mb-4 border border-white/30 backdrop-blur-sm">
                     <span class="material-symbols-outlined text-[14px] normal-case">smart_toy</span> IA de Clasificación Activa
                 </span>
-                <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">CDMX Transparente y Eficiente</h2>
+                <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">Puebla Limpia y Sustentable</h2>
                 <p class="text-sm md:text-lg text-white/90 mb-6 lg:mb-8 leading-relaxed">
-                    Reporta incidencias urbanas desde tu celular en cualquiera de las 16 Alcaldías. Nuestra plataforma automatizada clasifica y asigna tu reporte en tiempo real para que sea atendido.
+                    Reporta contaminación en ríos, descargas residuales e incidencias urbanas en los municipios de Puebla. Nuestra plataforma automatizada clasifica y canaliza tu reporte en tiempo real.
                 </p>
                 <button onclick="irCrearReporte()" class="bg-cdmx-gold hover:bg-yellow-600 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl shadow-lg transition-transform transform active:scale-95 flex items-center justify-center lg:justify-start gap-2 text-sm md:text-lg mx-auto lg:mx-0 w-full sm:w-auto">
                     <span class="material-symbols-outlined">add_circle</span>
@@ -250,7 +250,7 @@
             <div class="max-w-4xl mx-auto">
                 <div class="mb-6 md:mb-8 text-center md:text-left">
                     <h3 class="text-xl md:text-2xl font-bold text-slate-800">Generar Solicitud de Servicio</h3>
-                    <p class="text-sm md:text-base text-slate-500 mt-2">Nuestra Inteligencia Artificial clasificará automáticamente su reporte y lo enviará al área correspondiente (SOBSE, SACMEX, Alcaldía, etc).</p>
+                    <p class="text-sm md:text-base text-slate-500 mt-2">Nuestra Inteligencia Artificial clasificará automáticamente su reporte y lo enviará al área correspondiente (CEASPUE, SMADSOT, Municipio, etc.).</p>
                 </div>
 
                 <form id="form-reporte" class="space-y-8">
@@ -327,9 +327,9 @@
                     <!-- Ubicación MAPA -->
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">2. Ubicación exacta</label>
-                        <p class="text-xs text-slate-500 mb-3">Para mayor precisión (error máximo 20m), <strong>arrastra el marcador rojo</strong> exactamente sobre el problema en el mapa.</p>
+                        <p class="text-xs text-slate-500 mb-3">Para mayor precisión, <strong>haz clic en el mapa o arrastra el marcador</strong> exactamente sobre el punto del reporte.</p>
                         
-                        <div class="w-full h-64 md:h-80 rounded-xl overflow-hidden border border-slate-300 relative mb-4">
+                        <div id="map-wrapper" class="w-full h-[420px] md:h-[540px] rounded-xl overflow-hidden border border-slate-300 shadow-sm relative mb-4 transition-all duration-300">
                             <div id="map-container" class="w-full h-full z-10"></div>
                             
                             <!-- Botón de GPS sobre el mapa -->
@@ -339,36 +339,57 @@
                                     Detectar mi red / GPS
                                 </button>
                             </div>
+
+                            <!-- Selector de Capa: Calles / Satélite + Ampliar -->
+                            <div class="absolute top-3 right-3 z-[400] flex items-center gap-2">
+                                <div class="bg-white/95 backdrop-blur-sm p-1 rounded-lg shadow-md border border-slate-200 flex items-center gap-1">
+                                    <button type="button" id="btn-layer-calles" onclick="cambiarCapaMapa('calles')" class="px-2.5 py-1.5 rounded-md text-[11px] md:text-xs font-bold bg-primary text-white transition-colors flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[14px]">map</span> Calles
+                                    </button>
+                                    <button type="button" id="btn-layer-satelite" onclick="cambiarCapaMapa('satelite')" class="px-2.5 py-1.5 rounded-md text-[11px] md:text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[14px]">satellite_alt</span> Satélite
+                                    </button>
+                                </div>
+                                <button type="button" id="btn-expand-map" onclick="toggleTamanoMapa()" title="Ampliar / Reducir mapa" class="bg-white/95 hover:bg-slate-50 text-slate-700 p-2 rounded-lg shadow-md border border-slate-200 transition-colors flex items-center justify-center">
+                                    <span id="icon-expand-map" class="material-symbols-outlined text-[18px]">open_in_full</span>
+                                </button>
+                            </div>
+
+                            <!-- Leyenda de Ríos resaltados -->
+                            <div class="absolute bottom-3 left-3 z-[400] bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-md border border-slate-200 flex items-center gap-2 text-[11px] md:text-xs font-semibold text-slate-700">
+                                <span class="w-4 h-1.5 rounded-full bg-sky-500 inline-block"></span>
+                                <span id="rivers-status-text">Ríos de Puebla resaltados</span>
+                            </div>
                         </div>
 
                         <!-- Campos autocompletados por el mapa -->
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-3">
                             <div class="sm:col-span-1">
                                 <select id="alcaldia" class="w-full rounded-xl border-slate-200 bg-slate-50 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20" required>
-                                    <option value="">Selecciona Alcaldía...</option>
-                                    <option value="Álvaro Obregón">Álvaro Obregón</option>
-                                    <option value="Azcapotzalco">Azcapotzalco</option>
-                                    <option value="Benito Juárez">Benito Juárez</option>
-                                    <option value="Coyoacán">Coyoacán</option>
-                                    <option value="Cuajimalpa de Morelos">Cuajimalpa de Morelos</option>
-                                    <option value="Cuauhtémoc">Cuauhtémoc</option>
-                                    <option value="Gustavo A. Madero">Gustavo A. Madero</option>
-                                    <option value="Iztacalco">Iztacalco</option>
-                                    <option value="Iztapalapa">Iztapalapa</option>
-                                    <option value="La Magdalena Contreras">La Magdalena Contreras</option>
-                                    <option value="Miguel Hidalgo">Miguel Hidalgo</option>
-                                    <option value="Milpa Alta">Milpa Alta</option>
-                                    <option value="Tláhuac">Tláhuac</option>
-                                    <option value="Tlalpan">Tlalpan</option>
-                                    <option value="Venustiano Carranza">Venustiano Carranza</option>
-                                    <option value="Xochimilco">Xochimilco</option>
+                                    <option value="">Selecciona Municipio...</option>
+                                    <option value="Puebla">Puebla</option>
+                                    <option value="San Andrés Cholula">San Andrés Cholula</option>
+                                    <option value="San Pedro Cholula">San Pedro Cholula</option>
+                                    <option value="Cuautlancingo">Cuautlancingo</option>
+                                    <option value="Coronango">Coronango</option>
+                                    <option value="Amozoc">Amozoc</option>
+                                    <option value="Atlixco">Atlixco</option>
+                                    <option value="San Martín Texmelucan">San Martín Texmelucan</option>
+                                    <option value="Huejotzingo">Huejotzingo</option>
+                                    <option value="Tehuacán">Tehuacán</option>
+                                    <option value="Izúcar de Matamoros">Izúcar de Matamoros</option>
+                                    <option value="Teziutlán">Teziutlán</option>
+                                    <option value="Huauchinango">Huauchinango</option>
+                                    <option value="Zacatlán">Zacatlán</option>
+                                    <option value="Chignahuapan">Chignahuapan</option>
+                                    <option value="Tecamachalco">Tecamachalco</option>
                                 </select>
                             </div>
                             <div class="sm:col-span-2 relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                                     <span class="material-symbols-outlined text-[20px]">location_on</span>
                                 </div>
-                                <input type="text" id="ubicacion" class="flex w-full rounded-xl border-slate-200 bg-slate-50 pl-10 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Ej. Insurgentes Sur esq. Eje 5 (Autocompletado)" required />
+                                <input type="text" id="ubicacion" class="flex w-full rounded-xl border-slate-200 bg-slate-50 pl-10 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Ej. Ribera del Río Atoyac / Blvd. Atlixcáyotl (Autocompletado)" required />
                             </div>
                         </div>
                     </div>
@@ -436,11 +457,11 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-6">
                 <div>
                     <h3 class="text-xl md:text-2xl font-bold text-slate-800">Servicios Atendidos y Buscador</h3>
-                    <p class="text-sm text-slate-500 mt-1">Busca cualquier folio o alcaldía para ver los reportes (incluso si están en proceso de validación).</p>
+                    <p class="text-sm text-slate-500 mt-1">Busca cualquier folio o municipio para ver los reportes (incluso si están en proceso de validación).</p>
                 </div>
                 <div class="relative w-full md:w-80">
                     <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">search</span>
-                    <input type="text" id="input-buscar-historial" class="w-full rounded-full border-slate-200 bg-white pl-10 pr-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 shadow-sm" placeholder="Buscar por alcaldía, folio, o descripción..." />
+                    <input type="text" id="input-buscar-historial" class="w-full rounded-full border-slate-200 bg-white pl-10 pr-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 shadow-sm" placeholder="Buscar por municipio, folio, o descripción..." />
                 </div>
             </div>
 
@@ -531,8 +552,8 @@
     <footer class="bg-white border-t border-slate-200 mt-auto">
         <div class="max-w-7xl mx-auto px-4 py-6 md:py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <div>
-                <p class="text-sm font-semibold text-slate-700">Gobierno de la Ciudad de México</p>
-                <p class="text-xs text-slate-500 mt-1">Agencia Digital de Innovación Pública (ADIP) © 2026</p>
+                <p class="text-sm font-semibold text-slate-700">Gobierno del Estado de Puebla</p>
+                <p class="text-xs text-slate-500 mt-1">Monitoreo, Detección y Prevención de Contaminación de Ríos © 2026</p>
             </div>
             <div class="flex gap-4 justify-center md:justify-start">
                 <a href="#" class="text-xs text-slate-500 hover:text-primary transition-colors">Términos y Condiciones</a>
@@ -562,30 +583,282 @@
             }
         }
 
-        // INITIALIZE MAP (LEAFLET)
-        // Centro CDMX (Zócalo)
-        const initialCoords = [19.432608, -99.133209];
-        const map = L.map('map-container').setView(initialCoords, 11);
+        // INITIALIZE MAP (LEAFLET - Renderizado acelerado por Canvas y carga paralela de mosaicos)
+        // Centro de Puebla (Zócalo de Puebla)
+        const initialCoords = [19.0414, -98.2063];
+        const map = L.map('map-container', {
+            preferCanvas: true,
+            zoomAnimation: true,
+            fadeAnimation: false,
+            wheelDebounceTime: 25
+        }).setView(initialCoords, 12);
+
+        let mapaAmpliado = false;
+        function toggleTamanoMapa() {
+            const wrapper = document.getElementById('map-wrapper');
+            const icon = document.getElementById('icon-expand-map');
+            mapaAmpliado = !mapaAmpliado;
+            if (mapaAmpliado) {
+                wrapper.classList.remove('h-[420px]', 'md:h-[540px]');
+                wrapper.classList.add('h-[75vh]');
+                icon.textContent = 'close_fullscreen';
+            } else {
+                wrapper.classList.remove('h-[75vh]');
+                wrapper.classList.add('h-[420px]', 'md:h-[540px]');
+                icon.textContent = 'open_in_full';
+            }
+            setTimeout(() => map.invalidateSize(), 310);
+        }
         
-        // Cargar tiles de OpenStreetMap gratuitos
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // Mapas base rápidos: múltiples subdominios (a,b,c), actualización inmediata al mover y buffer amplio
+        const capaCalles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            subdomains: ['a', 'b', 'c'],
             maxZoom: 19,
+            updateWhenIdle: false,
+            updateWhenZooming: false,
+            keepBuffer: 4,
             attribution: '© OpenStreetMap'
-        }).addTo(map);
-
-        // Marcador arrastrable (Draggable)
-        const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
-
-        // Cuando el usuario suelta el marcador (dragend), buscamos la dirección exacta (Reverse Geocoding)
-        marker.on('dragend', function (e) {
-            const coords = e.target.getLatLng();
-            reverseGeocode(coords.lat, coords.lng);
-            map.panTo(coords);
         });
 
-        // Función reverse geocoding via Nominatim
+        const capaSatelite = L.layerGroup([
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                maxZoom: 19,
+                updateWhenIdle: false,
+                updateWhenZooming: false,
+                keepBuffer: 4,
+                attribution: '© Esri World Imagery'
+            }),
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+                maxZoom: 19,
+                updateWhenIdle: false,
+                keepBuffer: 4
+            })
+        ]);
+
+        capaCalles.addTo(map);
+        let capaActual = 'calles';
+
+        function cambiarCapaMapa(tipo) {
+            if (tipo === capaActual) return;
+            const btnCalles = document.getElementById('btn-layer-calles');
+            const btnSatelite = document.getElementById('btn-layer-satelite');
+            if (tipo === 'satelite') {
+                map.removeLayer(capaCalles);
+                capaSatelite.addTo(map);
+                btnSatelite.className = "px-2.5 py-1.5 rounded-md text-[11px] md:text-xs font-bold bg-primary text-white transition-colors flex items-center gap-1";
+                btnCalles.className = "px-2.5 py-1.5 rounded-md text-[11px] md:text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors flex items-center gap-1";
+            } else {
+                map.removeLayer(capaSatelite);
+                capaCalles.addTo(map);
+                btnCalles.className = "px-2.5 py-1.5 rounded-md text-[11px] md:text-xs font-bold bg-primary text-white transition-colors flex items-center gap-1";
+                btnSatelite.className = "px-2.5 py-1.5 rounded-md text-[11px] md:text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors flex items-center gap-1";
+            }
+            capaActual = tipo;
+        }
+
+        // CAPA DE RÍOS DE PUEBLA RESALTADOS (geometría real de OpenStreetMap)
+        // Se dibuja exactamente la misma línea que OSM tiene para cada río/arroyo,
+        // por lo que el resaltado sigue fielmente el cauce del mapa base.
+        map.createPane('riosPane');
+        map.getPane('riosPane').style.zIndex = 450;
+        const riosCanvasRenderer = L.canvas({ pane: 'riosPane', padding: 0.5 });
+        const riversLayer = L.layerGroup().addTo(map);
+        const riosCargados = new Map();   // id del way OSM -> { halo, linea, tipo }
+        const zonasCargadas = [];         // { bounds, nivel } ya consultadas
+        const OVERPASS_ENDPOINTS = [
+            'https://overpass-api.de/api/interpreter',
+            'https://overpass.kumi.systems/api/interpreter',
+            'https://maps.mail.ru/osm/tools/overpass/api/interpreter'
+        ];
+        const COLOR_RIO = '#0369a1';
+        const COLOR_ARROYO = '#0ea5e9';
+
+        function grosorRio(tipo, zoom) {
+            const base = tipo === 'river' ? 5 : (tipo === 'canal' ? 3.5 : 2.5);
+            const factor = zoom >= 15 ? 1.6 : (zoom >= 13 ? 1.25 : 1);
+            return base * factor;
+        }
+
+        function dibujarWayRio(el) {
+            if (riosCargados.has(el.id) || !el.geometry || el.geometry.length < 2) return false;
+            const latlngs = el.geometry.map(p => [p.lat, p.lon]);
+            const tags = el.tags || {};
+            const tipo = tags.waterway || 'stream';
+            const nombre = tags.name || (tipo === 'river' ? 'Río sin nombre' : (tipo === 'canal' ? 'Canal' : 'Arroyo'));
+            const color = tipo === 'river' ? COLOR_RIO : COLOR_ARROYO;
+            const w = grosorRio(tipo, map.getZoom());
+
+            // Halo blanco debajo para que el río resalte sobre cualquier fondo (calles o satélite)
+            const halo = L.polyline(latlngs, {
+                renderer: riosCanvasRenderer, color: '#ffffff', weight: w + 4, opacity: 0.85,
+                lineCap: 'round', lineJoin: 'round', interactive: false
+            });
+            const linea = L.polyline(latlngs, {
+                renderer: riosCanvasRenderer, color, weight: w, opacity: 0.95,
+                lineCap: 'round', lineJoin: 'round'
+            })
+            .bindTooltip(nombre, { sticky: true })
+            .bindPopup(`<strong>🌊 ${nombre}</strong><br>
+                <span class="text-xs text-slate-600">Tipo: ${tipo === 'river' ? 'Río' : (tipo === 'canal' ? 'Canal' : 'Arroyo')}</span><br>
+                <a href="https://www.openstreetmap.org/way/${el.id}" target="_blank" class="text-xs">Ver en OpenStreetMap</a>`);
+            linea.on('mouseover', () => linea.setStyle({ color: '#9F2241' }));
+            linea.on('mouseout', () => linea.setStyle({ color }));
+
+            halo.addTo(riversLayer);
+            linea.addTo(riversLayer);
+            riosCargados.set(el.id, { halo, linea, tipo });
+            return true;
+        }
+
+        // Ajustar grosor al hacer zoom
+        map.on('zoomend', () => {
+            const z = map.getZoom();
+            riosCargados.forEach(({ halo, linea, tipo }) => {
+                const w = grosorRio(tipo, z);
+                linea.setStyle({ weight: w });
+                halo.setStyle({ weight: w + 4 });
+            });
+        });
+
+        async function consultarOverpass(query) {
+            for (const url of OVERPASS_ENDPOINTS) {
+                const ctrl = new AbortController();
+                const timer = setTimeout(() => ctrl.abort(), 12000); // no quedarse colgado
+                try {
+                    const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(query), signal: ctrl.signal });
+                    if (!res.ok) continue;
+                    return await res.json();
+                } catch (e) { /* probar siguiente servidor */ }
+                finally { clearTimeout(timer); }
+            }
+            throw new Error('Overpass no disponible');
+        }
+
+        // Consultar Overpass API (OpenStreetMap) con la geometría exacta de cada río en la vista actual
+        let overpassTimeout = null;
+        let overpassEnCurso = false;
+        async function cargarRiosOverpass() {
+            const zoom = map.getZoom();
+            if (zoom < 10 || overpassEnCurso) return;
+            // Zoom alejado: solo ríos y canales. Zoom cercano: también arroyos.
+            const nivel = zoom >= 13 ? 2 : 1;
+            const b = map.getBounds().pad(0.2);
+            if (zonasCargadas.some(z => z.nivel >= nivel && z.bounds.contains(b))) return;
+
+            const filtro = nivel === 2 ? '^(river|canal|stream)$' : '^(river|canal)$';
+            const bbox = `${b.getSouth()},${b.getWest()},${b.getNorth()},${b.getEast()}`;
+            const query = `[out:json][timeout:25];way["waterway"~"${filtro}"](${bbox});out geom;`;
+            const statusEl = document.getElementById('rivers-status-text');
+            if (statusEl) statusEl.textContent = 'Ríos resaltados · buscando nombres OSM...';
+
+            overpassEnCurso = true;
+            try {
+                const data = await consultarOverpass(query);
+                (data.elements || []).forEach(el => { if (el.type === 'way') dibujarWayRio(el); });
+                zonasCargadas.push({ bounds: b, nivel });
+                if (statusEl) statusEl.textContent = `Ríos resaltados (${riosCargados.size} tramos OSM)`;
+            } catch (e) {
+                // La capa hidrográfica Esri sigue mostrando los ríos aunque Overpass no responda
+                if (statusEl) statusEl.textContent = 'Ríos resaltados (capa hidrográfica)';
+            } finally {
+                overpassEnCurso = false;
+            }
+        }
+
+        // Cargar GeoJSON local con la geometría real de los ríos de Puebla (OpenStreetMap / INEGI)
+        let usandoGeoJSONOficial = false;
+        fetch('./src/assets/rios-puebla.geojson')
+            .then(res => {
+                if (!res.ok) throw new Error('Sin GeoJSON local');
+                return res.json();
+            })
+            .then(geojson => {
+                usandoGeoJSONOficial = true;
+                riversLayer.clearLayers();
+                riosCargados.clear();
+
+                let totalTramos = 0;
+                (geojson.features || []).forEach((feature, idx) => {
+                    const geom = feature.geometry;
+                    if (!geom) return;
+                    const p = feature.properties || {};
+                    const tipo = p.waterway || 'river';
+                    const nombre = p.NOMBRE || p.nombre || p.NAME || p.name || 'Río de Puebla';
+                    const osmId = p.osm_id || ('local-' + idx);
+
+                    const lines = geom.type === 'MultiLineString' ? geom.coordinates :
+                                  (geom.type === 'LineString' ? [geom.coordinates] : []);
+
+                    lines.forEach((coords, subIdx) => {
+                        if (!coords || coords.length < 2) return;
+                        const latlngs = coords.map(c => [c[1], c[0]]);
+                        const color = tipo === 'river' ? COLOR_RIO : COLOR_ARROYO;
+                        const w = grosorRio(tipo, map.getZoom());
+
+                        const halo = L.polyline(latlngs, {
+                            renderer: riosCanvasRenderer, color: '#ffffff', weight: w + 4, opacity: 0.85,
+                            lineCap: 'round', lineJoin: 'round', interactive: false
+                        });
+                        const osmLink = p.osm_id
+                            ? `<br><a href="https://www.openstreetmap.org/way/${p.osm_id}" target="_blank" class="text-xs text-sky-700 underline">Ver tramo en OpenStreetMap</a>`
+                            : '';
+                        const linea = L.polyline(latlngs, {
+                            renderer: riosCanvasRenderer, color, weight: w, opacity: 0.95,
+                            lineCap: 'round', lineJoin: 'round'
+                        })
+                        .bindTooltip(nombre, { sticky: true })
+                        .bindPopup(`<strong>🌊 ${nombre}</strong><br><span class="text-xs text-slate-600">Tipo: ${tipo === 'river' ? 'Río principal' : (tipo === 'canal' ? 'Canal' : 'Arroyo / Afluente')}</span>${osmLink}`);
+
+                        linea.on('mouseover', () => linea.setStyle({ color: '#9F2241' }));
+                        linea.on('mouseout', () => linea.setStyle({ color }));
+
+                        halo.addTo(riversLayer);
+                        linea.addTo(riversLayer);
+                        riosCargados.set(`${osmId}-${subIdx}`, { halo, linea, tipo });
+                        totalTramos++;
+                    });
+                });
+
+                const statusEl = document.getElementById('rivers-status-text');
+                if (statusEl) statusEl.textContent = `Ríos de Puebla resaltados (${totalTramos} tramos exactos OSM)`;
+            })
+            .catch(() => {
+                cargarRiosOverpass();
+                map.on('moveend', () => {
+                    if (usandoGeoJSONOficial) return;
+                    clearTimeout(overpassTimeout);
+                    overpassTimeout = setTimeout(cargarRiosOverpass, 700);
+                });
+            });
+
+        // Marcador arrastrable y colocación rápida con un clic en el mapa
+        const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
+        let geocodeAbort = null;
+        let geocodeTimer = null;
+
+        function actualizarPuntoMapa(lat, lng) {
+            document.getElementById('ubicacion').value = `Obteniendo dirección (${lat.toFixed(5)}, ${lng.toFixed(5)})...`;
+            clearTimeout(geocodeTimer);
+            geocodeTimer = setTimeout(() => reverseGeocode(lat, lng), 120);
+        }
+
+        // Al soltar el marcador (dragend), actualizamos sin forzar panTo (más fluido)
+        marker.on('dragend', function (e) {
+            const coords = e.target.getLatLng();
+            actualizarPuntoMapa(coords.lat, coords.lng);
+        });
+
+        // Al hacer clic en el mapa, mueve el marcador al instante
+        map.on('click', function (e) {
+            marker.setLatLng(e.latlng);
+            actualizarPuntoMapa(e.latlng.lat, e.latlng.lng);
+        });
+
+        // Función reverse geocoding via Nominatim con cancelación de peticiones previas
         function reverseGeocode(lat, lon, isAutoGPS = false) {
-            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+            if (geocodeAbort) geocodeAbort.abort();
+            geocodeAbort = new AbortController();
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`, { signal: geocodeAbort.signal })
                 .then(response => response.json())
                 .then(data => {
                     const addressStr = data.display_name || `${lat}, ${lon}`;
@@ -613,10 +886,10 @@
                     // Buscar en partes (fallback)
                     if(!found) {
                         const parts = data.address || {};
-                        const arr = [parts.borough, parts.city_district, parts.suburb, parts.county, parts.town];
+                        const arr = [parts.city, parts.municipality, parts.county, parts.town, parts.borough, parts.suburb];
                         for(let p of arr) {
                             if(!p) continue;
-                            const cleanP = norm(p.replace('Alcaldía', '').replace('Delegación', '').trim());
+                            const cleanP = norm(p.replace('Municipio de', '').replace('Heroica', '').trim());
                             for(let i=1; i<selectAlcaldia.options.length; i++) {
                                 const optVal = norm(selectAlcaldia.options[i].value);
                                 if(optVal && (cleanP.includes(optVal) || optVal.includes(cleanP))) {
@@ -629,15 +902,14 @@
                         }
                     }
 
-                    // Fix de zonas limítrofes / Hackathon
+                    // Fix de zonas conurbadas de Puebla
                     if(!found) {
-                        const borders = ['ecatepec', 'tlalnepantla', 'neza', 'chalco', 'naucalpan', 'state of mexico'];
+                        const borders = ['cholula', 'tlaxcalancingo', 'momoxpan', 'angelopolis', 'valsequillo'];
                         if (borders.some(b => normalizedAddress.includes(b))) {
                             for(let i=1; i<selectAlcaldia.options.length; i++) {
-                                if(selectAlcaldia.options[i].value === "Gustavo A. Madero") {
+                                if(selectAlcaldia.options[i].value === "Puebla") {
                                     selectAlcaldia.selectedIndex = i;
                                     found = true;
-                                    document.getElementById('ubicacion').value = "(Zona GAM) " + addressStr;
                                     break;
                                 }
                             }
@@ -645,10 +917,12 @@
                     }
 
                     if(!found && isAutoGPS) {
-                        showToast("El GPS te ubica fuera de CDMX. Puedes arrastrar el marcador para mayor precisión.", "info");
+                        showToast("El GPS te ubica fuera de Puebla. Puedes arrastrar el marcador para mayor precisión.", "info");
                     }
                 })
-                .catch(e => console.error(e));
+                .catch(e => {
+                    if (e.name !== 'AbortError') console.error(e);
+                });
         }
 
         // GPS GEOLOCATION Button on Map
@@ -942,7 +1216,7 @@
                 const categoriaNode = document.querySelector('input[name="categoria"]:checked');
                 const categoria = categoriaNode ? categoriaNode.value : "Otro";
                 
-                const nuevoFolio = "INC-CDMX-" + Math.floor(Math.random() * 9000 + 1000); // Generar folio temporalmente en frontend, aunque DB crea el suyo real (acá lo pasamos)
+                const nuevoFolio = "INC-PUE-" + Math.floor(Math.random() * 9000 + 1000); // Generar folio temporalmente en frontend, aunque DB crea el suyo real (acá lo pasamos)
 
                 // ENVIAR AL BACKEND (INSERT EN DB POSTGRES)
                 fetch('http://localhost:3000/api/reportes', {
