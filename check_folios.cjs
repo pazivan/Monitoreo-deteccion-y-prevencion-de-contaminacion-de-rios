@@ -1,0 +1,1 @@
+const pg = require('pg'); const pool = new pg.Pool({user: 'postgres', host: 'localhost', database: 'CDMX', password: 'Saladito68', port: 5432}); pool.query("SELECT folio FROM incidencias").then(res => {console.log(res.rows.map(r=>r.folio).join(', ')); pool.end();});

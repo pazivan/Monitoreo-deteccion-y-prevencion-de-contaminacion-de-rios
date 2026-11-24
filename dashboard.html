@@ -161,7 +161,7 @@
                     </div>
 
                     <select id="filtro-categoria"
-                        onchange="renderizarTabla(document.getElementById('buscador-calles').value)"
+                        onchange="cambiarCategoriaFiltro()"
                         class="block w-48 pl-3 pr-8 py-2 border border-gray-200 bg-white rounded-xl focus:ring-primary focus:border-primary sm:text-sm text-gray-700 font-medium ml-2 shadow-sm">
                         <option value="">Todas las Categorías</option>
                         <option value="Deterioro de superficie vial">Deterioro de superficie vial (Baches)</option>
@@ -193,14 +193,13 @@
                 <!-- Contenedor del Mapa de Calor Estático -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                     <div class="p-4 md:p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
-                        <h2 class="text-lg font-bold text-gray-900">Mapa de Calor de Baches - Zona Urbana</h2>
+                        <h2 id="titulo-mapa-calor" class="text-lg font-bold text-gray-900">Mapa de Calor General - Zona Urbana</h2>
                         <span
                             class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Actualizado</span>
                     </div>
-                    <div class="p-4 bg-gray-50 flex justify-center items-center">
-                        <img src="./src/assets/mapa_calor.jpg" alt="Mapa de calor de baches"
-                            class="w-full max-w-5xl h-auto rounded-lg shadow-sm border border-gray-200"
-                            style="object-fit: contain;">
+                    <div class="p-4 bg-gray-50 flex justify-center items-center h-[400px] md:h-[600px] overflow-hidden">
+                        <img id="imagen-mapa-calor" src="./src/assets/mapa_calor.jpg" alt="Mapa de calor"
+                            class="w-full h-full object-contain rounded-lg shadow-sm border border-gray-200 bg-white">
                     </div>
                 </div>
 
@@ -277,7 +276,9 @@
                                     Selecciona un reporte
                                 </button>
                             </div>
+
                         </div>
+
 
                     </div>
 
@@ -386,6 +387,26 @@
 
             // Filtro de Categoría
             const catFiltro = document.getElementById('filtro-categoria').value;
+            
+            const tituloMapa = document.getElementById('titulo-mapa-calor');
+            const imgMapa = document.getElementById('imagen-mapa-calor');
+            const cardBgImagen = document.getElementById('card-bg-imagen');
+            if (tituloMapa && imgMapa) {
+                if (catFiltro === "") {
+                    tituloMapa.textContent = "Mapa de Calor General - Zona Urbana";
+                    imgMapa.src = "./src/assets/mapa_calor.jpg";
+                    if (!reporteSeleccionado && cardBgImagen) {
+                        cardBgImagen.style.backgroundImage = "url('./src/assets/bache.png')";
+                    }
+                } else {
+                    tituloMapa.textContent = `Monitoreo Inteligente: ${catFiltro}`;
+                    imgMapa.src = getCategoriaImg(catFiltro);
+                    if (!reporteSeleccionado && cardBgImagen) {
+                        cardBgImagen.style.backgroundImage = `url('${getCategoriaImg(catFiltro)}')`;
+                    }
+                }
+            }
+
             if (catFiltro !== "") {
                 filtrados = filtrados.filter(r => r.categoria && r.categoria === catFiltro);
             }
@@ -453,6 +474,21 @@
             });
         }
 
+        window.cambiarCategoriaFiltro = function() {
+            const catFiltro = document.getElementById('filtro-categoria').value;
+            reporteSeleccionado = null;
+            document.getElementById('detalle-categoria').textContent = "-";
+            document.getElementById('detalle-costo').textContent = "-";
+            document.getElementById('detalle-analisis').innerHTML = "Selecciona un reporte de la lista para ver la descripción y gestionar el flujo de validación.";
+            document.getElementById('btn-accion-container').innerHTML = `
+                <button disabled class="w-full py-3 bg-white/20 text-white font-bold rounded-lg cursor-not-allowed text-sm uppercase tracking-wider">
+                    Selecciona un reporte
+                </button>
+            `;
+            // El fondo cambiará en renderizarTabla() gracias a la lógica que agregamos ahí
+            renderizarTabla(document.getElementById('buscador-calles').value);
+        }
+
         window.filtrarEstado = function (estado) {
             estadoFiltro = estado;
             reporteSeleccionado = null;
@@ -481,6 +517,22 @@
             });
         }
 
+        // CATEGORY IMAGE HELPER
+        function getCategoriaImg(cat) {
+            if (!cat) return './src/assets/baches.jpeg';
+            const lowerCat = cat.toLowerCase();
+            if (lowerCat.includes('vial') && lowerCat.includes('superficie')) return './src/assets/baches.jpeg';
+            if (lowerCat.includes('alumbrado')) return './src/assets/fallaAlumbrado.jpeg';
+            if (lowerCat.includes('fuga') || lowerCat.includes('agua')) return './src/assets/fugaAgua.jpeg';
+            if (lowerCat.includes('drenaje')) return './src/assets/drenaje.jpeg';
+            if (lowerCat.includes('arbolado')) return './src/assets/arboles.jpeg';
+            if (lowerCat.includes('señalización') || lowerCat.includes('senalizacion')) return './src/assets/senalizacionVial.jpeg';
+            if (lowerCat.includes('residuos') || lowerCat.includes('basura')) return './src/assets/basura.jpeg';
+            if (lowerCat.includes('peatonal')) return './src/assets/infrestructuraP.jpeg';
+            if (lowerCat.includes('hundimiento')) return './src/assets/baches.jpeg';
+            return './src/assets/baches.jpeg';
+        }
+
         // Función global para actualizar el panel derecho
         window.seleccionarCalle = function (id) {
             const info = reportesDB.find(c => c.id === id);
@@ -497,7 +549,7 @@
             if (info.img) {
                 document.getElementById('card-bg-imagen').style.backgroundImage = `url('${info.img}')`;
             } else {
-                document.getElementById('card-bg-imagen').style.backgroundImage = "url('./src/assets/bache.png')";
+                document.getElementById('card-bg-imagen').style.backgroundImage = `url('${getCategoriaImg(info.categoria)}')`;
             }
 
             // Construir Botón de Acción dependiendo del estado
@@ -562,21 +614,19 @@
                     guardarDatosYRefrescar();
                     seleccionarCalle(id);
 
-                    // Enviar Correo Real al Ciudadano
-                    if (correo) {
-                        fetch('http://localhost:3000/api/notificar-estado', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                correo: correo,
-                                folio: id,
-                                nuevoEstado: "Inspección Programada",
-                                mensaje: `Tu reporte ha sido validado. Hemos agendado a un Operador de Dron y una Cuadrilla de Sobse para acudir al lugar el día <strong>${fechaFormateada}</strong>. Realizarán un levantamiento de daños exacto para asignar el presupuesto público necesario.`
-                            })
-                        }).catch(e => console.error("Error al enviar email:", e));
-                    }
+                    // Enviar Correo Real al Ciudadano (y actualizar estado en BD)
+                    fetch('http://localhost:3000/api/notificar-estado', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            correo: correo || '',
+                            folio: id,
+                            nuevoEstado: "Inspección Programada",
+                            mensaje: `Tu reporte ha sido validado. Hemos agendado a un Operador de Dron y una Cuadrilla de Sobse para acudir al lugar el día <strong>${fechaFormateada}</strong>. Realizarán un levantamiento de daños exacto para asignar el presupuesto público necesario.`
+                        })
+                    }).catch(e => console.error("Error al actualizar/enviar email:", e));
 
-                    alert(`✅ Inspección agendada para el ${fechaFormateada}.\nSe ha enviado un correo electrónico automático al ciudadano notificándole la fecha.`);
+                    alert(`Inspección agendada para el ${fechaFormateada}.\nSe ha enviado un correo electrónico automático al ciudadano notificándole la fecha.`);
                 }
             }, 1000);
         }
@@ -597,21 +647,19 @@
                     guardarDatosYRefrescar();
                     seleccionarCalle(id);
 
-                    // Enviar Correo Real al Ciudadano
-                    if (correo) {
-                        fetch('http://localhost:3000/api/notificar-estado', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                correo: correo,
-                                folio: id,
-                                nuevoEstado: "En Reparación",
-                                mensaje: `La inspección concluyó y se ha asignado un presupuesto oficial de $${reportesDB[idx].costo} MXN. Las cuadrillas están trabajando en la resolución del problema.`
-                            })
-                        }).catch(e => console.error("Error al enviar email:", e));
-                    }
+                    // Enviar Correo Real al Ciudadano (y actualizar estado en BD)
+                    fetch('http://localhost:3000/api/notificar-estado', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            correo: correo || '',
+                            folio: id,
+                            nuevoEstado: "En Reparación",
+                            mensaje: `La inspección concluyó y se ha asignado un presupuesto oficial de $${reportesDB[idx].costo} MXN. Las cuadrillas están trabajando en la resolución del problema.`
+                        })
+                    }).catch(e => console.error("Error al actualizar/enviar email:", e));
 
-                    alert(`✅ Inspección Finalizada.\nPresupuesto asignado: $${reportesDB[idx].costo} MXN.\nEnviado a Reparación y notificado por correo.`);
+                    alert(`Inspección Finalizada.\nPresupuesto asignado: $${reportesDB[idx].costo} MXN.\nEnviado a Reparación y notificado por correo.`);
                 }
             }, 1500);
         }
@@ -630,20 +678,18 @@
                     renderizarTabla(buscador.value);
                     seleccionarCalle(id);
 
-                    if (correo) {
-                        fetch('http://localhost:3000/api/notificar-estado', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                correo: correo,
-                                folio: id,
-                                nuevoEstado: "Concluido",
-                                mensaje: "¡Buenas noticias! Tu solicitud ciudadana ha sido concluida exitosamente. Puedes revisar el historial y las fotografías de la evidencia finalizada en nuestra plataforma."
-                            })
-                        }).catch(e => console.error("Error al enviar email:", e));
-                    }
+                    fetch('http://localhost:3000/api/notificar-estado', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            correo: correo || '',
+                            folio: id,
+                            nuevoEstado: "Concluido",
+                            mensaje: "¡Buenas noticias! Tu solicitud ciudadana ha sido concluida exitosamente. Puedes revisar el historial y las fotografías de la evidencia finalizada en nuestra plataforma."
+                        })
+                    }).catch(e => console.error("Error al actualizar/enviar email:", e));
 
-                    alert(`✅ Servicio marcado como Concluido.\nEl ciudadano ha sido notificado.`);
+                    alert(`Servicio marcado como Concluido.\nEl ciudadano ha sido notificado.`);
                 }
             }, 1000);
         }
@@ -659,15 +705,12 @@
             event.stopPropagation();
             const info = reportesDB.find(c => c.id === id);
 
-            if (info && info.img) {
+            if (info) {
                 document.getElementById('modal-titulo').textContent = `Evidencia: ${info.id}`;
-                document.getElementById('modal-imagen').src = info.img;
+                document.getElementById('modal-imagen').src = info.img ? info.img : getCategoriaImg(info.categoria);
                 document.getElementById('modal-ubicacion').textContent = info.ubicacion;
                 document.getElementById('modal-descripcion').textContent = `"${info.descripcion}"`;
                 document.getElementById('modal-detalle').classList.remove('hidden');
-            } else {
-                seleccionarCalle(id);
-                alert(`Aún no hay imágenes de evidencia adjuntas para el folio ${info.id}.`);
             }
         }
 

@@ -1,0 +1,1 @@
+const pg = require('pg'); const pool = new pg.Pool({user: 'postgres', host: 'localhost', database: 'CDMX', password: 'Saladito68', port: 5432}); pool.query("DELETE FROM evidencias WHERE id_incidencia = 34; DELETE FROM reportes_ciudadanos WHERE id_incidencia = 34; DELETE FROM incidencias WHERE id_incidencia = 34;").then(res => {console.log('Deleted fake report'); pool.end();});

@@ -1,0 +1,1 @@
+const pg = require('pg'); const pool = new pg.Pool({user: 'postgres', host: 'localhost', database: 'CDMX', password: 'Saladito68', port: 5432}); pool.query("SELECT id_categoria FROM categorias LIMIT 1").then(res => {console.log(res.rows[0]); pool.query("SELECT id_estado FROM estados_incidencia LIMIT 1").then(res => {console.log(res.rows[0]); pool.end();})});

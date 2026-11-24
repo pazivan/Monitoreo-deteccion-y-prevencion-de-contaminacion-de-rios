@@ -1,0 +1,1 @@
+const pg = require('pg'); const pool = new pg.Pool({user: 'postgres', host: 'localhost', database: 'CDMX', password: 'Saladito68', port: 5432}); pool.query("SELECT table_name FROM information_schema.tables WHERE table_schema='public'").then(res => {console.log(res.rows); pool.end();});

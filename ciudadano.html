@@ -165,7 +165,7 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-4">
                     <img alt="Gobierno de la CDMX" class="h-10 md:h-12 w-auto object-contain"
-                        src="./src/assets/LOGO-CDMX.jpeg" onerror="this.src='https://via.placeholder.com/150x50?text=Logo+CDMX'" />
+                        src="./src/assets/logo-cdmx.png" />
                     <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
                     <div class="hidden md:block">
                         <h1 class="text-lg md:text-xl font-bold text-slate-800 leading-tight">Servicios Urbanos</h1>
@@ -712,6 +712,7 @@
         const formReporte = document.getElementById('form-reporte');
         
         // EVIDENCIA FOTOGRAFICA
+        let evidenciaBase64Url = null;
         document.getElementById('file-evidencia').addEventListener('change', function(event) {
             const file = event.target.files[0];
             const icon = document.getElementById('photo-icon');
@@ -738,6 +739,7 @@
                     const img = document.createElement('img');
                     img.id = 'preview-img';
                     img.src = e.target.result;
+                    evidenciaBase64Url = e.target.result;
                     img.className = 'absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-multiply';
                     container.appendChild(img);
                     
@@ -797,6 +799,22 @@
             if (e.key === 'Enter') buscarFolio();
         });
 
+        // CATEGORY IMAGE HELPER
+        function getCategoriaImg(cat) {
+            if (!cat) return './src/assets/baches.jpeg';
+            const lowerCat = cat.toLowerCase();
+            if (lowerCat.includes('vial') && lowerCat.includes('superficie')) return './src/assets/baches.jpeg';
+            if (lowerCat.includes('alumbrado')) return './src/assets/fallaAlumbrado.jpeg';
+            if (lowerCat.includes('fuga') || lowerCat.includes('agua')) return './src/assets/fugaAgua.jpeg';
+            if (lowerCat.includes('drenaje')) return './src/assets/drenaje.jpeg';
+            if (lowerCat.includes('arbolado')) return './src/assets/arboles.jpeg';
+            if (lowerCat.includes('señalización') || lowerCat.includes('senalizacion')) return './src/assets/senalizacionVial.jpeg';
+            if (lowerCat.includes('residuos') || lowerCat.includes('basura')) return './src/assets/basura.jpeg';
+            if (lowerCat.includes('peatonal')) return './src/assets/infrestructuraP.jpeg';
+            if (lowerCat.includes('hundimiento')) return './src/assets/baches.jpeg';
+            return './src/assets/baches.jpeg';
+        }
+
         // HISTORIAL
         function renderHistorial(searchTerm = "") {
             gridHistorial.innerHTML = '';
@@ -828,10 +846,12 @@
                         iconName = "policy";
                     }
                 }
+                const fallbackImg = getCategoriaImg(reporte.categoria);
+                const imgSrc = (reporte.img && reporte.img.trim() !== '') ? reporte.img : fallbackImg;
                 const cardHTML = `
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-md transition-all animate-slide-up">
                     <div class="h-40 bg-slate-200 relative overflow-hidden">
-                        <img src="${reporte.img}" alt="${reporte.categoria}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x200?text=Reporte'" />
+                        <img src="${imgSrc}" alt="${reporte.categoria}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='${fallbackImg}'" />
                         <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm border ${badgeColor}">
                             <span class="material-symbols-outlined text-[14px]">${iconName}</span>
                             <span class="text-[10px] font-bold uppercase tracking-wide">${reporte.estado.split(' ')[0]}</span>
@@ -933,7 +953,8 @@
                         folio: nuevoFolio,
                         categoria: categoria,
                         ubicacion: ubicacion_completa,
-                        descripcion: descripcion
+                        descripcion: descripcion,
+                        evidenciaBase64: evidenciaBase64Url
                     })
                 })
                 .then(res => res.json())
@@ -957,6 +978,7 @@
                     document.getElementById('photo-icon').innerText = "add_a_photo";
                     document.getElementById('photo-icon').className = "material-symbols-outlined text-4xl text-slate-400 group-hover:text-primary transition-colors";
                     document.getElementById('photo-text').innerText = "Toca para tomar una foto o subir archivo";
+                    evidenciaBase64Url = null;
                     
                     // Resetear mapa a posición original
                     map.setView(initialCoords, 11);
