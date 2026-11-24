@@ -1,0 +1,21 @@
+# Cálculo científico y modelación ambiental 1D
+numpy>=1.26.0
+scipy>=1.12.0
+pandas>=2.2.0
+
+# Datos geoespaciales y extracción de OpenStreetMap
+osmnx>=1.9.0
+geopandas>=0.14.0
+shapely>=2.0.0
+pyproj>=3.6.0
+
+# Conexión a PostgreSQL + PostGIS (para integración de BD)
+SQLAlchemy>=2.0.0
+GeoAlchemy2>=0.14.0
+psycopg2-binary>=2.9.9
+
+# Interfaz interactiva y visualización
+streamlit>=1.35.0
+plotly>=5.22.0
+folium>=0.16.0
+streamlit-folium>=0.20.0

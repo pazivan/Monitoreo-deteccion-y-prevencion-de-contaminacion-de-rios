@@ -1,0 +1,29 @@
+/* Estilos institucionales compartidos - Monitoreo de Ríos Puebla */
+.grecas-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0V0zm30 30h30v30H30V30zM0 30h10v10H0V30zm10 10h10v10H10V40zm10-10h10v10H20V30zm10-10h10v10H30V20zm10-10h10v10H40V30zm10-10h10v10H50V20z' fill='%239F2241' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    z-index: -1;
+}
+
+.greca-pattern {
+    background-color: #951a3e;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M0 0h20v20H0V0zm20 20h20v20H20V20zM0 20h10v10H0V20zm10 10h10v10H10V30zM20 0h10v10H20V0zm10 10h10v10H30V10z' fill='%23720029' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.greca-border {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M0 0h10v10H0V0zm10 10h10v10H10V20z' fill='%23951a3e' fill-opacity='0.1'/%3E%3C/svg%3E");
+}
+
+.material-symbols-outlined {
+    text-transform: none !important;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Ajustes para Leaflet */
+.leaflet-container { font-family: 'Public Sans', sans-serif; z-index: 10; }
+.leaflet-control-zoom { border: none !important; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important; }

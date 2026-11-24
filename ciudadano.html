@@ -46,27 +46,7 @@
             },
         }
     </script>
-    <style>
-        .grecas-bg {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            opacity: 0.03;
-            pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0V0zm30 30h30v30H30V30zM0 30h10v10H0V30zm10 10h10v10H10V40zm10-10h10v10H20V30zm10-10h10v10H30V20zm10-10h10v10H40V30zm10-10h10v10H50V20z' fill='%239F2241' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
-            z-index: -1;
-        }
-
-        .tab-active { border-bottom: 3px solid #9F2241; color: #9F2241; font-weight: 600; }
-        .tab-inactive { color: #64748b; border-bottom: 3px solid transparent; }
-        .tab-inactive:hover { color: #9F2241; background-color: #f8fafc; }
-        .material-symbols-outlined { text-transform: none !important; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        /* Ajustes menores para Leaflet en Tailwind */
-        .leaflet-container { font-family: 'Public Sans', sans-serif; z-index: 10; }
-        .leaflet-control-zoom { border: none !important; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important; }
-    </style>
+    <link rel="stylesheet" href="./src/css/estilos.css" />
 </head>
 
 <body class="bg-background-light font-sans antialiased text-slate-900 min-h-screen flex flex-col relative">
@@ -82,8 +62,8 @@
                 <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
                     <span class="material-symbols-outlined text-green-600 text-3xl">check_circle</span>
                 </div>
-                <h3 class="text-xl font-black text-slate-800 mb-1">¡Reporte Enviado!</h3>
-                <p class="text-sm text-slate-500 mb-6">Tu solicitud ha sido recibida y será analizada.</p>
+                <h3 class="text-xl font-black text-slate-800 mb-1">¡Queja Registrada!</h3>
+                <p class="text-sm text-slate-500 mb-6">Tu reporte ambiental sobre el río ha sido recibido y enviado al panel de atención.</p>
                 
                 <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6 relative overflow-hidden">
                     <div class="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-r border-slate-200"></div>
@@ -117,7 +97,7 @@
             <div class="p-6 md:p-8 text-center">
                 <span class="material-symbols-outlined text-cdmx-gold text-5xl mb-2">search</span>
                 <h3 class="text-xl md:text-2xl font-black text-slate-800 mb-2">Consultar Avance</h3>
-                <p class="text-sm text-slate-500 mb-6">Ingresa tu número de folio para verificar el estado de tu solicitud de servicio.</p>
+                <p class="text-sm text-slate-500 mb-6">Ingresa tu número de folio para verificar el estado de tu queja ambiental.</p>
                 
                 <div class="flex gap-2 mb-6">
                     <input type="text" id="input-buscar-folio" class="w-full rounded-xl border-slate-200 bg-slate-50 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-slate-400 uppercase font-mono" placeholder="Ej. INC-PUE-105" />
@@ -168,7 +148,7 @@
                         src="./src/assets/logo-puebla.jpg" />
                     <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
                     <div class="hidden md:block">
-                        <h1 class="text-lg md:text-xl font-bold text-slate-800 leading-tight">Monitoreo de Ríos y Servicios</h1>
+                        <h1 class="text-lg md:text-xl font-bold text-slate-800 leading-tight">Denuncia Ambiental de Ríos</h1>
                         <p class="text-xs text-slate-500">Gobierno del Estado de Puebla</p>
                     </div>
                 </div>
@@ -194,15 +174,15 @@
             <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
             <div class="relative z-10 w-full lg:max-w-2xl text-center lg:text-left">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-wider mb-4 border border-white/30 backdrop-blur-sm">
-                    <span class="material-symbols-outlined text-[14px] normal-case">smart_toy</span> IA de Clasificación Activa
+                    <span class="material-symbols-outlined text-[14px] normal-case">water</span> Monitoreo y Protección de Ríos
                 </span>
-                <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">Puebla Limpia y Sustentable</h2>
+                <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">Puebla: Cuidemos Nuestros Ríos</h2>
                 <p class="text-sm md:text-lg text-white/90 mb-6 lg:mb-8 leading-relaxed">
-                    Reporta contaminación en ríos, descargas residuales e incidencias urbanas en los municipios de Puebla. Nuestra plataforma automatizada clasifica y canaliza tu reporte en tiempo real.
+                    Reporta descargas contaminantes, basura, espuma, malos olores o afectaciones en los ríos de Puebla (Atoyac, Alseseca, Zahuapan, Nexapa y afluentes). Tu queja llega directo al panel de atención ambiental.
                 </p>
                 <button onclick="irCrearReporte()" class="bg-cdmx-gold hover:bg-yellow-600 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl shadow-lg transition-transform transform active:scale-95 flex items-center justify-center lg:justify-start gap-2 text-sm md:text-lg mx-auto lg:mx-0 w-full sm:w-auto">
                     <span class="material-symbols-outlined">add_circle</span>
-                    Crear Nuevo Reporte
+                    Registrar Queja Ambiental
                 </button>
             </div>
             <div class="relative z-10 hidden lg:block w-full max-w-sm">
@@ -212,113 +192,84 @@
                             <span class="material-symbols-outlined text-green-400">check_circle</span>
                         </div>
                         <div>
-                            <p class="text-sm text-white/70">Atendidos este mes</p>
-                            <p class="text-2xl font-bold text-white" id="hero-concluidas-count">4,821</p>
+                            <p class="text-sm text-white/70">Quejas atendidas</p>
+                            <p class="text-2xl font-bold text-white" id="hero-concluidas-count">0</p>
                         </div>
                     </div>
                     <div class="h-px w-full bg-white/20 my-4"></div>
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-400/50">
-                            <span class="material-symbols-outlined text-blue-400">timer</span>
+                            <span class="material-symbols-outlined text-blue-400">waves</span>
                         </div>
                         <div>
-                            <p class="text-sm text-white/70">Tiempo prom. respuesta</p>
-                            <p class="text-xl font-bold text-white">48 horas</p>
+                            <p class="text-sm text-white/70">Cobertura estatal</p>
+                            <p class="text-xl font-bold text-white">Cuencas de Puebla</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Navigation Tabs -->
-        <div class="border-b border-slate-200 mt-2 md:mt-4 sticky top-20 z-40 bg-background-light pt-2">
-            <nav class="flex gap-4 md:gap-8 overflow-x-auto no-scrollbar pb-px" aria-label="Tabs">
-                <button onclick="switchTab('reportar')" id="tab-reportar" class="tab-active py-3 px-2 flex items-center gap-2 whitespace-nowrap transition-colors text-sm md:text-base">
-                    <span class="material-symbols-outlined text-[20px]">campaign</span> <span class="font-medium">Reportar Incidencia</span>
-                </button>
-                <button onclick="switchTab('historial')" id="tab-historial" class="tab-inactive py-3 px-2 flex items-center gap-2 whitespace-nowrap transition-colors text-sm md:text-base">
-                    <span class="material-symbols-outlined text-[20px]">history</span> <span class="font-medium">Servicios Atendidos</span>
-                </button>
-                <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-inactive py-3 px-2 flex items-center gap-2 whitespace-nowrap transition-colors text-sm md:text-base">
-                    <span class="material-symbols-outlined text-[20px]">bar_chart</span> <span class="font-medium">Tablero</span>
-                </button>
-            </nav>
-        </div>
-
         <!-- TAB CONTENT: REPORTAR -->
         <section id="content-reportar" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-8 animate-fade-in scroll-mt-24">
             <div class="max-w-4xl mx-auto">
                 <div class="mb-6 md:mb-8 text-center md:text-left">
-                    <h3 class="text-xl md:text-2xl font-bold text-slate-800">Generar Solicitud de Servicio</h3>
-                    <p class="text-sm md:text-base text-slate-500 mt-2">Nuestra Inteligencia Artificial clasificará automáticamente su reporte y lo enviará al área correspondiente (CEASPUE, SMADSOT, Municipio, etc.).</p>
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-800">Registrar Queja de Contaminación en Ríos</h3>
+                    <p class="text-sm md:text-base text-slate-500 mt-2">Completa el formulario y señala el punto exacto en el río para que sea revisado por el equipo ambiental (CEASPUE, SMADSOT y Municipio).</p>
                 </div>
 
                 <form id="form-reporte" class="space-y-8">
                     <!-- Categoría -->
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-3">1. ¿Qué tipo de problema desea reportar?</label>
-                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                        <label class="block text-sm font-semibold text-slate-700 mb-3">1. ¿Qué tipo de afectación en el río deseas reportar?</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                             <label class="cursor-pointer group">
-                                <input type="radio" name="categoria" value="Deterioro de superficie vial" class="peer sr-only" checked />
+                                <input type="radio" name="categoria" value="Descarga de aguas residuales" class="peer sr-only" checked />
                                 <div class="rounded-xl border-2 border-slate-200 p-3 text-center hover:bg-slate-50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full flex flex-col items-center justify-center">
-                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">edit_road</span>
-                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Deterioro de superficie (Baches)</p>
+                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">water_damage</span>
+                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Descarga de aguas residuales</p>
                                 </div>
                             </label>
                             <label class="cursor-pointer group">
-                                <input type="radio" name="categoria" value="Falla en alumbrado público" class="peer sr-only" />
+                                <input type="radio" name="categoria" value="Vertido químico o industrial" class="peer sr-only" />
                                 <div class="rounded-xl border-2 border-slate-200 p-3 text-center hover:bg-slate-50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full flex flex-col items-center justify-center">
-                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">lightbulb</span>
-                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Falla en alumbrado público</p>
+                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">science</span>
+                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Vertido químico o industrial</p>
                                 </div>
                             </label>
                             <label class="cursor-pointer group">
-                                <input type="radio" name="categoria" value="Fuga o pérdida de agua" class="peer sr-only" />
+                                <input type="radio" name="categoria" value="Basura y residuos en cauce" class="peer sr-only" />
                                 <div class="rounded-xl border-2 border-slate-200 p-3 text-center hover:bg-slate-50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full flex flex-col items-center justify-center">
-                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">water_drop</span>
-                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Fuga o pérdida de agua</p>
+                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">delete_sweep</span>
+                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Basura y residuos en cauce</p>
                                 </div>
                             </label>
                             <label class="cursor-pointer group">
-                                <input type="radio" name="categoria" value="Obstrucción o falla del sistema de drenaje" class="peer sr-only" />
+                                <input type="radio" name="categoria" value="Espuma, manchas o cambio de color" class="peer sr-only" />
                                 <div class="rounded-xl border-2 border-slate-200 p-3 text-center hover:bg-slate-50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full flex flex-col items-center justify-center">
-                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">water_ec</span>
-                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Sistema de drenaje</p>
+                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">opacity</span>
+                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Espuma, manchas o cambio de color</p>
                                 </div>
                             </label>
                             <label class="cursor-pointer group">
-                                <input type="radio" name="categoria" value="Incidencia en arbolado urbano" class="peer sr-only" />
+                                <input type="radio" name="categoria" value="Malos olores o gases tóxicos" class="peer sr-only" />
                                 <div class="rounded-xl border-2 border-slate-200 p-3 text-center hover:bg-slate-50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full flex flex-col items-center justify-center">
-                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">park</span>
-                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Arbolado urbano</p>
+                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">air</span>
+                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Malos olores o gases tóxicos</p>
                                 </div>
                             </label>
                             <label class="cursor-pointer group">
-                                <input type="radio" name="categoria" value="Falla en señalización o control vial" class="peer sr-only" />
+                                <input type="radio" name="categoria" value="Escombros o taponamiento del río" class="peer sr-only" />
                                 <div class="rounded-xl border-2 border-slate-200 p-3 text-center hover:bg-slate-50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full flex flex-col items-center justify-center">
-                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">traffic</span>
-                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Señalización o control vial</p>
+                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">landslide</span>
+                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Escombros o taponamiento del río</p>
                                 </div>
                             </label>
                             <label class="cursor-pointer group">
-                                <input type="radio" name="categoria" value="Acumulación o disposición inadecuada de residuos" class="peer sr-only" />
+                                <input type="radio" name="categoria" value="Desbordamiento o erosión de ribera" class="peer sr-only" />
                                 <div class="rounded-xl border-2 border-slate-200 p-3 text-center hover:bg-slate-50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full flex flex-col items-center justify-center">
-                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">delete</span>
-                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Acumulación de residuos</p>
-                                </div>
-                            </label>
-                            <label class="cursor-pointer group">
-                                <input type="radio" name="categoria" value="Deterioro de infraestructura peatonal" class="peer sr-only" />
-                                <div class="rounded-xl border-2 border-slate-200 p-3 text-center hover:bg-slate-50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full flex flex-col items-center justify-center">
-                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">directions_walk</span>
-                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Infraestructura peatonal</p>
-                                </div>
-                            </label>
-                            <label class="cursor-pointer group">
-                                <input type="radio" name="categoria" value="Inestabilidad o hundimiento del terreno" class="peer sr-only" />
-                                <div class="rounded-xl border-2 border-slate-200 p-3 text-center hover:bg-slate-50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all h-full flex flex-col items-center justify-center">
-                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">warning</span>
-                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Hundimiento del terreno</p>
+                                    <span class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary/70 peer-checked:text-primary mb-1">flood</span>
+                                    <p class="text-[11px] md:text-xs font-medium text-slate-700 leading-tight">Desbordamiento o erosión de ribera</p>
                                 </div>
                             </label>
                         </div>
@@ -396,8 +347,8 @@
 
                     <!-- Descripción -->
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">3. Descripción del problema</label>
-                        <textarea id="descripcion" rows="3" class="flex w-full rounded-xl border-slate-200 bg-slate-50 p-4 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Brinde más detalles (profundidad, tamaño, si bloquea el paso, etc.) para que la IA asigne el nivel de riesgo..." required></textarea>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">3. Descripción de la queja</label>
+                        <textarea id="descripcion" rows="3" class="flex w-full rounded-xl border-slate-200 bg-slate-50 p-4 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Describe lo que observas en el río (color del agua, espuma, mal olor, tubería de descarga, cantidad de residuos, horario aproximado, etc.)..." required></textarea>
                     </div>
 
                     <!-- Evidencia Fotográfica -->
@@ -407,7 +358,7 @@
                             <input type="file" id="file-evidencia" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-20" accept="image/*" />
                             <span id="photo-icon" class="material-symbols-outlined text-4xl text-slate-400 group-hover:text-primary transition-colors">add_a_photo</span>
                             <p id="photo-text" class="text-slate-600 font-medium text-sm md:text-base relative z-10">Toca para tomar una foto o subir archivo</p>
-                            <p id="photo-subtext" class="text-[10px] md:text-xs text-slate-400 relative z-10">Si se requiere validación extra, un Dron inspeccionará la zona posteriormente.</p>
+                            <p id="photo-subtext" class="text-[10px] md:text-xs text-slate-400 relative z-10">Las fotografías ayudan a priorizar la inspección ambiental en la ribera del río.</p>
                             <!-- Image will be injected here via JS -->
                         </div>
                     </div>
@@ -415,7 +366,7 @@
                     <!-- Datos de Contacto (Opcional) -->
                     <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
                         <label class="block text-sm font-bold text-slate-800 mb-2">5. Datos para notificaciones (Opcional)</label>
-                        <p class="text-xs text-slate-500 mb-4">Ingresa tu correo para recibir el folio y el estatus real de la solicitud en tu buzón.</p>
+                        <p class="text-xs text-slate-500 mb-4">Ingresa tu correo para recibir tu folio y el seguimiento de tu queja ambiental.</p>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="relative">
@@ -436,7 +387,7 @@
                     <!-- Botón Enviar -->
                     <div class="pt-2">
                         <button type="submit" id="btn-submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3.5 md:py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 relative overflow-hidden">
-                            <span id="btn-text">Enviar Solicitud al Sistema</span>
+                            <span id="btn-text">Enviar Queja Ambiental</span>
                             <span id="btn-icon" class="material-symbols-outlined">send</span>
                             <!-- Spinner -->
                             <svg id="btn-spinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden absolute" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -449,100 +400,6 @@
                         </p>
                     </div>
                 </form>
-            </div>
-        </section>
-
-        <!-- TAB CONTENT: HISTORIAL -->
-        <section id="content-historial" class="hidden space-y-6 animate-fade-in">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-6">
-                <div>
-                    <h3 class="text-xl md:text-2xl font-bold text-slate-800">Servicios Atendidos y Buscador</h3>
-                    <p class="text-sm text-slate-500 mt-1">Busca cualquier folio o municipio para ver los reportes (incluso si están en proceso de validación).</p>
-                </div>
-                <div class="relative w-full md:w-80">
-                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">search</span>
-                    <input type="text" id="input-buscar-historial" class="w-full rounded-full border-slate-200 bg-white pl-10 pr-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 shadow-sm" placeholder="Buscar por municipio, folio, o descripción..." />
-                </div>
-            </div>
-
-            <!-- Grid de servicios -->
-            <div id="historial-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                <!-- Se llena dinámicamente con JS -->
-            </div>
-        </section>
-
-        <!-- TAB CONTENT: DASHBOARD -->
-        <section id="content-dashboard" class="hidden space-y-6 animate-fade-in">
-            <h3 class="text-xl md:text-2xl font-bold text-slate-800 mb-2 md:mb-4">Indicadores de Desempeño Urbano</h3>
-            
-            <!-- KPIs -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-                <div class="bg-white p-4 md:p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
-                    <p class="text-xs md:text-sm text-slate-500 font-medium mb-1">Solicitudes Recibidas</p>
-                    <p class="text-3xl md:text-4xl font-bold text-slate-800" id="kpi-recibidas">8,245</p>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-2xl border border-primary/20 shadow-sm text-center relative overflow-hidden">
-                    <div class="absolute inset-x-0 bottom-0 h-1 bg-primary"></div>
-                    <p class="text-xs md:text-sm text-primary font-medium mb-1">En Reparación</p>
-                    <p class="text-3xl md:text-4xl font-bold text-primary">1,130</p>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-2xl border border-green-200 shadow-sm text-center relative overflow-hidden">
-                    <div class="absolute inset-x-0 bottom-0 h-1 bg-green-500"></div>
-                    <p class="text-xs md:text-sm text-green-600 font-medium mb-1">Concluidas</p>
-                    <p class="text-3xl md:text-4xl font-bold text-green-600" id="kpi-concluidas">4,821</p>
-                </div>
-                <div class="bg-white p-4 md:p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
-                    <p class="text-xs md:text-sm text-slate-500 font-medium mb-1">Tiempo Promedio</p>
-                    <p class="text-3xl md:text-4xl font-bold text-slate-800">48<span class="text-sm md:text-lg text-slate-500 font-normal">hrs</span></p>
-                </div>
-            </div>
-
-            <!-- Charts placeholders -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mt-2 md:mt-6">
-                <div class="bg-white p-5 md:p-6 rounded-2xl border border-slate-200 shadow-sm">
-                    <h4 class="font-bold text-slate-700 mb-6 text-sm md:text-base">Servicios Atendidos por Categoría</h4>
-                    <div class="space-y-5" id="category-bars">
-                        <!-- Llenado dinámicamente o semi-dinámico -->
-                        <div>
-                            <div class="flex justify-between text-xs md:text-sm mb-1.5"><span class="text-slate-600 font-medium">Baches y Asfalto</span><span class="font-bold text-slate-800">3,400 (41%)</span></div>
-                            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden"><div class="bg-primary h-full rounded-full transition-all duration-1000" style="width: 41%"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs md:text-sm mb-1.5"><span class="text-slate-600 font-medium">Luminarias</span><span class="font-bold text-slate-800">2,050 (24%)</span></div>
-                            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden"><div class="bg-yellow-500 h-full rounded-full transition-all duration-1000" style="width: 24%"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs md:text-sm mb-1.5"><span class="text-slate-600 font-medium">Fugas de Agua</span><span class="font-bold text-slate-800">1,245 (15%)</span></div>
-                            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden"><div class="bg-blue-500 h-full rounded-full transition-all duration-1000" style="width: 15%"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs md:text-sm mb-1.5"><span class="text-slate-600 font-medium">Árboles y Parques</span><span class="font-bold text-slate-800">1,550 (20%)</span></div>
-                            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden"><div class="bg-green-500 h-full rounded-full transition-all duration-1000" style="width: 20%"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-5 md:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-center">
-                    <h4 class="font-bold text-slate-700 mb-6 text-sm md:text-base">Resumen de Obras Públicas</h4>
-                    <div class="grid grid-cols-2 gap-3 md:gap-4 text-center">
-                        <div class="p-4 md:p-6 bg-slate-50 rounded-xl border border-slate-100">
-                            <span class="block text-2xl md:text-4xl font-black text-slate-700 mb-1">14</span>
-                            <span class="text-[10px] md:text-xs text-slate-500 uppercase font-bold tracking-wider">En Planeación</span>
-                        </div>
-                        <div class="p-4 md:p-6 bg-yellow-50 rounded-xl border border-yellow-100">
-                            <span class="block text-2xl md:text-4xl font-black text-yellow-700 mb-1">8</span>
-                            <span class="text-[10px] md:text-xs text-yellow-600 uppercase font-bold tracking-wider">En Ejecución</span>
-                        </div>
-                        <div class="p-4 md:p-6 bg-green-50 rounded-xl border border-green-100">
-                            <span class="block text-2xl md:text-4xl font-black text-green-700 mb-1">32</span>
-                            <span class="text-[10px] md:text-xs text-green-600 uppercase font-bold tracking-wider">Terminadas</span>
-                        </div>
-                        <div class="p-4 md:p-6 bg-red-50 rounded-xl border border-red-100">
-                            <span class="block text-2xl md:text-4xl font-black text-red-700 mb-1">2</span>
-                            <span class="text-[10px] md:text-xs text-red-600 uppercase font-bold tracking-wider">Suspendidas</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -565,741 +422,8 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
-    <!-- LOGIC SCRIPT -->
-    <script>
-        let reportes = [];
-        let estadisticas = { recibidas: 0, concluidas: 0 };
-
-        async function cargarReportesDB() {
-            try {
-                const res = await fetch('http://localhost:3000/api/reportes');
-                reportes = await res.json();
-                estadisticas.recibidas = reportes.length;
-                estadisticas.concluidas = reportes.filter(r => r.estado === 'Concluido').length;
-                renderHistorial();
-                updateDashboardStats();
-            } catch (err) {
-                console.error("Error al cargar la DB:", err);
-            }
-        }
-
-        // INITIALIZE MAP (LEAFLET - Renderizado acelerado por Canvas y carga paralela de mosaicos)
-        // Centro de Puebla (Zócalo de Puebla)
-        const initialCoords = [19.0414, -98.2063];
-        const map = L.map('map-container', {
-            preferCanvas: true,
-            zoomAnimation: true,
-            fadeAnimation: false,
-            wheelDebounceTime: 25
-        }).setView(initialCoords, 12);
-
-        let mapaAmpliado = false;
-        function toggleTamanoMapa() {
-            const wrapper = document.getElementById('map-wrapper');
-            const icon = document.getElementById('icon-expand-map');
-            mapaAmpliado = !mapaAmpliado;
-            if (mapaAmpliado) {
-                wrapper.classList.remove('h-[420px]', 'md:h-[540px]');
-                wrapper.classList.add('h-[75vh]');
-                icon.textContent = 'close_fullscreen';
-            } else {
-                wrapper.classList.remove('h-[75vh]');
-                wrapper.classList.add('h-[420px]', 'md:h-[540px]');
-                icon.textContent = 'open_in_full';
-            }
-            setTimeout(() => map.invalidateSize(), 310);
-        }
-        
-        // Mapas base rápidos: múltiples subdominios (a,b,c), actualización inmediata al mover y buffer amplio
-        const capaCalles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            subdomains: ['a', 'b', 'c'],
-            maxZoom: 19,
-            updateWhenIdle: false,
-            updateWhenZooming: false,
-            keepBuffer: 4,
-            attribution: '© OpenStreetMap'
-        });
-
-        const capaSatelite = L.layerGroup([
-            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                maxZoom: 19,
-                updateWhenIdle: false,
-                updateWhenZooming: false,
-                keepBuffer: 4,
-                attribution: '© Esri World Imagery'
-            }),
-            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
-                maxZoom: 19,
-                updateWhenIdle: false,
-                keepBuffer: 4
-            })
-        ]);
-
-        capaCalles.addTo(map);
-        let capaActual = 'calles';
-
-        function cambiarCapaMapa(tipo) {
-            if (tipo === capaActual) return;
-            const btnCalles = document.getElementById('btn-layer-calles');
-            const btnSatelite = document.getElementById('btn-layer-satelite');
-            if (tipo === 'satelite') {
-                map.removeLayer(capaCalles);
-                capaSatelite.addTo(map);
-                btnSatelite.className = "px-2.5 py-1.5 rounded-md text-[11px] md:text-xs font-bold bg-primary text-white transition-colors flex items-center gap-1";
-                btnCalles.className = "px-2.5 py-1.5 rounded-md text-[11px] md:text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors flex items-center gap-1";
-            } else {
-                map.removeLayer(capaSatelite);
-                capaCalles.addTo(map);
-                btnCalles.className = "px-2.5 py-1.5 rounded-md text-[11px] md:text-xs font-bold bg-primary text-white transition-colors flex items-center gap-1";
-                btnSatelite.className = "px-2.5 py-1.5 rounded-md text-[11px] md:text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors flex items-center gap-1";
-            }
-            capaActual = tipo;
-        }
-
-        // CAPA DE RÍOS DE PUEBLA RESALTADOS (geometría real de OpenStreetMap)
-        // Se dibuja exactamente la misma línea que OSM tiene para cada río/arroyo,
-        // por lo que el resaltado sigue fielmente el cauce del mapa base.
-        map.createPane('riosPane');
-        map.getPane('riosPane').style.zIndex = 450;
-        const riosCanvasRenderer = L.canvas({ pane: 'riosPane', padding: 0.5 });
-        const riversLayer = L.layerGroup().addTo(map);
-        const riosCargados = new Map();   // id del way OSM -> { halo, linea, tipo }
-        const zonasCargadas = [];         // { bounds, nivel } ya consultadas
-        const OVERPASS_ENDPOINTS = [
-            'https://overpass-api.de/api/interpreter',
-            'https://overpass.kumi.systems/api/interpreter',
-            'https://maps.mail.ru/osm/tools/overpass/api/interpreter'
-        ];
-        const COLOR_RIO = '#0369a1';
-        const COLOR_ARROYO = '#0ea5e9';
-
-        function grosorRio(tipo, zoom) {
-            const base = tipo === 'river' ? 5 : (tipo === 'canal' ? 3.5 : 2.5);
-            const factor = zoom >= 15 ? 1.6 : (zoom >= 13 ? 1.25 : 1);
-            return base * factor;
-        }
-
-        function dibujarWayRio(el) {
-            if (riosCargados.has(el.id) || !el.geometry || el.geometry.length < 2) return false;
-            const latlngs = el.geometry.map(p => [p.lat, p.lon]);
-            const tags = el.tags || {};
-            const tipo = tags.waterway || 'stream';
-            const nombre = tags.name || (tipo === 'river' ? 'Río sin nombre' : (tipo === 'canal' ? 'Canal' : 'Arroyo'));
-            const color = tipo === 'river' ? COLOR_RIO : COLOR_ARROYO;
-            const w = grosorRio(tipo, map.getZoom());
-
-            // Halo blanco debajo para que el río resalte sobre cualquier fondo (calles o satélite)
-            const halo = L.polyline(latlngs, {
-                renderer: riosCanvasRenderer, color: '#ffffff', weight: w + 4, opacity: 0.85,
-                lineCap: 'round', lineJoin: 'round', interactive: false
-            });
-            const linea = L.polyline(latlngs, {
-                renderer: riosCanvasRenderer, color, weight: w, opacity: 0.95,
-                lineCap: 'round', lineJoin: 'round'
-            })
-            .bindTooltip(nombre, { sticky: true })
-            .bindPopup(`<strong>🌊 ${nombre}</strong><br>
-                <span class="text-xs text-slate-600">Tipo: ${tipo === 'river' ? 'Río' : (tipo === 'canal' ? 'Canal' : 'Arroyo')}</span><br>
-                <a href="https://www.openstreetmap.org/way/${el.id}" target="_blank" class="text-xs">Ver en OpenStreetMap</a>`);
-            linea.on('mouseover', () => linea.setStyle({ color: '#9F2241' }));
-            linea.on('mouseout', () => linea.setStyle({ color }));
-
-            halo.addTo(riversLayer);
-            linea.addTo(riversLayer);
-            riosCargados.set(el.id, { halo, linea, tipo });
-            return true;
-        }
-
-        // Ajustar grosor al hacer zoom
-        map.on('zoomend', () => {
-            const z = map.getZoom();
-            riosCargados.forEach(({ halo, linea, tipo }) => {
-                const w = grosorRio(tipo, z);
-                linea.setStyle({ weight: w });
-                halo.setStyle({ weight: w + 4 });
-            });
-        });
-
-        async function consultarOverpass(query) {
-            for (const url of OVERPASS_ENDPOINTS) {
-                const ctrl = new AbortController();
-                const timer = setTimeout(() => ctrl.abort(), 12000); // no quedarse colgado
-                try {
-                    const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(query), signal: ctrl.signal });
-                    if (!res.ok) continue;
-                    return await res.json();
-                } catch (e) { /* probar siguiente servidor */ }
-                finally { clearTimeout(timer); }
-            }
-            throw new Error('Overpass no disponible');
-        }
-
-        // Consultar Overpass API (OpenStreetMap) con la geometría exacta de cada río en la vista actual
-        let overpassTimeout = null;
-        let overpassEnCurso = false;
-        async function cargarRiosOverpass() {
-            const zoom = map.getZoom();
-            if (zoom < 10 || overpassEnCurso) return;
-            // Zoom alejado: solo ríos y canales. Zoom cercano: también arroyos.
-            const nivel = zoom >= 13 ? 2 : 1;
-            const b = map.getBounds().pad(0.2);
-            if (zonasCargadas.some(z => z.nivel >= nivel && z.bounds.contains(b))) return;
-
-            const filtro = nivel === 2 ? '^(river|canal|stream)$' : '^(river|canal)$';
-            const bbox = `${b.getSouth()},${b.getWest()},${b.getNorth()},${b.getEast()}`;
-            const query = `[out:json][timeout:25];way["waterway"~"${filtro}"](${bbox});out geom;`;
-            const statusEl = document.getElementById('rivers-status-text');
-            if (statusEl) statusEl.textContent = 'Ríos resaltados · buscando nombres OSM...';
-
-            overpassEnCurso = true;
-            try {
-                const data = await consultarOverpass(query);
-                (data.elements || []).forEach(el => { if (el.type === 'way') dibujarWayRio(el); });
-                zonasCargadas.push({ bounds: b, nivel });
-                if (statusEl) statusEl.textContent = `Ríos resaltados (${riosCargados.size} tramos OSM)`;
-            } catch (e) {
-                // La capa hidrográfica Esri sigue mostrando los ríos aunque Overpass no responda
-                if (statusEl) statusEl.textContent = 'Ríos resaltados (capa hidrográfica)';
-            } finally {
-                overpassEnCurso = false;
-            }
-        }
-
-        // Cargar GeoJSON local con la geometría real de los ríos de Puebla (OpenStreetMap / INEGI)
-        let usandoGeoJSONOficial = false;
-        fetch('./src/assets/rios-puebla.geojson')
-            .then(res => {
-                if (!res.ok) throw new Error('Sin GeoJSON local');
-                return res.json();
-            })
-            .then(geojson => {
-                usandoGeoJSONOficial = true;
-                riversLayer.clearLayers();
-                riosCargados.clear();
-
-                let totalTramos = 0;
-                (geojson.features || []).forEach((feature, idx) => {
-                    const geom = feature.geometry;
-                    if (!geom) return;
-                    const p = feature.properties || {};
-                    const tipo = p.waterway || 'river';
-                    const nombre = p.NOMBRE || p.nombre || p.NAME || p.name || 'Río de Puebla';
-                    const osmId = p.osm_id || ('local-' + idx);
-
-                    const lines = geom.type === 'MultiLineString' ? geom.coordinates :
-                                  (geom.type === 'LineString' ? [geom.coordinates] : []);
-
-                    lines.forEach((coords, subIdx) => {
-                        if (!coords || coords.length < 2) return;
-                        const latlngs = coords.map(c => [c[1], c[0]]);
-                        const color = tipo === 'river' ? COLOR_RIO : COLOR_ARROYO;
-                        const w = grosorRio(tipo, map.getZoom());
-
-                        const halo = L.polyline(latlngs, {
-                            renderer: riosCanvasRenderer, color: '#ffffff', weight: w + 4, opacity: 0.85,
-                            lineCap: 'round', lineJoin: 'round', interactive: false
-                        });
-                        const osmLink = p.osm_id
-                            ? `<br><a href="https://www.openstreetmap.org/way/${p.osm_id}" target="_blank" class="text-xs text-sky-700 underline">Ver tramo en OpenStreetMap</a>`
-                            : '';
-                        const linea = L.polyline(latlngs, {
-                            renderer: riosCanvasRenderer, color, weight: w, opacity: 0.95,
-                            lineCap: 'round', lineJoin: 'round'
-                        })
-                        .bindTooltip(nombre, { sticky: true })
-                        .bindPopup(`<strong>🌊 ${nombre}</strong><br><span class="text-xs text-slate-600">Tipo: ${tipo === 'river' ? 'Río principal' : (tipo === 'canal' ? 'Canal' : 'Arroyo / Afluente')}</span>${osmLink}`);
-
-                        linea.on('mouseover', () => linea.setStyle({ color: '#9F2241' }));
-                        linea.on('mouseout', () => linea.setStyle({ color }));
-
-                        halo.addTo(riversLayer);
-                        linea.addTo(riversLayer);
-                        riosCargados.set(`${osmId}-${subIdx}`, { halo, linea, tipo });
-                        totalTramos++;
-                    });
-                });
-
-                const statusEl = document.getElementById('rivers-status-text');
-                if (statusEl) statusEl.textContent = `Ríos de Puebla resaltados (${totalTramos} tramos exactos OSM)`;
-            })
-            .catch(() => {
-                cargarRiosOverpass();
-                map.on('moveend', () => {
-                    if (usandoGeoJSONOficial) return;
-                    clearTimeout(overpassTimeout);
-                    overpassTimeout = setTimeout(cargarRiosOverpass, 700);
-                });
-            });
-
-        // Marcador arrastrable y colocación rápida con un clic en el mapa
-        const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
-        let geocodeAbort = null;
-        let geocodeTimer = null;
-
-        function actualizarPuntoMapa(lat, lng) {
-            document.getElementById('ubicacion').value = `Obteniendo dirección (${lat.toFixed(5)}, ${lng.toFixed(5)})...`;
-            clearTimeout(geocodeTimer);
-            geocodeTimer = setTimeout(() => reverseGeocode(lat, lng), 120);
-        }
-
-        // Al soltar el marcador (dragend), actualizamos sin forzar panTo (más fluido)
-        marker.on('dragend', function (e) {
-            const coords = e.target.getLatLng();
-            actualizarPuntoMapa(coords.lat, coords.lng);
-        });
-
-        // Al hacer clic en el mapa, mueve el marcador al instante
-        map.on('click', function (e) {
-            marker.setLatLng(e.latlng);
-            actualizarPuntoMapa(e.latlng.lat, e.latlng.lng);
-        });
-
-        // Función reverse geocoding via Nominatim con cancelación de peticiones previas
-        function reverseGeocode(lat, lon, isAutoGPS = false) {
-            if (geocodeAbort) geocodeAbort.abort();
-            geocodeAbort = new AbortController();
-            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`, { signal: geocodeAbort.signal })
-                .then(response => response.json())
-                .then(data => {
-                    const addressStr = data.display_name || `${lat}, ${lon}`;
-                    document.getElementById('ubicacion').value = addressStr;
-                    
-                    const selectAlcaldia = document.getElementById('alcaldia');
-                    let found = false;
-                    
-                    const norm = (str) => {
-                        if(!str) return "";
-                        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-                    };
-                    const normalizedAddress = norm(addressStr);
-
-                    // Buscar coincidencias exactas
-                    for(let i = 1; i < selectAlcaldia.options.length; i++) {
-                        const alcaldiaName = norm(selectAlcaldia.options[i].value);
-                        if(normalizedAddress.includes(alcaldiaName)) {
-                            selectAlcaldia.selectedIndex = i;
-                            found = true;
-                            break;
-                        }
-                    }
-
-                    // Buscar en partes (fallback)
-                    if(!found) {
-                        const parts = data.address || {};
-                        const arr = [parts.city, parts.municipality, parts.county, parts.town, parts.borough, parts.suburb];
-                        for(let p of arr) {
-                            if(!p) continue;
-                            const cleanP = norm(p.replace('Municipio de', '').replace('Heroica', '').trim());
-                            for(let i=1; i<selectAlcaldia.options.length; i++) {
-                                const optVal = norm(selectAlcaldia.options[i].value);
-                                if(optVal && (cleanP.includes(optVal) || optVal.includes(cleanP))) {
-                                    selectAlcaldia.selectedIndex = i;
-                                    found = true;
-                                    break;
-                                }
-                            }
-                            if(found) break;
-                        }
-                    }
-
-                    // Fix de zonas conurbadas de Puebla
-                    if(!found) {
-                        const borders = ['cholula', 'tlaxcalancingo', 'momoxpan', 'angelopolis', 'valsequillo'];
-                        if (borders.some(b => normalizedAddress.includes(b))) {
-                            for(let i=1; i<selectAlcaldia.options.length; i++) {
-                                if(selectAlcaldia.options[i].value === "Puebla") {
-                                    selectAlcaldia.selectedIndex = i;
-                                    found = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    if(!found && isAutoGPS) {
-                        showToast("El GPS te ubica fuera de Puebla. Puedes arrastrar el marcador para mayor precisión.", "info");
-                    }
-                })
-                .catch(e => {
-                    if (e.name !== 'AbortError') console.error(e);
-                });
-        }
-
-        // GPS GEOLOCATION Button on Map
-        document.getElementById('btn-gps').addEventListener('click', function() {
-            const btn = this;
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span> Buscando...';
-            btn.disabled = true;
-
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const lat = position.coords.latitude;
-                        const lon = position.coords.longitude;
-
-                        // Mover mapa y marcador a la posición real
-                        const newLatLng = [lat, lon];
-                        map.setView(newLatLng, 17); // Zoom cercano
-                        marker.setLatLng(newLatLng);
-                        
-                        // Hacer reverse geocoding
-                        reverseGeocode(lat, lon, true);
-
-                        btn.innerHTML = '<span class="material-symbols-outlined text-[18px] text-green-600">check_circle</span> Centrado';
-                        setTimeout(() => {
-                            btn.innerHTML = originalHTML;
-                            btn.disabled = false;
-                        }, 3000);
-                    },
-                    (error) => {
-                        console.error("GPS Error:", error);
-                        showToast("Sin acceso a GPS. Arrastra el marcador en el mapa rojo manualmente.", "error");
-                        btn.innerHTML = originalHTML;
-                        btn.disabled = false;
-                    },
-                    { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
-                );
-            } else {
-                showToast("Tu navegador no soporta geolocalización.", "error");
-                btn.innerHTML = originalHTML;
-                btn.disabled = false;
-            }
-        });
-
-        // Arreglar problema de renderizado de Leaflet cuando está oculto inicialmente
-        // Como el tab "reportar" está visible por defecto, cargará bien.
-        setTimeout(() => map.invalidateSize(), 500);
-
-        // FUNCIÓN HERO SCROLL
-        function irCrearReporte() {
-            switchTab('reportar');
-            setTimeout(() => {
-                const el = document.getElementById('content-reportar');
-                const y = el.getBoundingClientRect().top + window.scrollY - 180;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-                map.invalidateSize(); // Refrescar mapa
-            }, 100);
-        }
-
-        const gridHistorial = document.getElementById('historial-grid');
-        const formReporte = document.getElementById('form-reporte');
-        
-        // EVIDENCIA FOTOGRAFICA
-        let evidenciaBase64Url = null;
-        document.getElementById('file-evidencia').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            const icon = document.getElementById('photo-icon');
-            const text = document.getElementById('photo-text');
-            const subtext = document.getElementById('photo-subtext');
-            const container = document.getElementById('photo-preview-container');
-            
-            const existingImg = document.getElementById('preview-img');
-            if (existingImg) existingImg.remove();
-            const existingOverlay = document.getElementById('preview-overlay');
-            if (existingOverlay) existingOverlay.remove();
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    icon.innerText = "check_circle";
-                    icon.classList.remove('text-slate-400');
-                    icon.classList.add('text-green-500', 'bg-white', 'rounded-full', 'p-1', 'shadow-sm');
-                    text.innerText = "Foto adjuntada correctamente";
-                    text.classList.add('bg-white/90', 'px-3', 'py-1', 'rounded-full');
-                    subtext.innerText = "Toca para cambiar de archivo";
-                    subtext.classList.add('bg-white/90', 'px-2', 'py-0.5', 'rounded');
-
-                    const img = document.createElement('img');
-                    img.id = 'preview-img';
-                    img.src = e.target.result;
-                    evidenciaBase64Url = e.target.result;
-                    img.className = 'absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-multiply';
-                    container.appendChild(img);
-                    
-                    const overlay = document.createElement('div');
-                    overlay.id = 'preview-overlay';
-                    overlay.className = 'absolute inset-0 bg-green-50 z-[-1]';
-                    container.appendChild(overlay);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // CONSULTA DE FOLIOS (MODAL)
-        function abrirConsulta() {
-            document.getElementById('modal-consultar').classList.remove('hidden');
-            document.getElementById('input-buscar-folio').value = '';
-            document.getElementById('resultado-busqueda').classList.add('hidden');
-            document.getElementById('error-busqueda').classList.add('hidden');
-            setTimeout(() => document.getElementById('input-buscar-folio').focus(), 100);
-        }
-
-        function cerrarConsulta() {
-            document.getElementById('modal-consultar').classList.add('hidden');
-        }
-
-        function buscarFolio() {
-            const input = document.getElementById('input-buscar-folio').value.trim().toUpperCase();
-            const resultado = document.getElementById('resultado-busqueda');
-            const error = document.getElementById('error-busqueda');
-            if(!input) return;
-            const reporte = reportes.find(r => r.id.toUpperCase() === input);
-            if(reporte) {
-                error.classList.add('hidden');
-                document.getElementById('res-folio').innerText = reporte.id;
-                document.getElementById('res-categoria').innerText = reporte.categoria;
-                document.getElementById('res-dependencia').innerText = reporte.dependencia;
-                document.getElementById('res-descripcion').innerText = reporte.descripcion;
-                
-                const badge = document.getElementById('res-badge');
-                if(reporte.estado === "Concluido") {
-                    badge.className = "px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-green-100 text-green-800 border border-green-200";
-                    badge.innerText = "Concluido";
-                } else if(reporte.estado === "Validando (IA / Dron)") {
-                    badge.className = "px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-blue-100 text-blue-800 border border-blue-200";
-                    badge.innerText = "Validando";
-                } else {
-                    badge.className = "px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-yellow-100 text-yellow-800 border border-yellow-200";
-                    badge.innerText = reporte.estado;
-                }
-                resultado.classList.remove('hidden');
-            } else {
-                resultado.classList.add('hidden');
-                error.classList.remove('hidden');
-            }
-        }
-        document.getElementById('input-buscar-folio').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') buscarFolio();
-        });
-
-        // CATEGORY IMAGE HELPER
-        function getCategoriaImg(cat) {
-            if (!cat) return './src/assets/baches.jpeg';
-            const lowerCat = cat.toLowerCase();
-            if (lowerCat.includes('vial') && lowerCat.includes('superficie')) return './src/assets/baches.jpeg';
-            if (lowerCat.includes('alumbrado')) return './src/assets/fallaAlumbrado.jpeg';
-            if (lowerCat.includes('fuga') || lowerCat.includes('agua')) return './src/assets/fugaAgua.jpeg';
-            if (lowerCat.includes('drenaje')) return './src/assets/drenaje.jpeg';
-            if (lowerCat.includes('arbolado')) return './src/assets/arboles.jpeg';
-            if (lowerCat.includes('señalización') || lowerCat.includes('senalizacion')) return './src/assets/senalizacionVial.jpeg';
-            if (lowerCat.includes('residuos') || lowerCat.includes('basura')) return './src/assets/basura.jpeg';
-            if (lowerCat.includes('peatonal')) return './src/assets/infrestructuraP.jpeg';
-            if (lowerCat.includes('hundimiento')) return './src/assets/baches.jpeg';
-            return './src/assets/baches.jpeg';
-        }
-
-        // HISTORIAL
-        function renderHistorial(searchTerm = "") {
-            gridHistorial.innerHTML = '';
-            let reportesMostrar = [];
-            if (searchTerm !== "") {
-                reportesMostrar = reportes.filter(r => 
-                    r.id.toLowerCase().includes(searchTerm) || 
-                    r.ubicacion.toLowerCase().includes(searchTerm) ||
-                    r.categoria.toLowerCase().includes(searchTerm) ||
-                    r.descripcion.toLowerCase().includes(searchTerm)
-                );
-            } else {
-                reportesMostrar = reportes.filter(r => r.estado === "Concluido");
-            }
-
-            if (reportesMostrar.length === 0) {
-                gridHistorial.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 font-medium">No se encontraron resultados.</div>`;
-                return;
-            }
-            
-            [...reportesMostrar].reverse().forEach(reporte => {
-                let badgeColor = "bg-green-100 text-green-800 border-green-200";
-                let iconName = "check_circle";
-                if (reporte.estado !== "Concluido") {
-                    badgeColor = "bg-yellow-100 text-yellow-800 border-yellow-200";
-                    iconName = "pending_actions";
-                    if(reporte.estado.includes("Validando")) {
-                        badgeColor = "bg-blue-100 text-blue-800 border-blue-200";
-                        iconName = "policy";
-                    }
-                }
-                const fallbackImg = getCategoriaImg(reporte.categoria);
-                const imgSrc = (reporte.img && reporte.img.trim() !== '') ? reporte.img : fallbackImg;
-                const cardHTML = `
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-md transition-all animate-slide-up">
-                    <div class="h-40 bg-slate-200 relative overflow-hidden">
-                        <img src="${imgSrc}" alt="${reporte.categoria}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='${fallbackImg}'" />
-                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm border ${badgeColor}">
-                            <span class="material-symbols-outlined text-[14px]">${iconName}</span>
-                            <span class="text-[10px] font-bold uppercase tracking-wide">${reporte.estado.split(' ')[0]}</span>
-                        </div>
-                    </div>
-                    <div class="p-5 flex flex-col h-[calc(100%-10rem)]">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600 uppercase tracking-wider flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[12px]">${reporte.icon || 'label'}</span>
-                                ${reporte.categoria}
-                            </span>
-                            <span class="text-xs text-slate-400 font-medium">${reporte.fecha}</span>
-                        </div>
-                        <h4 class="font-bold text-slate-800 mb-1 text-sm md:text-base line-clamp-1" title="${reporte.ubicacion}">${reporte.ubicacion}</h4>
-                        <p class="text-xs md:text-sm text-slate-500 mb-4 line-clamp-2 flex-grow">${reporte.descripcion}</p>
-                        
-                        <div class="flex items-center justify-between border-t border-slate-100 pt-3 mt-auto">
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-[10px] text-slate-400 font-medium">Atendido por:</span>
-                                <span class="text-xs font-bold text-slate-700">${reporte.dependencia}</span>
-                            </div>
-                            <span class="text-[10px] text-slate-400 font-mono">${reporte.id}</span>
-                        </div>
-                    </div>
-                </div>`;
-                gridHistorial.insertAdjacentHTML('beforeend', cardHTML);
-            });
-        }
-        document.getElementById('input-buscar-historial').addEventListener('input', e => renderHistorial(e.target.value.toLowerCase().trim()));
-
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toast-container');
-            const icon = type === 'success' ? 'check_circle' : (type === 'error' ? 'error' : 'info');
-            const color = type === 'success' ? 'bg-green-50 text-green-800 border-green-200' : 
-                         (type === 'error' ? 'bg-red-50 text-red-800 border-red-200' : 'bg-blue-50 text-blue-800 border-blue-200');
-            const iconColor = type === 'success' ? 'text-green-500' : (type === 'error' ? 'text-red-500' : 'text-blue-500');
-            const toast = document.createElement('div');
-            toast.className = `flex items-center gap-3 px-4 py-3 rounded-xl border shadow-lg ${color} animate-slide-up pointer-events-auto`;
-            toast.innerHTML = `<span class="material-symbols-outlined ${iconColor}">${icon}</span><p class="text-sm font-semibold">${message}</p>`;
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateY(100%)';
-                toast.style.transition = 'all 0.3s ease';
-                setTimeout(() => toast.remove(), 300);
-            }, 6000);
-        }
-
-        function updateDashboardStats() {
-            const extraRecibidas = reportes.length;
-            const extraConcluidas = reportes.filter(r => r.estado === 'Concluido').length;
-            
-            document.getElementById('kpi-recibidas').innerText = extraRecibidas.toLocaleString();
-            document.getElementById('hero-concluidas-count').innerText = extraConcluidas.toLocaleString();
-            
-            // Si el dashboard KPI existe (en tab 3)
-            const kpiConcluidas = document.getElementById('kpi-concluidas');
-            if(kpiConcluidas) kpiConcluidas.innerText = extraConcluidas.toLocaleString();
-        }
-
-        function mostrarTicket(folio) {
-            document.getElementById('ticket-folio').innerText = folio;
-            document.getElementById('modal-ticket').classList.remove('hidden');
-        }
-        function cerrarTicket() { document.getElementById('modal-ticket').classList.add('hidden'); }
-
-        // SUBMIT DEL FORMULARIO CON ENVÍO REAL DE CORREOS
-        formReporte.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const btn = document.getElementById('btn-submit');
-            const btnText = document.getElementById('btn-text');
-            const btnIcon = document.getElementById('btn-icon');
-            const spinner = document.getElementById('btn-spinner');
-            
-            btn.classList.add('opacity-90', 'cursor-not-allowed');
-            btnText.innerText = "IA Analizando Riesgo y Categoría...";
-            btnIcon.classList.add('hidden');
-            spinner.classList.remove('hidden');
-
-            setTimeout(() => {
-                const ubicacion_calle = document.getElementById('ubicacion').value;
-                const alcaldia = document.getElementById('alcaldia').value;
-                const ubicacion_completa = `${ubicacion_calle}, ${alcaldia}`;
-                const descripcion = document.getElementById('descripcion').value;
-                const correo = document.getElementById('correo_contacto').value;
-                const telefono = document.getElementById('telefono_contacto').value;
-                const categoriaNode = document.querySelector('input[name="categoria"]:checked');
-                const categoria = categoriaNode ? categoriaNode.value : "Otro";
-                
-                const nuevoFolio = "INC-PUE-" + Math.floor(Math.random() * 9000 + 1000); // Generar folio temporalmente en frontend, aunque DB crea el suyo real (acá lo pasamos)
-
-                // ENVIAR AL BACKEND (INSERT EN DB POSTGRES)
-                fetch('http://localhost:3000/api/reportes', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        correo: correo,
-                        folio: nuevoFolio,
-                        categoria: categoria,
-                        ubicacion: ubicacion_completa,
-                        descripcion: descripcion,
-                        evidenciaBase64: evidenciaBase64Url
-                    })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if(data.success) {
-                        showToast(`Acuse enviado oficialmente al correo: ${correo || 'N/A'}`, 'success');
-                        // RECARGAR REPORTES DESDE LA BASE DE DATOS
-                        cargarReportesDB();
-                    } else {
-                        showToast(`Hubo un error al enviar: ${data.error}`, 'error');
-                    }
-                    
-                    btn.classList.remove('opacity-90', 'cursor-not-allowed');
-                    btnText.innerText = "Enviar Solicitud al Sistema";
-                    btnIcon.classList.remove('hidden');
-                    spinner.classList.add('hidden');
-                    
-                    formReporte.reset();
-                    const existingImg = document.getElementById('preview-img');
-                    if (existingImg) existingImg.remove();
-                    document.getElementById('photo-icon').innerText = "add_a_photo";
-                    document.getElementById('photo-icon').className = "material-symbols-outlined text-4xl text-slate-400 group-hover:text-primary transition-colors";
-                    document.getElementById('photo-text').innerText = "Toca para tomar una foto o subir archivo";
-                    evidenciaBase64Url = null;
-                    
-                    // Resetear mapa a posición original
-                    map.setView(initialCoords, 11);
-                    marker.setLatLng(initialCoords);
-                    
-                    document.getElementById('input-buscar-historial').value = '';
-                    mostrarTicket(nuevoFolio);
-                    
-                    // SIMULACIÓN DE WHATSAPP PARA EL HACKATHON
-                    if(telefono && telefono.trim() !== '') {
-                        setTimeout(() => {
-                            showToast(`📱 (Simulación WhatsApp): Tu folio ${nuevoFolio} está en proceso. Mensaje enviado al ${telefono}`, 'success');
-                        }, 2000);
-                    }
-                })
-                .catch(err => {
-                    console.error("Error contactando al servidor:", err);
-                    showToast(`No se pudo conectar al servidor de correos (Asegúrate de que está corriendo).`, 'warning');
-                    btn.classList.remove('opacity-90', 'cursor-not-allowed');
-                    btnText.innerText = "Enviar Solicitud al Sistema";
-                    btnIcon.classList.remove('hidden');
-                    spinner.classList.add('hidden');
-                });
-            }, 1500);
-        });
-
-        function switchTab(tabName) {
-            const tabs = ['reportar', 'historial', 'dashboard'];
-            tabs.forEach(tab => {
-                const btn = document.getElementById(`tab-${tab}`);
-                const content = document.getElementById(`content-${tab}`);
-                if (tab === tabName) {
-                    btn.classList.remove('tab-inactive');
-                    btn.classList.add('tab-active');
-                    content.classList.remove('hidden');
-                    if(tab === 'reportar') setTimeout(() => map.invalidateSize(), 100);
-                } else {
-                    btn.classList.remove('tab-active');
-                    btn.classList.add('tab-inactive');
-                    content.classList.add('hidden');
-                }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            cargarReportesDB();
-        });
-    </script>
+    <!-- Módulos JS -->
+    <script src="./src/js/rios-map.js"></script>
+    <script src="./src/js/ciudadano.js"></script>
 </body>
 </html>
