@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Monitoreo de Ríos e Incidencias - Dashboard Puebla</title>
+    <title>SIGMAH – Monitoreo Ambiental Hídrico | Gobierno de Puebla</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&family=Noto+Sans:wght@400;500;700&display=swap"
@@ -52,67 +52,74 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="flex h-screen w-full overflow-hidden">
+    <div id="dash-toast-container" class="fixed bottom-5 right-5 z-[70] flex flex-col gap-2 pointer-events-none"></div>
+    <div class="flex flex-col h-screen w-full overflow-hidden">
+        <!-- Cintillo Institucional Superior -->
+        <div class="bg-[#6b102c] text-white px-6 py-1.5 flex items-center justify-between text-[11px] font-semibold tracking-wide border-b-2 border-[#bc955c] shrink-0 z-30">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[15px] text-[#bc955c]">account_balance</span>
+                <span class="uppercase">Gobierno del Estado de Puebla</span>
+            </div>
+            <span class="hidden sm:inline text-[10.5px] font-medium text-white/75 tracking-wider">SIGMAH – Sistema de Gestión y Monitoreo Ambiental Hídrico</span>
+        </div>
+
+        <div class="flex flex-1 overflow-hidden">
 
         <aside class="w-64 flex-shrink-0 border-r border-gray-200 bg-white flex flex-col z-20">
-            <div class="p-6 flex items-center gap-3">
-                <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white greca-pattern">
-                    <svg class="w-6 h-6" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"
-                            fill="currentColor"></path>
-                    </svg>
+            <div class="p-5 flex items-center gap-3 border-b border-gray-100">
+                <img src="./src/assets/logo-puebla.jpg" alt="Gobierno de Puebla" class="h-10 w-auto object-contain shrink-0" />
+                <div>
+                    <h2 class="text-sm font-bold tracking-tight text-primary leading-tight">Monitoreo Hídrico</h2>
+                    <p class="text-[10px] font-medium text-gray-400 uppercase tracking-wider">SIGMAH · Puebla</p>
                 </div>
-                <h2 class="text-lg font-bold tracking-tight text-primary">Monitoreo de Ríos</h2>
             </div>
-            <nav class="flex-1 px-4 space-y-1">
+            <nav class="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
                 <div class="mb-4">
-                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Panel de Accion
-                    </p>
-                    <p class="px-3 text-sm text-gray-500 mb-2">Gobierno del Estado de Puebla</p>
+                    <p class="px-3 text-[11px] font-bold text-gray-400 uppercase tracking-wider">Operación Institucional</p>
+                    <p class="px-3 text-xs text-gray-500 mb-2">Dirección de Saneamiento</p>
                 </div>
 
                 <button type="button" id="nav-bandeja" onclick="mostrarVista('bandeja')"
                     class="w-full flex items-center gap-3 px-3 py-2 text-sm font-medium text-white bg-primary rounded-xl shadow-md shadow-primary/20 transition-colors text-left">
                     <span class="material-symbols-outlined" data-icon="ListNumbers"
                         style="font-variation-settings: 'FILL' 1;">format_list_numbered</span>
-                    Bandeja de Quejas
+                    Bandeja de Denuncias
                 </button>
                 <a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-600 rounded-xl hover:bg-gray-50 transition-colors"
                     href="reportes.html">
-                    <span class="material-symbols-outlined" data-icon="ChartLineUp">chart_data</span>
-                    Reportes
+                    <span class="material-symbols-outlined" data-icon="ChartLineUp">picture_as_pdf</span>
+                    Expedientes y Actas PDF
                 </a>
                 <button type="button" id="nav-prediccion" onclick="mostrarVista('prediccion')"
                     class="w-full flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-600 rounded-xl hover:bg-gray-50 transition-colors text-left">
                     <span class="material-symbols-outlined">query_stats</span>
-                    Proyección de Ríos (IA)
+                    Modelo Hidrológico y Clima
                 </button>
 
                 <div class="mt-8">
-                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Filtros (Estados)
+                    <p class="px-3 text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Estatus de Atención
                     </p>
                     <button onclick="filtrarEstado('')"
                         class="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-xl transition-colors text-left">
-                        Todos
+                        Todos los Folios
                         <span id="badge-todos"
                             class="bg-gray-200 text-gray-700 py-0.5 px-2 rounded-full text-xs">0</span>
                     </button>
                     <button onclick="filtrarEstado('Validando')"
                         class="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50 rounded-xl transition-colors text-left">
-                        Validando
+                        En Validación
                         <span id="badge-validando"
                             class="bg-blue-100 text-blue-800 py-0.5 px-2 rounded-full text-xs">0</span>
                     </button>
                     <button onclick="filtrarEstado('Inspección')"
                         class="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-purple-700 hover:bg-purple-50 rounded-xl transition-colors text-left">
-                        Inspección
+                        Dron / Cuadrilla
                         <span id="badge-inspeccion"
                             class="bg-purple-100 text-purple-800 py-0.5 px-2 rounded-full text-xs">0</span>
                     </button>
-                    <button onclick="filtrarEstado('En reparación')"
+                    <button onclick="filtrarEstado('Saneamiento')"
                         class="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-yellow-700 hover:bg-yellow-50 rounded-xl transition-colors text-left">
-                        En Atención
+                        En Saneamiento
                         <span id="badge-reparacion"
                             class="bg-yellow-100 text-yellow-800 py-0.5 px-2 rounded-full text-xs">0</span>
                     </button>
@@ -129,68 +136,98 @@
                 <div class="flex items-center gap-3">
                     <div
                         class="size-10 rounded-full bg-gray-200 overflow-hidden border-2 border-primary/20 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-gray-400">person</span>
+                        <span class="material-symbols-outlined text-gray-500">verified_user</span>
                     </div>
                     <div>
-                        <p class="text-sm font-bold text-gray-900">Supervisor Ambiental</p>
-                        <p class="text-xs text-gray-500">CEASPUE · Puebla</p>
+                        <p class="text-xs font-bold text-gray-900">Supervisor de Cuadrillas</p>
+                        <p class="text-[11px] text-gray-500">Gobierno de Puebla</p>
                     </div>
                 </div>
                 <a href="index.html"
                     class="mt-4 flex items-center gap-2 text-xs font-semibold text-gray-500 hover:text-primary transition-colors">
-                    <span class="material-symbols-outlined text-[16px]">logout</span> Cerrar Sesión
+                    <span class="material-symbols-outlined text-[16px]">logout</span> Cerrar Sesión Oficial
                 </a>
+                <p class="mt-3 pt-2.5 border-t border-gray-100 text-[9.5px] text-gray-400 tracking-wide">Tecnología SIGMAH</p>
             </div>
         </aside>
 
         <main class="flex-1 flex flex-col overflow-hidden bg-background-light">
-            <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 relative z-10">
-                <div class="flex items-center gap-4 flex-1">
-                    <div class="relative w-full max-w-md">
+            <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 relative z-10 gap-3">
+                <div class="flex items-center gap-3 flex-1 flex-wrap">
+                    <div class="relative w-full max-w-xs md:max-w-sm">
                         <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                             <span class="material-symbols-outlined" data-icon="MagnifyingGlass">search</span>
                         </span>
                         <input id="buscador-calles"
                             class="block w-full pl-10 pr-3 py-2 border-none bg-gray-100 rounded-xl focus:ring-primary focus:ring-2 sm:text-sm"
-                            placeholder="Buscar por folio, río, municipio o descripción..." type="text" />
+                            placeholder="Buscar folio, río, municipio..." type="text" />
                     </div>
 
-                    <select id="filtro-categoria" onchange="cambiarCategoriaFiltro()"
-                        class="block w-56 pl-3 pr-8 py-2 border border-gray-200 bg-white rounded-xl focus:ring-primary focus:border-primary sm:text-sm text-gray-700 font-medium ml-2 shadow-sm">
-                        <option value="">Todas las Categorías</option>
-                        <option value="Descarga de aguas residuales">Descarga de aguas residuales</option>
-                        <option value="Vertido químico o industrial">Vertido químico o industrial</option>
-                        <option value="Basura y residuos en cauce">Basura y residuos en cauce</option>
-                        <option value="Espuma, manchas o cambio de color">Espuma, manchas o cambio de color</option>
-                        <option value="Malos olores o gases tóxicos">Malos olores o gases tóxicos</option>
-                        <option value="Escombros o taponamiento del río">Escombros o taponamiento del río</option>
-                        <option value="Desbordamiento o erosión de ribera">Desbordamiento o erosión de ribera</option>
-                    </select>
+                    <!-- Filtro: Todas las Categorías (según diseño estandarizado) -->
+                    <div class="relative">
+                        <select id="filtro-categoria" onchange="aplicarFiltrosDashboard()"
+                            class="appearance-none block w-56 pl-3.5 pr-8 py-2 border border-slate-200 bg-white rounded-xl text-xs sm:text-sm font-semibold text-slate-700 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary shadow-xs transition-colors cursor-pointer">
+                            <option value="">Todas las Categorías</option>
+                            <option value="Descarga de aguas residuales">Descarga de aguas residuales</option>
+                            <option value="Vertido químico o industrial">Vertido químico o industrial</option>
+                            <option value="Basura y residuos en cauce">Basura y residuos en cauce</option>
+                            <option value="Espuma, manchas o cambio de color">Espuma, manchas o cambio de color</option>
+                            <option value="Malos olores o gases tóxicos">Malos olores o gases tóxicos</option>
+                            <option value="Escombros o taponamiento del río">Escombros o taponamiento del río</option>
+                            <option value="Desbordamiento o erosión de ribera">Desbordamiento o erosión de ribera</option>
+                        </select>
+                        <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2.5 text-slate-500">
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                        </span>
+                    </div>
+
+                    <!-- Filtro: Todos los Ríos -->
+                    <div class="relative">
+                        <select id="filtro-rio" onchange="aplicarFiltrosDashboard()"
+                            class="appearance-none block w-44 pl-3.5 pr-8 py-2 border border-slate-200 bg-white rounded-xl text-xs sm:text-sm font-semibold text-slate-700 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary shadow-xs transition-colors cursor-pointer">
+                            <option value="">Todos los Ríos</option>
+                            <option value="Río Atoyac">Río Atoyac</option>
+                            <option value="Río Alseseca">Río Alseseca</option>
+                            <option value="Río Zahuapan">Río Zahuapan</option>
+                            <option value="Río Nexapa">Río Nexapa</option>
+                            <option value="Río Prieto">Río Prieto</option>
+                        </select>
+                        <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2.5 text-slate-500">
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                        </span>
+                    </div>
                 </div>
                 <button
-                    class="text-primary text-sm font-bold flex items-center gap-1 hover:bg-primary/5 px-3 py-1.5 rounded-lg transition-colors"
-                    onclick="location.reload()">
+                    class="text-primary text-sm font-bold flex items-center gap-1 hover:bg-primary/5 px-3 py-1.5 rounded-lg transition-colors shrink-0"
+                    onclick="cargarDatos()">
                     <span class="material-symbols-outlined text-[16px]">refresh</span> Sincronizar
                 </button>
             </header>
 
-            <div class="flex-1 overflow-y-auto p-8 space-y-8">
+            <div id="dashboard-scroll-container" class="flex-1 overflow-y-auto p-8 space-y-8 scroll-smooth">
                 <!-- VISTA 1: BANDEJA DE QUEJAS Y MAPA -->
                 <div id="vista-bandeja" class="space-y-8">
-                <div class="flex flex-col gap-2">
-                    <h1 class="text-3xl font-black text-gray-900 tracking-tight" id="titulo-vista">Quejas de
-                        Contaminación en Ríos</h1>
-                    <p class="text-gray-500 text-base">Recepción, validación y seguimiento de reportes ciudadanos en las
-                        cuencas del Estado de Puebla.</p>
+                <div class="flex flex-col gap-1.5">
+                    <span class="text-[11px] font-bold uppercase tracking-widest text-primary">Gobierno del Estado de Puebla · Monitoreo Hídrico</span>
+                    <h1 class="text-2xl md:text-3xl font-black text-gray-900 tracking-tight" id="titulo-vista">Gestión y Dictamen de Denuncias Ambientales</h1>
+                    <p class="text-gray-600 text-sm md:text-base">Recepción, verificación aérea con dron, confirmación en sitio por cuadrillas especializadas y seguimiento de saneamiento en las cuencas del Estado.</p>
                 </div>
 
                 <!-- Contenedor del Mapa Interactivo de Ríos -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="p-4 md:p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
-                        <h2 id="titulo-mapa-calor" class="text-lg font-bold text-gray-900">Mapa de Ríos Monitoreados -
-                            Puebla</h2>
-                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Red
-                            Activa</span>
+                <div id="contenedor-mapa-card" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden scroll-mt-4">
+                    <div class="p-4 md:px-6 md:py-4 border-b border-gray-200 flex flex-wrap justify-between items-center gap-3 bg-gray-50/70">
+                        <div>
+                            <h2 id="titulo-mapa-calor" class="text-base md:text-lg font-bold text-gray-900">Cartografía de Cuencas Delimitadas — Puebla</h2>
+                            <p class="text-xs text-gray-500">Área delimitada de monitoreo hidrográfico (Atoyac, Alseseca, Zahuapan, Nexapa y Prieto)</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" id="btn-toggle-clima-mapa" onclick="toggleEstacionesClimaMapa()"
+                                class="px-3 py-1.5 rounded-lg border border-sky-200 bg-sky-50 hover:bg-sky-100 text-sky-800 text-xs font-bold transition-colors flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[16px]">thunderstorm</span>
+                                <span>Estaciones Clima (En Vivo)</span>
+                            </button>
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full border border-primary/20">Red Activa</span>
+                        </div>
                     </div>
                     <div class="h-[340px] md:h-[420px] w-full relative bg-gray-50">
                         <div id="dashboard-map" class="w-full h-full z-10"></div>
@@ -208,7 +245,7 @@
                                     class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-full">0
                                     quejas</span>
                             </div>
-                            <div class="overflow-y-auto flex-1 h-[400px]">
+                            <div id="contenedor-tabla-quejas" class="overflow-y-auto flex-1 h-[400px]">
                                 <table class="w-full text-left relative">
                                     <thead
                                         class="bg-gray-50 text-xs font-semibold text-gray-500 uppercase tracking-wider sticky top-0 shadow-sm z-10">
@@ -229,7 +266,7 @@
                     </div>
 
                     <!-- PANEL DERECHO DE DETALLES -->
-                    <div class="space-y-6">
+                    <div id="panel-detalle-queja" class="space-y-6 rounded-xl transition-shadow">
                         <div class="grid grid-cols-1 gap-4">
                             <div id="card-bg-imagen"
                                 class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm relative overflow-hidden h-32 flex flex-col justify-end transition-all"
@@ -257,20 +294,19 @@
 
                         <div class="greca-pattern rounded-xl p-6 text-white shadow-lg shadow-primary/20">
                             <h3 class="font-bold mb-3 flex items-center gap-2">
-                                <span class="material-symbols-outlined" data-icon="Lightbulb">smart_toy</span>
-                                Análisis Estratégico IA
+                                <span class="material-symbols-outlined">biotech</span>
+                                Dictamen Técnico y Despliegue
                             </h3>
                             <p id="detalle-analisis"
                                 class="text-sm opacity-90 leading-relaxed font-medium min-h-[80px]">
-                                Selecciona un reporte de la lista para ver la descripción y gestionar el flujo de
-                                validación.
+                                Selecciona un expediente de la bandeja para revisar su descripción, desplegar apoyo aéreo/cuadrilla y generar su cotización oficial.
                             </p>
 
                             <!-- Contenedor del Botón Dinámico -->
                             <div id="btn-accion-container" class="mt-6">
                                 <button disabled
                                     class="w-full py-3 bg-white/20 text-white font-bold rounded-lg cursor-not-allowed text-sm uppercase tracking-wider">
-                                    Selecciona un reporte
+                                    Selecciona un expediente
                                 </button>
                             </div>
 
@@ -282,17 +318,19 @@
                 </div>
                 </div>
 
-                <!-- VISTA 2: PROYECCIÓN DE RÍOS (MODELO PREDICTIVO) -->
+                <!-- VISTA 2: MODELO HIDROLÓGICO Y CLIMA EN TIEMPO REAL -->
                 <div id="vista-prediccion" class="hidden space-y-6">
                     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                        <div class="flex flex-col gap-2">
-                            <h1 class="text-3xl font-black text-gray-900 tracking-tight">Proyección de Ríos (IA)</h1>
-                            <p class="text-gray-500 text-base">Espacio preparado para proyectar la evolución de contaminación y calidad del agua en las cuencas de Puebla.</p>
+                        <div class="flex flex-col gap-1.5">
+                            <span class="text-[11px] font-bold uppercase tracking-widest text-primary">Dirección de Análisis Hídrico · SIGMAH</span>
+                            <h1 class="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">Modelo Hidrológico y Clima en Tiempo Real</h1>
+                            <p class="text-gray-600 text-sm md:text-base">Simulación matemática de calidad del agua (Streeter-Phelps), riesgo de crecimiento por lluvia y monitoreo meteorológico de la zona delimitada de Puebla.</p>
                         </div>
                         <div class="flex flex-wrap items-center gap-3">
                             <select id="select-rio-prediccion" onchange="renderizarGraficaPrediccion()"
                                 class="pl-3 pr-8 py-2 border border-gray-200 bg-white rounded-xl focus:ring-primary focus:border-primary text-sm text-gray-700 font-semibold shadow-sm">
-                                <option value="Río Atoyac">Río Atoyac</option>
+                                <option value="Todos los ríos">Todos los ríos (Comparativa)</option>
+                                <option value="Río Atoyac" selected>Río Atoyac</option>
                                 <option value="Río Alseseca">Río Alseseca</option>
                                 <option value="Río Zahuapan">Río Zahuapan</option>
                                 <option value="Río Nexapa">Río Nexapa</option>
@@ -307,15 +345,72 @@
                         </div>
                     </div>
 
+                    <!-- Controles de Variables Dinámicas + Selección de Modo Climático (Manual vs Automático 2h) -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-gray-100">
+                            <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-[18px]">tune</span>
+                                Variables Dinámicas y Recolección Meteorológica (Zona Delimitada Puebla)
+                            </h3>
+                            <div class="flex flex-wrap items-center gap-2">
+                                <div class="flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1">
+                                    <span class="text-[11px] font-bold text-slate-600 uppercase">Modo API Clima:</span>
+                                    <select id="select-modo-clima" onchange="cambiarModoClima()"
+                                        class="border-none bg-transparent text-xs font-bold text-primary focus:ring-0 py-0.5 pr-6 cursor-pointer">
+                                        <option value="auto">Automático (cada 2 horas)</option>
+                                        <option value="manual">Manual (al dar clic)</option>
+                                    </select>
+                                </div>
+                                <span id="badge-clima-estado" class="text-[11px] font-semibold px-2.5 py-1.5 rounded-lg bg-sky-50 text-sky-800 border border-sky-200">
+                                    Clima: en espera...
+                                </span>
+                                <button type="button" id="btn-consultar-clima" onclick="sincronizarClimaVivo(true)" class="text-xs font-bold bg-primary hover:bg-primary-dark text-white px-3 py-1.5 rounded-lg shadow-xs transition-colors flex items-center gap-1.5 active:scale-95">
+                                    <span class="material-symbols-outlined text-[15px]">cloud_sync</span> Consultar Clima Ahora
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold text-gray-600 mb-1">
+                                    <span>Lluvia / Escorrentía</span>
+                                    <span id="val-lluvia" class="text-sky-700 font-bold">0 mm/h</span>
+                                </div>
+                                <input id="slider-lluvia" type="range" min="0" max="50" step="1" value="0" oninput="renderizarGraficaPrediccion()" class="w-full accent-primary cursor-pointer" />
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold text-gray-600 mb-1">
+                                    <span>Descargas humanas</span>
+                                    <span id="val-descargas" class="text-primary font-bold">0%</span>
+                                </div>
+                                <input id="slider-descargas" type="range" min="-40" max="100" step="5" value="0" oninput="renderizarGraficaPrediccion()" class="w-full accent-primary cursor-pointer" />
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold text-gray-600 mb-1">
+                                    <span>Temperatura del agua</span>
+                                    <span id="val-temp" class="text-amber-700 font-bold">18.5 °C</span>
+                                </div>
+                                <input id="slider-temp" type="range" min="10" max="30" step="0.5" value="18.5" oninput="renderizarGraficaPrediccion()" class="w-full accent-primary cursor-pointer" />
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold text-gray-600 mb-1">
+                                    <span>Taponamientos / Residuos</span>
+                                    <span id="val-taponamientos" class="text-gray-800 font-bold">1</span>
+                                </div>
+                                <input id="slider-taponamientos" type="range" min="0" max="10" step="1" value="1" oninput="renderizarGraficaPrediccion()" class="w-full accent-primary cursor-pointer" />
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                             <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                                 <div>
                                     <h2 id="titulo-grafica-prediccion" class="text-lg font-bold text-gray-900">Tendencia y Proyección · Río Atoyac</h2>
-                                    <p class="text-xs text-gray-500">Vista previa de gráfica (pendiente de conectar modelo predictivo)</p>
+                                    <p id="subtitulo-grafica-prediccion" class="text-xs text-gray-500">Modelo 1D Streeter-Phelps + Hidrología de Crecimiento</p>
                                 </div>
-                                <span class="px-3 py-1 bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold rounded-full">
-                                    Modelo Pendiente
+                                <span id="badge-semaforo-pred" class="px-3 py-1 bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold rounded-full">
+                                    CONAGUA
                                 </span>
                             </div>
                             <div class="p-6 h-[380px] relative">
@@ -323,34 +418,64 @@
                             </div>
                         </div>
 
-                        <div class="space-y-6">
-                            <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm relative overflow-hidden">
-                                <div class="absolute bottom-0 left-0 w-16 h-16 greca-border opacity-50 rotate-180"></div>
-                                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Índice Actual (Referencia)</p>
-                                <div class="flex items-baseline gap-2">
-                                    <span id="kpi-indice-actual" class="text-3xl font-black text-gray-900">--</span>
-                                    <span class="text-xs text-gray-500 font-bold uppercase">pts riesgo</span>
+                        <div class="space-y-5">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm relative overflow-hidden">
+                                    <div class="absolute bottom-0 left-0 w-12 h-12 greca-border opacity-50 rotate-180"></div>
+                                    <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">Contaminación</p>
+                                    <div class="flex items-baseline gap-1.5">
+                                        <span id="kpi-indice-actual" class="text-2xl font-black text-gray-900">--</span>
+                                        <span class="text-[10px] text-gray-500 font-bold uppercase">/ 100</span>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm relative overflow-hidden">
+                                    <div class="absolute bottom-0 left-0 w-12 h-12 greca-border opacity-50 rotate-180"></div>
+                                    <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">Crecimiento Río</p>
+                                    <div class="flex items-baseline gap-1.5">
+                                        <span id="kpi-crecimiento-rio" class="text-2xl font-black text-sky-700">+0%</span>
+                                    </div>
+                                    <p id="kpi-caudal-m3s" class="text-[11px] text-gray-500 font-semibold mt-0.5">-- m³/s</p>
                                 </div>
                             </div>
 
                             <div class="greca-pattern rounded-xl p-6 text-white shadow-lg shadow-primary/20">
                                 <h3 class="font-bold mb-3 flex items-center gap-2">
-                                    <span class="material-symbols-outlined">psychology</span>
-                                    Motor Predictivo (Próximamente)
+                                    <span class="material-symbols-outlined">analytics</span>
+                                    Dictamen del Modelo Hidrológico
                                 </h3>
-                                <p class="text-sm opacity-90 leading-relaxed font-medium">
-                                    Esta sección recibirá las proyecciones del modelo de predicción (series temporales, temporada de lluvias, descargas históricas y reportes ciudadanos) para anticipar el estado de cada río.
+                                <p id="texto-diagnostico-modelo" class="text-sm opacity-90 leading-relaxed font-medium">
+                                    Ajusta lluvia, descargas o temperatura para proyectar el estado del río y su riesgo de desbordamiento.
                                 </p>
-                                <div class="mt-5 pt-4 border-t border-white/20 text-xs text-white/80 space-y-1">
-                                    <p>• Estado del modelo: <strong>En investigación</strong></p>
-                                    <p>• Fuente de gráfica: <strong>Estructura base lista</strong></p>
+                                <div id="detalle-metricas-modelo" class="mt-4 pt-4 border-t border-white/20 text-xs text-white/90 space-y-1.5">
+                                    <p>• Oxígeno Disuelto (OD): <strong>--</strong></p>
+                                    <p>• DBO5 proyectada: <strong>--</strong></p>
+                                    <p>• Nivel de cauce: <strong>--</strong></p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Estaciones Meteorológicas de la Zona Delimitada de Puebla -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                            <div>
+                                <h3 class="text-sm md:text-base font-bold text-gray-900 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sky-700 text-[20px]">cloudy_snowing</span>
+                                    Lecturas Meteorológicas en Tiempo Real · Área Delimitada de Puebla
+                                </h3>
+                                <p class="text-xs text-gray-500">Cobertura multipunto sobre los límites cartográficos definidos (18.75° a 19.52° N / -98.75° a -97.62° O)</p>
+                            </div>
+                            <span id="clima-ultima-sync" class="text-xs font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-full">Sin lectura reciente</span>
+                        </div>
+                        <div id="grid-estaciones-clima" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                            <div class="col-span-full text-center text-xs text-gray-500 py-4">Presiona "Consultar Clima Ahora" o activa el modo automático cada 2 horas para visualizar las 6 estaciones de Puebla.</div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
+        </div>
     </div>
 
     <!-- Modal de Evidencia Mejorado -->

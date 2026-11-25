@@ -1,7 +1,53 @@
 services:
+  db:
+    image: postgis/postgis:16-3.4-alpine
+    container_name: puebla_rios_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-Saladito68}
+      POSTGRES_DB: ${DB_NAME:-puebla_rios}
+    ports:
+      - "5434:5432"
+    volumes:
+      - puebla_pgdata:/var/lib/postgresql/data
+      - ./database/schema_puebla.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./database/seed_docker.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-puebla_rios}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: puebla_rios_backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-Saladito68}
+      DB_NAME: ${DB_NAME:-puebla_rios}
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./uploads:/app/uploads
+
   frontend:
-    build: .
-    container_name: oaxaca_frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: puebla_rios_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
     ports:
       - "5174:5173"
     volumes:
@@ -9,3 +55,6 @@ services:
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+
+volumes:
+  puebla_pgdata:

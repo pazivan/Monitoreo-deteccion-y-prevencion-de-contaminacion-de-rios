@@ -55,13 +55,29 @@ function cambiarCapaMapa(tipo) {
 
 // 2. Marcador y Geocodificación
 const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
+let detectarRioCercanoFn = null;
+
+function seleccionarRioEnFormulario(nombreRio) {
+    const selectRio = document.getElementById('rio-afectado');
+    if (!selectRio || !nombreRio) return;
+    for (let i = 0; i < selectRio.options.length; i++) {
+        if (selectRio.options[i].value === nombreRio) {
+            selectRio.selectedIndex = i;
+            break;
+        }
+    }
+}
 
 function actualizarPuntoMapa(lat, lng) {
     if (!window.RiosPueblaMap.PUEBLA_BOUNDS.contains([lat, lng])) {
-        showToast("Selecciona una ubicación dentro del Estado de Puebla.", "info");
+        showToast("Selecciona una ubicación dentro del área de monitoreo de Puebla.", "info");
         marker.setLatLng(initialCoords);
         map.panTo(initialCoords);
         return;
+    }
+    if (detectarRioCercanoFn) {
+        const rioCercano = detectarRioCercanoFn(lat, lng, 2.0);
+        if (rioCercano) seleccionarRioEnFormulario(rioCercano);
     }
     document.getElementById('ubicacion').value = `Obteniendo dirección (${lat.toFixed(5)}, ${lng.toFixed(5)})...`;
     clearTimeout(geocodeTimer);
@@ -69,12 +85,14 @@ function actualizarPuntoMapa(lat, lng) {
 }
 
 window.RiosPueblaMap.cargarRiosGeoJSON(map, {
-    onRiverClick: (e) => {
+    onRiverClick: (e, nombre) => {
         L.DomEvent.stopPropagation(e);
         marker.setLatLng(e.latlng);
+        seleccionarRioEnFormulario(nombre);
         actualizarPuntoMapa(e.latlng.lat, e.latlng.lng);
     }
-}).then(({ totalTramos }) => {
+}).then(({ totalTramos, detectarRioCercano }) => {
+    detectarRioCercanoFn = detectarRioCercano;
     const statusEl = document.getElementById('rivers-status-text');
     if (statusEl) statusEl.textContent = `Ríos de Puebla resaltados (${totalTramos} tramos exactos OSM)`;
 }).catch(err => {
@@ -100,52 +118,34 @@ function reverseGeocode(lat, lon, isAutoGPS = false) {
             const addressStr = data.display_name || `${lat}, ${lon}`;
             document.getElementById('ubicacion').value = addressStr;
 
-            const selectAlcaldia = document.getElementById('alcaldia');
-            let found = false;
-            const norm = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
-            const normalizedAddress = norm(addressStr);
-
-            for (let i = 1; i < selectAlcaldia.options.length; i++) {
-                if (normalizedAddress.includes(norm(selectAlcaldia.options[i].value))) {
-                    selectAlcaldia.selectedIndex = i;
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found) {
-                const parts = data.address || {};
-                const arr = [parts.city, parts.municipality, parts.county, parts.town, parts.borough, parts.suburb];
-                for (const p of arr) {
-                    if (!p) continue;
-                    const cleanP = norm(p.replace('Municipio de', '').replace('Heroica', '').trim());
-                    for (let i = 1; i < selectAlcaldia.options.length; i++) {
-                        const optVal = norm(selectAlcaldia.options[i].value);
-                        if (optVal && (cleanP.includes(optVal) || optVal.includes(cleanP))) {
-                            selectAlcaldia.selectedIndex = i;
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (found) break;
-                }
-            }
-
-            if (!found) {
-                const borders = ['cholula', 'tlaxcalancingo', 'momoxpan', 'angelopolis', 'valsequillo'];
-                if (borders.some(b => normalizedAddress.includes(b))) {
-                    for (let i = 1; i < selectAlcaldia.options.length; i++) {
-                        if (selectAlcaldia.options[i].value === "Puebla") {
-                            selectAlcaldia.selectedIndex = i;
-                            found = true;
-                            break;
-                        }
+            const parts = data.address || {};
+            const rawMun = parts.municipality || parts.city || parts.town || parts.county || parts.village || parts.state_district || parts.suburb || '';
+            const cleanMun = rawMun.replace(/^Municipio de\s+/i, '').trim();
+            const selectMunicipio = document.getElementById('alcaldia');
+            if (selectMunicipio && cleanMun) {
+                const norm = (s) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+                const targetNorm = norm(cleanMun);
+                let matchedIdx = -1;
+                for (let i = 1; i < selectMunicipio.options.length; i++) {
+                    const optNorm = norm(selectMunicipio.options[i].value);
+                    if (optNorm === targetNorm || targetNorm.includes(optNorm) || optNorm.includes(targetNorm)) {
+                        matchedIdx = i;
+                        break;
                     }
                 }
+                if (matchedIdx === -1) {
+                    const opt = document.createElement('option');
+                    opt.value = cleanMun;
+                    opt.textContent = cleanMun;
+                    selectMunicipio.appendChild(opt);
+                    matchedIdx = selectMunicipio.options.length - 1;
+                }
+                selectMunicipio.selectedIndex = matchedIdx;
             }
 
-            if (!found && isAutoGPS) {
-                showToast("El GPS te ubica fuera de Puebla. Puedes arrastrar el marcador para mayor precisión.", "info");
+            const stateName = (parts.state || '').toLowerCase();
+            if (isAutoGPS && stateName && !stateName.includes('puebla') && !stateName.includes('tlaxcala')) {
+                showToast("El GPS te ubica fuera de la cuenca de Puebla. Puedes mover el marcador manualmente.", "info");
             }
         })
         .catch(e => {
@@ -323,9 +323,54 @@ async function cargarReportesDB() {
     }
 }
 
+const PALABRAS_CLAVE_RIOS = [
+    'rio', 'río', 'contaminacion', 'contaminación', 'descarga', 'residual', 'residuales',
+    'espuma', 'olor', 'olores', 'quimico', 'químico', 'quimicos', 'químicos', 'aceite',
+    'grasa', 'tinte', 'color', 'turbia', 'sucia', 'escombro', 'escombros', 'cauce',
+    'ribera', 'arroyo', 'atoyac', 'alseseca', 'zahuapan', 'nexapa', 'rabanillo',
+    'toxico', 'tóxico', 'desecho', 'desechos', 'tiradero', 'plastico', 'plástico',
+    'llantas', 'fabrica', 'fábrica', 'industrial', 'desborde', 'desbordamiento',
+    'erosion', 'erosión', 'taponamiento', 'azolve', 'lodo', 'negras', 'alcantarilla',
+    'colector', 'basura', 'residuo', 'residuos', 'drenaje', 'agua', 'aguas', 'fuga',
+    'inundacion', 'inundación', 'daño'
+];
+
+function contienePalabraClave(texto) {
+    const lower = (texto || '').toLowerCase();
+    return PALABRAS_CLAVE_RIOS.filter(w => lower.includes(w));
+}
+
+const descInput = document.getElementById('descripcion');
+const descHint = document.getElementById('desc-keyword-hint');
+if (descInput && descHint) {
+    descInput.addEventListener('input', () => {
+        const val = descInput.value.trim();
+        if (!val) {
+            descHint.className = 'text-[11px] text-slate-500 mt-1.5 flex items-center gap-1';
+            descHint.innerHTML = '<span class="material-symbols-outlined text-[14px] text-slate-400">info</span> Incluye palabras clave del problema (ej. río, descarga, espuma, olor, basura, químico, agua, drenaje).';
+            return;
+        }
+        const matches = contienePalabraClave(val);
+        if (matches.length > 0) {
+            descHint.className = 'text-[11px] text-green-700 font-medium mt-1.5 flex items-center gap-1';
+            descHint.innerHTML = `<span class="material-symbols-outlined text-[14px] text-green-600">check_circle</span> Descripción válida para monitoreo ambiental (palabras detectadas: ${matches.slice(0, 3).join(', ')}).`;
+        } else {
+            descHint.className = 'text-[11px] text-amber-700 font-medium mt-1.5 flex items-center gap-1';
+            descHint.innerHTML = '<span class="material-symbols-outlined text-[14px] text-amber-600">warning</span> Agrega al menos una palabra clave (ej. río, descarga, basura, espuma, olor, agua o drenaje) para evitar el filtro anti-spam.';
+        }
+    });
+}
+
 const formReporte = document.getElementById('form-reporte');
 formReporte.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    const descripcionCheck = document.getElementById('descripcion').value.trim();
+    if (contienePalabraClave(descripcionCheck).length === 0) {
+        showToast("Describe el problema usando palabras clave del río (ej. descarga, basura, espuma, olor, agua, drenaje).", "error");
+        document.getElementById('descripcion').focus();
+        return;
+    }
 
     const btn = document.getElementById('btn-submit');
     const btnText = document.getElementById('btn-text');
@@ -338,9 +383,10 @@ formReporte.addEventListener('submit', (e) => {
     spinner.classList.remove('hidden');
 
     setTimeout(() => {
-        const ubicacion_calle = document.getElementById('ubicacion').value;
-        const alcaldia = document.getElementById('alcaldia').value;
-        const ubicacion_completa = `${ubicacion_calle}, ${alcaldia}`;
+        const ubicacion_calle = document.getElementById('ubicacion').value.trim();
+        const municipio = document.getElementById('alcaldia').value.trim();
+        const rioAfectado = document.getElementById('rio-afectado').value;
+        const ubicacion_completa = `[${rioAfectado}] ${ubicacion_calle}${municipio ? ', ' + municipio : ''}`;
         const descripcion = document.getElementById('descripcion').value;
         const correo = document.getElementById('correo_contacto').value;
         const telefono = document.getElementById('telefono_contacto').value;
@@ -354,10 +400,11 @@ formReporte.addEventListener('submit', (e) => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                correo,
-                folio: nuevoFolio,
+                correo, telefono, folio: nuevoFolio, rioAfectado, municipio, direccion: ubicacion_calle,
                 categoria,
                 ubicacion: ubicacion_completa,
+                latitud: Number(coordsGps.lat.toFixed(6)),
+                longitud: Number(coordsGps.lng.toFixed(6)),
                 ubicacionGps,
                 descripcion,
                 evidenciaBase64: evidenciaBase64Url
@@ -393,7 +440,7 @@ formReporte.addEventListener('submit', (e) => {
 
                     if (telefono && telefono.trim() !== '') {
                         setTimeout(() => {
-                            showToast(`📱 (Simulación WhatsApp): Tu folio ${nuevoFolio} está en proceso. Mensaje enviado al ${telefono}`, 'success');
+                            showToast(`Teléfono ${telefono} registrado como contacto opcional. Las notificaciones oficiales se envían por correo electrónico.`, 'info');
                         }, 2000);
                     }
                 } else {

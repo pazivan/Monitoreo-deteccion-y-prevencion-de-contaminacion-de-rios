@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Portal Ciudadano - Monitoreo y Protección de Ríos | Puebla</title>
+    <title>Portal Ciudadano – Ríos de Puebla | SIGMAH</title>
     
     <!-- Fuentes y Material Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -62,8 +62,8 @@
                 <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
                     <span class="material-symbols-outlined text-green-600 text-3xl">check_circle</span>
                 </div>
-                <h3 class="text-xl font-black text-slate-800 mb-1">¡Queja Registrada!</h3>
-                <p class="text-sm text-slate-500 mb-6">Tu reporte ambiental sobre el río ha sido recibido y enviado al panel de atención.</p>
+                <h3 class="text-xl font-black text-slate-800 mb-1">Acuse de Registro Oficial</h3>
+                <p class="text-sm text-slate-600 mb-6">Su denuncia ambiental sobre cuencas hídricas ha sido integrada en la plataforma estatal para dictamen técnico.</p>
                 
                 <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6 relative overflow-hidden">
                     <div class="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-r border-slate-200"></div>
@@ -139,17 +139,28 @@
         </div>
     </div>
 
+    <!-- Cintillo Gubernamental Superior -->
+    <div class="bg-[#6b102c] text-white border-b-2 border-[#bc955c] relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex items-center justify-between text-[11px] font-semibold tracking-wide">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[15px] text-[#bc955c]">account_balance</span>
+                <span class="uppercase">Gobierno del Estado de Puebla</span>
+            </div>
+            <span class="hidden sm:inline text-[10.5px] font-medium text-white/75 tracking-wider">SIGMAH – Sistema de Gestión y Monitoreo Ambiental Hídrico</span>
+        </div>
+    </div>
+
     <!-- Header / Navbar -->
     <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-4">
-                    <img alt="Gobierno del Estado de Puebla" class="h-10 md:h-12 w-auto object-contain"
+                    <img alt="Gobierno del Estado de Puebla" class="h-11 md:h-14 w-auto object-contain"
                         src="./src/assets/logo-puebla.jpg" />
-                    <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
+                    <div class="h-9 w-px bg-slate-200 hidden md:block"></div>
                     <div class="hidden md:block">
-                        <h1 class="text-lg md:text-xl font-bold text-slate-800 leading-tight">Denuncia Ambiental de Ríos</h1>
-                        <p class="text-xs text-slate-500">Gobierno del Estado de Puebla</p>
+                        <h1 class="text-base md:text-lg font-bold text-slate-800 leading-tight">Portal Estatal de Denuncia Ambiental de Ríos</h1>
+                        <p class="text-[11px] text-slate-400 font-medium">Gobierno del Estado de Puebla · Plataforma SIGMAH</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2 md:gap-3">
@@ -340,34 +351,53 @@
                         </div>
 
                         <!-- Campos autocompletados por el mapa -->
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-3">
-                            <div class="sm:col-span-1">
-                                <select id="alcaldia" class="w-full rounded-xl border-slate-200 bg-slate-50 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20" required>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-3">
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                    <span class="material-symbols-outlined text-[20px]">waves</span>
+                                </div>
+                                <select id="rio-afectado" class="w-full rounded-xl border-slate-200 bg-slate-50 pl-10 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20" required>
+                                    <option value="">Selecciona Río afectado...</option>
+                                    <option value="Río Atoyac">Río Atoyac</option>
+                                    <option value="Río Alseseca">Río Alseseca</option>
+                                    <option value="Río Zahuapan">Río Zahuapan</option>
+                                    <option value="Río Nexapa">Río Nexapa</option>
+                                    <option value="Río Prieto">Río Prieto</option>
+                                    <option value="Otro cauce / Por confirmar">Otro cauce / Por confirmar</option>
+                                </select>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                    <span class="material-symbols-outlined text-[20px]">location_city</span>
+                                </div>
+                                <select id="alcaldia" class="w-full rounded-xl border-slate-200 bg-slate-50 pl-10 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20" required>
                                     <option value="">Selecciona Municipio...</option>
                                     <option value="Puebla">Puebla</option>
                                     <option value="San Andrés Cholula">San Andrés Cholula</option>
                                     <option value="San Pedro Cholula">San Pedro Cholula</option>
                                     <option value="Cuautlancingo">Cuautlancingo</option>
                                     <option value="Coronango">Coronango</option>
+                                    <option value="Santa Clara Ocoyucan">Santa Clara Ocoyucan</option>
+                                    <option value="Juan C. Bonilla">Juan C. Bonilla</option>
+                                    <option value="San Gregorio Atzompa">San Gregorio Atzompa</option>
+                                    <option value="Tlaltenango">Tlaltenango</option>
                                     <option value="Amozoc">Amozoc</option>
                                     <option value="Atlixco">Atlixco</option>
                                     <option value="San Martín Texmelucan">San Martín Texmelucan</option>
                                     <option value="Huejotzingo">Huejotzingo</option>
-                                    <option value="Tehuacán">Tehuacán</option>
-                                    <option value="Izúcar de Matamoros">Izúcar de Matamoros</option>
-                                    <option value="Teziutlán">Teziutlán</option>
-                                    <option value="Huauchinango">Huauchinango</option>
-                                    <option value="Zacatlán">Zacatlán</option>
-                                    <option value="Chignahuapan">Chignahuapan</option>
                                     <option value="Tecamachalco">Tecamachalco</option>
+                                    <option value="Papalotla de Xicohténcatl">Papalotla de Xicohténcatl</option>
+                                    <option value="Tenancingo">Tenancingo</option>
+                                    <option value="Zacatelco">Zacatelco</option>
+                                    <option value="Natívitas">Natívitas</option>
                                 </select>
                             </div>
-                            <div class="sm:col-span-2 relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                                    <span class="material-symbols-outlined text-[20px]">location_on</span>
-                                </div>
-                                <input type="text" id="ubicacion" class="flex w-full rounded-xl border-slate-200 bg-slate-50 pl-10 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Ej. Ribera del Río Atoyac / Blvd. Atlixcáyotl (Autocompletado)" required />
+                        </div>
+                        <div class="relative mb-3">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                <span class="material-symbols-outlined text-[20px]">location_on</span>
                             </div>
+                            <input type="text" id="ubicacion" class="flex w-full rounded-xl border-slate-200 bg-slate-50 pl-10 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Ej. Ribera del Río Atoyac / Blvd. Atlixcáyotl (Autocompletado)" required />
                         </div>
                     </div>
 
@@ -375,6 +405,10 @@
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">3. Descripción de la queja</label>
                         <textarea id="descripcion" rows="3" class="flex w-full rounded-xl border-slate-200 bg-slate-50 p-4 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Describe lo que observas en el río (color del agua, espuma, mal olor, tubería de descarga, cantidad de residuos, horario aproximado, etc.)..." required></textarea>
+                        <p id="desc-keyword-hint" class="text-[11px] text-slate-500 mt-1.5 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[14px] text-slate-400">info</span>
+                            Incluye palabras clave del problema (ej. río, descarga, espuma, olor, basura, químico, agua, drenaje).
+                        </p>
                     </div>
 
                     <!-- Evidencia Fotográfica -->
@@ -389,23 +423,23 @@
                         </div>
                     </div>
 
-                    <!-- Datos de Contacto (Opcional) -->
+                    <!-- Datos de Contacto -->
                     <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                        <label class="block text-sm font-bold text-slate-800 mb-2">5. Datos para notificaciones (Opcional)</label>
-                        <p class="text-xs text-slate-500 mb-4">Ingresa tu correo para recibir tu folio y el seguimiento de tu queja ambiental.</p>
+                        <label class="block text-sm font-bold text-slate-800 mb-2">5. Datos para acuse de recibo y seguimiento</label>
+                        <p class="text-xs text-slate-500 mb-4">Proporcione su correo electrónico para remitirle su acuse oficial y avisos de inspección en sitio. El teléfono celular es opcional.</p>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                                     <span class="material-symbols-outlined text-[18px]">mail</span>
                                 </div>
-                                <input type="email" id="correo_contacto" class="flex w-full rounded-xl border-slate-200 bg-white pl-10 py-2.5 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20" placeholder="Correo electrónico" />
+                                <input type="email" id="correo_contacto" class="flex w-full rounded-xl border-slate-200 bg-white pl-10 py-2.5 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20" placeholder="Correo electrónico (acuse oficial)" required />
                             </div>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                                     <span class="material-symbols-outlined text-[18px]">phone_iphone</span>
                                 </div>
-                                <input type="tel" id="telefono_contacto" class="flex w-full rounded-xl border-slate-200 bg-white pl-10 py-2.5 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20" placeholder="Número de celular (WhatsApp)" />
+                                <input type="tel" id="telefono_contacto" class="flex w-full rounded-xl border-slate-200 bg-white pl-10 py-2.5 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20" placeholder="Teléfono de contacto (Opcional)" />
                             </div>
                         </div>
                     </div>
@@ -431,16 +465,17 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 mt-auto">
+    <!-- Footer Institucional -->
+    <footer class="bg-white border-t-2 border-primary/20 mt-auto">
         <div class="max-w-7xl mx-auto px-4 py-6 md:py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <div>
-                <p class="text-sm font-semibold text-slate-700">Gobierno del Estado de Puebla</p>
-                <p class="text-xs text-slate-500 mt-1">Monitoreo, Detección y Prevención de Contaminación de Ríos © 2026</p>
+                <p class="text-sm font-bold text-slate-800">Gobierno del Estado de Puebla</p>
+                <p class="text-xs text-slate-500 mt-1">SIGMAH – Sistema de Gestión y Monitoreo Ambiental Hídrico © 2026</p>
+                <p class="text-[11px] text-slate-400 mt-1">Marco Normativo: NOM-001-SEMARNAT-2021 y Ley para la Protección del Ambiente Natural y el Desarrollo Sustentable del Estado de Puebla.</p>
             </div>
-            <div class="flex gap-4 justify-center md:justify-start">
-                <a href="#" class="text-xs text-slate-500 hover:text-primary transition-colors">Términos y Condiciones</a>
-                <a href="#" class="text-xs text-slate-500 hover:text-primary transition-colors">Aviso de Privacidad</a>
+            <div class="flex gap-4 justify-center md:justify-start shrink-0">
+                <a href="concientizacion.html" class="text-xs font-semibold text-slate-600 hover:text-primary transition-colors">Marco Técnico y Concientización</a>
+                <a href="index.html" class="text-xs font-semibold text-slate-600 hover:text-primary transition-colors">Acceso Institucional</a>
             </div>
         </div>
     </footer>

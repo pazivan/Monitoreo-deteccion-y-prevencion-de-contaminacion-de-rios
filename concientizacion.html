@@ -4,11 +4,14 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Concientización Ambiental - Ríos de Puebla</title>
+    <title>Concientización Ambiental – Ríos de Puebla | SIGMAH</title>
 
     <!-- Fuentes y Material Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+        rel="stylesheet" />
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -45,27 +48,40 @@
 <body class="bg-background-light font-sans antialiased text-slate-900 min-h-screen flex flex-col relative">
     <div class="grecas-bg"></div>
 
+    <!-- Cintillo Gubernamental Superior -->
+    <div class="bg-[#6b102c] text-white border-b-2 border-[#bc955c] relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex items-center justify-between text-[11px] font-semibold tracking-wide">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[15px] text-[#bc955c]">account_balance</span>
+                <span class="uppercase">Gobierno del Estado de Puebla</span>
+            </div>
+            <span class="hidden sm:inline text-[10.5px] font-medium text-white/75 tracking-wider">SIGMAH – Sistema de Gestión y Monitoreo Ambiental Hídrico</span>
+        </div>
+    </div>
+
     <!-- Header / Navbar -->
     <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-4">
                     <a href="ciudadano.html" class="shrink-0">
-                        <img alt="Gobierno del Estado de Puebla" class="h-10 md:h-12 w-auto object-contain"
+                        <img alt="Gobierno del Estado de Puebla" class="h-11 md:h-14 w-auto object-contain"
                             src="./src/assets/logo-puebla.jpg" />
                     </a>
-                    <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
+                    <div class="h-9 w-px bg-slate-200 hidden md:block"></div>
                     <div class="hidden md:block">
-                        <h1 class="text-lg md:text-xl font-bold text-slate-800 leading-tight">Concientización Ambiental</h1>
-                        <p class="text-xs text-slate-500">Gobierno del Estado de Puebla</p>
+                        <h1 class="text-base md:text-lg font-bold text-slate-800 leading-tight">Cultura Hídrica y Concientización Ambiental</h1>
+                        <p class="text-[11px] text-slate-400 font-medium">Gobierno del Estado de Puebla · Plataforma SIGMAH</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2 md:gap-3">
-                    <a href="ciudadano.html" class="bg-primary hover:bg-primary-dark text-white px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-colors flex items-center gap-1.5 shadow-sm">
+                    <a href="ciudadano.html"
+                        class="bg-primary hover:bg-primary-dark text-white px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-colors flex items-center gap-1.5 shadow-sm">
                         <span class="material-symbols-outlined text-[16px] md:text-[18px]">campaign</span>
                         <span>Reportar una Queja</span>
                     </a>
-                    <a href="index.html" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-colors flex items-center gap-1.5 md:gap-2">
+                    <a href="index.html"
+                        class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-colors flex items-center gap-1.5 md:gap-2">
                         <span class="material-symbols-outlined text-[16px] md:text-[18px]">admin_panel_settings</span>
                         <span class="hidden sm:inline">Acceso Servidores</span>
                         <span class="sm:hidden">Acceder</span>
@@ -78,242 +94,415 @@
     <!-- Main Content -->
     <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col gap-6 md:gap-8">
 
-        <!-- Hero Section -->
-        <section class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-6 md:p-12 text-white shadow-xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-            <div class="relative z-10 w-full lg:max-w-3xl text-center lg:text-left">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-wider mb-4 border border-white/30 backdrop-blur-sm">
-                    <span class="material-symbols-outlined text-[14px] normal-case">eco</span> Educación y Concientización Ambiental
-                </span>
-                <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">Conoce y Protege los Ríos de Puebla</h2>
-                <p class="text-sm md:text-lg text-white/90 mb-6 lg:mb-8 leading-relaxed">
-                    Visibilizar la contaminación es el primer paso para rescatar el Río Atoyac, Río Alseseca, Río Zahuapan, Río Nexapa y Río Prieto. Entender qué daña nuestras cuencas nos permite actuar a tiempo.
-                </p>
-                <a href="ciudadano.html" class="inline-flex bg-cdmx-gold hover:bg-yellow-600 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl shadow-lg transition-transform transform active:scale-95 items-center justify-center gap-2 text-sm md:text-base w-full sm:w-auto">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    Volver a Reportar Queja
-                </a>
+        <!-- Hero Section: Gancho de Proximidad y Curiosidad -->
+        <section
+            class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-6 md:p-10 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
             </div>
-            <div class="relative z-10 hidden lg:block w-full max-w-xs">
-                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl shadow-2xl space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-full bg-sky-500/20 flex items-center justify-center border border-sky-300/40 shrink-0">
-                            <span class="material-symbols-outlined text-sky-300">water_drop</span>
-                        </div>
-                        <div>
-                            <p class="text-xs text-white/75">Cuencas vigiladas</p>
-                            <p class="text-lg font-bold text-white">5 Ríos Prioritarios</p>
-                        </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <span
+                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-wider mb-4 border border-white/30 backdrop-blur-sm">
+                        <span class="material-symbols-outlined text-[14px] normal-case">favorite</span> Tu Río · Tu
+                        Salud · Tu Comunidad
+                    </span>
+                    <h2 class="text-2xl md:text-4xl font-bold mb-4 tracking-tight leading-tight">
+                        El río que cruza tu colonia cuenta una historia: ¿la escuchamos a tiempo?
+                    </h2>
+                    <p class="text-sm md:text-base text-white/90 mb-6 leading-relaxed">
+                        Muchos piensan que un río contaminado es un problema lejano, pero sus olores, vapores y
+                        descargas afectan directamente el aire que respiras y el agua de tu comunidad. Aprender a leer
+                        las señales del agua toma 2 minutos y puede cambiar tu entorno.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                        <a href="ciudadano.html"
+                            class="bg-cdmx-gold hover:bg-yellow-600 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition-transform transform active:scale-95 flex items-center justify-center gap-2 text-sm md:text-base">
+                            <span class="material-symbols-outlined">campaign</span>
+                            Reportar en 1 Minuto
+                        </a>
+                        <a href="#guia-rapida"
+                            class="bg-white/15 hover:bg-white/25 text-white border border-white/30 font-semibold py-3.5 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm md:text-base">
+                            <span class="material-symbols-outlined">visibility</span>
+                            Ver 3 Señales de Alerta
+                        </a>
                     </div>
-                    <div class="h-px w-full bg-white/20"></div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-full bg-amber-500/20 flex items-center justify-center border border-amber-300/40 shrink-0">
-                            <span class="material-symbols-outlined text-amber-300">science</span>
+                </div>
+
+                <!-- Tarjeta de Acogida y Confianza -->
+                <div class="lg:col-span-5">
+                    <div
+                        class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl shadow-2xl space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-11 h-11 rounded-full bg-amber-400/20 flex items-center justify-center border border-amber-300/40 shrink-0">
+                                <span class="material-symbols-outlined text-amber-200">verified_user</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base text-white">Aquí tu reporte es bienvenido y seguro</h3>
+                                <p class="text-xs text-white/80">Diseñado para escuchar sin complicaciones</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-xs text-white/75">Criterio oficial</p>
-                            <p class="text-lg font-bold text-white">Semáforo CONAGUA</p>
-                        </div>
+                        <ul class="space-y-2.5 text-xs md:text-sm text-white/90">
+                            <li class="flex items-start gap-2">
+                                <span
+                                    class="material-symbols-outlined text-[18px] text-green-300 shrink-0">check_circle</span>
+                                <span><strong>Sin tecnicismos:</strong> No necesitas saber de química; basta con
+                                    describir lo que ves o percibes cerca del cauce.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span
+                                    class="material-symbols-outlined text-[18px] text-green-300 shrink-0">check_circle</span>
+                                <span><strong>Seguimiento real:</strong> Recibes un folio único para consultar el avance
+                                    de tu queja cuando quieras.</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sección 1: Los 5 Ríos que Monitoreamos en Puebla -->
+        <!-- Sección 1: Psicología de Atención Rápida (3 Señales que tu ojo sí detecta) -->
+        <section id="guia-rapida"
+            class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-8 animate-fade-in scroll-mt-24">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-primary uppercase tracking-wider">Aprende en 60 Segundos</span>
+                <h3 class="text-xl md:text-2xl font-bold text-slate-800 mt-1">3 Señales Clave de que un Río Necesita
+                    Ayuda</h3>
+                <p class="text-sm text-slate-500 mt-1">Tu observación cotidiana vale tanto como un sensor: si notas
+                    alguna de estas señales, es momento de reportar.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-5 flex flex-col gap-2">
+                    <div class="flex items-center justify-between">
+                        <span class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                            <span class="material-symbols-outlined">opacity</span>
+                        </span>
+                        <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">Señal
+                            #1</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base mt-1">Espuma densa o colores inusuales</h4>
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
+                        Si el agua luce azul, rojiza, negra o forma espuma blanca que no se disuelve rápido, suele
+                        indicar detergentes o descargas textiles/industriales sin tratamiento.
+                    </p>
+                </div>
+
+                <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-5 flex flex-col gap-2">
+                    <div class="flex items-center justify-between">
+                        <span class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                            <span class="material-symbols-outlined">air</span>
+                        </span>
+                        <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">Señal
+                            #2</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base mt-1">Olor penetrante a químico o drenaje</h4>
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
+                        Un río sano casi no huele. El olor fuerte a huevo podrido, solventes o aguas negras señala falta
+                        de oxígeno en el agua y riesgo sanitario para vecinos cercanos.
+                    </p>
+                </div>
+
+                <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-5 flex flex-col gap-2">
+                    <div class="flex items-center justify-between">
+                        <span class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                            <span class="material-symbols-outlined">delete_sweep</span>
+                        </span>
+                        <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">Señal
+                            #3</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base mt-1">Tuberías ocultas o tapones de basura</h4>
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
+                        Tubos vertiendo directo al margen o acumulaciones de llantas, plásticos y escombro que frenan la
+                        corriente y provocan desbordamientos en época de lluvias.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 1.5: Información Detallada y Precisa (Lectura Profunda) -->
         <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-8 animate-fade-in">
             <div class="mb-6">
-                <span class="text-xs font-bold text-primary uppercase tracking-wider">Nuestras Cuencas</span>
-                <h3 class="text-xl md:text-2xl font-bold text-slate-800 mt-1">Los 5 Ríos que Monitoreamos en Puebla</h3>
-                <p class="text-sm text-slate-500 mt-1">Cada cauce atraviesa zonas urbanas, agrícolas o industriales con retos ambientales específicos.</p>
+                <span class="text-xs font-bold text-primary uppercase tracking-wider">Contexto Completo</span>
+                <h3 class="text-xl md:text-2xl font-bold text-slate-800 mt-1">¿Qué Está Ocurriendo en las Cuencas de Puebla y Cómo Funciona Nuestro Monitoreo?</h3>
+                <p class="text-sm text-slate-500 mt-1">Información precisa para entender el origen del problema, su impacto y el valor real de tu denuncia.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 space-y-5 text-sm md:text-base text-slate-700 leading-relaxed">
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+                        <h4 class="font-bold text-slate-800 text-base md:text-lg mb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">water_damage</span>
+                            1. El origen de la contaminación en la cuenca Alto Atoyac
+                        </h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Los ríos <strong>Atoyac, Alseseca, Zahuapan, Nexapa y Prieto</strong> reciben a lo largo de su recorrido una combinación de <strong>descargas municipales sin tratamiento completo</strong> y <strong>vertidos industriales</strong> (principalmente textiles, químicos, alimentarios y talleres). Cuando esta carga orgánica y química entra al agua, consume rápidamente el <strong>oxígeno disuelto</strong> disponible, impidiendo la vida acuática y generando malos olores, espuma persistente y sedimentos oscuros en las riberas.
+                        </p>
+                    </div>
+
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+                        <h4 class="font-bold text-slate-800 text-base md:text-lg mb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">health_and_safety</span>
+                            2. ¿Por qué importa reportar incluso lo que parece menor?
+                        </h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Un río funciona como un sistema continuo: lo que se descarga aguas arriba (por ejemplo en San Martín Texmelucan, Huejotzingo o el límite con Tlaxcala) viaja kilómetros hacia la zona metropolitana de Puebla y la presa de Valsequillo. Reportar un punto con cambio de color, olor penetrante o basura acumulada permite identificar <strong>descargas intermitentes</strong> que suelen ocurrir en horarios nocturnos o fines de semana y que muchas veces escapan a muestreos esporádicos.
+                        </p>
+                    </div>
+
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+                        <h4 class="font-bold text-slate-800 text-base md:text-lg mb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">query_stats</span>
+                            3. De tu reporte ciudadano al análisis técnico
+                        </h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Cada queja registrada en la plataforma se geolocaliza sobre el trazo real del río y se vincula con su categoría de afectación (descarga residual, vertido químico, residuos sólidos, espuma o taponamiento). Esta información alimenta el panel de supervisión para programar <strong>inspecciones ambientales, muestreos de los 7 indicadores oficiales de la CONAGUA</strong> y proyecciones matemáticas sobre cómo evoluciona la calidad del agua tramo por tramo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Columna lateral de datos clave y espacio editorial -->
+                <aside class="space-y-4">
+                    <div class="rounded-xl border-2 border-primary/20 bg-primary/5 p-5 space-y-3">
+                        <h4 class="font-bold text-primary text-sm uppercase tracking-wider flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[18px]">fact_check</span>
+                            Datos Clave de Referencia
+                        </h4>
+                        <ul class="space-y-3 text-xs md:text-sm text-slate-700">
+                            <li class="border-b border-primary/10 pb-2">
+                                <strong class="block text-slate-900">Efecto acumulativo:</strong>
+                                Cada descarga puntual reduce el oxígeno disuelto kilómetros aguas abajo antes de que el río logre reairearse.
+                            </li>
+                            <li class="border-b border-primary/10 pb-2">
+                                <strong class="block text-slate-900">Temporada de lluvias vs. estiaje:</strong>
+                                En época seca los contaminantes se concentran más; en lluvias los tapones de basura elevan el riesgo de desbordamiento.
+                            </li>
+                            <li>
+                                <strong class="block text-slate-900">Evidencia útil:</strong>
+                                Una foto clara del color del agua o del tubo de descarga acelera la validación técnica.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                        <h4 class="font-bold text-slate-800 text-sm mb-2 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-cdmx-gold text-[18px]">edit_note</span>
+                            ¿Qué pasa después de enviar tu queja?
+                        </h4>
+                        <ol class="space-y-2 text-xs text-slate-600 list-decimal list-inside">
+                            <li>Se asigna un folio único (<span class="font-mono font-semibold text-primary">INC-PUE-XXXX</span>).</li>
+                            <li>El equipo supervisor revisa ubicación, categoría y fotografía.</li>
+                            <li>Se programa inspección o muestreo en el punto del río.</li>
+                            <li>Puedes consultar el avance en cualquier momento con tu folio.</li>
+                        </ol>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Sección 2: Los 5 Ríos de Puebla -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-8 animate-fade-in">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-primary uppercase tracking-wider">Mapa Vivo de Puebla</span>
+                <h3 class="text-xl md:text-2xl font-bold text-slate-800 mt-1">Los 5 Ríos que Monitoreamos Contigo</h3>
+                <p class="text-sm text-slate-500 mt-1">Conoce qué ríos recorren nuestras comunidades y por qué es vital
+                    cuidarlos juntos.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                <article class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col gap-2 hover:border-primary/40 transition-colors">
+                <article
+                    class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col gap-2 hover:border-primary/40 transition-colors">
                     <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                         <span class="material-symbols-outlined">waves</span>
                     </div>
                     <h4 class="font-bold text-slate-800">Río Atoyac</h4>
-                    <p class="text-[11px] font-semibold text-cdmx-gold uppercase tracking-wide">Texmelucan · Puebla · Valsequillo</p>
-                    <p class="text-xs text-slate-600 leading-relaxed">Principal corredor de la zona metropolitana; enfrenta descargas industriales, aguas residuales y espuma.</p>
+                    <p class="text-[11px] font-semibold text-cdmx-gold uppercase tracking-wide">Texmelucan · Puebla ·
+                        Valsequillo</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">Cruza toda el área metropolitana; el principal
+                        reto son descargas industriales y espuma.</p>
                 </article>
 
-                <article class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col gap-2 hover:border-primary/40 transition-colors">
+                <article
+                    class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col gap-2 hover:border-primary/40 transition-colors">
                     <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                         <span class="material-symbols-outlined">water</span>
                     </div>
                     <h4 class="font-bold text-slate-800">Río Alseseca</h4>
                     <p class="text-[11px] font-semibold text-cdmx-gold uppercase tracking-wide">Oriente de Puebla</p>
-                    <p class="text-xs text-slate-600 leading-relaxed">Cruza colonias densamente pobladas hacia Valsequillo; presenta descarga doméstica, basura y olores.</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">Atraviesa zonas habitacionales rumbo a
+                        Valsequillo; afectado por basura y drenajes.</p>
                 </article>
 
-                <article class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col gap-2 hover:border-primary/40 transition-colors">
+                <article
+                    class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col gap-2 hover:border-primary/40 transition-colors">
                     <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                         <span class="material-symbols-outlined">flood</span>
                     </div>
                     <h4 class="font-bold text-slate-800">Río Zahuapan</h4>
-                    <p class="text-[11px] font-semibold text-cdmx-gold uppercase tracking-wide">Límite Tlaxcala · Puebla</p>
-                    <p class="text-xs text-slate-600 leading-relaxed">Afluente directo del Atoyac; recibe descargas textiles, colorantes y escurrimientos urbanos.</p>
+                    <p class="text-[11px] font-semibold text-cdmx-gold uppercase tracking-wide">Límite Tlaxcala · Puebla
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">Se une al Atoyac; vulnerable a descargas con
+                        colorantes y escurrimientos urbanos.</p>
                 </article>
 
-                <article class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col gap-2 hover:border-primary/40 transition-colors">
+                <article
+                    class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col gap-2 hover:border-primary/40 transition-colors">
                     <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                         <span class="material-symbols-outlined">landscape</span>
                     </div>
                     <h4 class="font-bold text-slate-800">Río Nexapa</h4>
-                    <p class="text-[11px] font-semibold text-cdmx-gold uppercase tracking-wide">Atlixco · Izúcar de Matamoros</p>
-                    <p class="text-xs text-slate-600 leading-relaxed">Sustenta zonas agrícolas del valle; vulnerable a residuos sólidos, agroquímicos y drenajes sin tratar.</p>
+                    <p class="text-[11px] font-semibold text-cdmx-gold uppercase tracking-wide">Atlixco · Izúcar</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">Sostiene zonas agrícolas del valle; requiere
+                        protección frente a residuos y descargas.</p>
                 </article>
 
-                <article class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col gap-2 hover:border-primary/40 transition-colors">
+                <article
+                    class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col gap-2 hover:border-primary/40 transition-colors">
                     <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                         <span class="material-symbols-outlined">water_ec</span>
                     </div>
                     <h4 class="font-bold text-slate-800">Río Prieto</h4>
-                    <p class="text-[11px] font-semibold text-cdmx-gold uppercase tracking-wide">Coronango · Cuautlancingo</p>
-                    <p class="text-xs text-slate-600 leading-relaxed">Cauce tributario de la subcuenca norte; afectado por desechos urbanos, taponamientos y aguas negras.</p>
+                    <p class="text-[11px] font-semibold text-cdmx-gold uppercase tracking-wide">Coronango ·
+                        Cuautlancingo</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">Tributario de la zona norte; propenso a
+                        taponamientos y vertidos urbanos.</p>
                 </article>
             </div>
         </section>
 
-        <!-- Sección 2: Semáforo Oficial de Calidad del Agua (CONAGUA) -->
+        <!-- Sección 3: Semáforo Oficial de Calidad del Agua (CONAGUA) -->
         <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-8 animate-fade-in">
             <div class="mb-6">
-                <span class="text-xs font-bold text-primary uppercase tracking-wider">Medición Científica</span>
-                <h3 class="text-xl md:text-2xl font-bold text-slate-800 mt-1">Semáforo Oficial de Calidad del Agua (CONAGUA)</h3>
-                <p class="text-sm text-slate-500 mt-1">El estado de un río se clasifica según el peor resultado obtenido entre sus indicadores físicos, químicos y biológicos.</p>
+                <span class="text-xs font-bold text-primary uppercase tracking-wider">Transparencia Técnica</span>
+                <h3 class="text-xl md:text-2xl font-bold text-slate-800 mt-1">¿Cómo se Evalúa un Río? Semáforo CONAGUA
+                </h3>
+                <p class="text-sm text-slate-500 mt-1">Cada punto monitoreado recibe un color oficial según su nivel de
+                    oxígeno, materia orgánica, bacterias y toxicidad.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-5">
                 <div class="rounded-xl p-4 border border-slate-200 bg-slate-50">
-                    <div class="flex items-center gap-2 mb-2">
+                    <div class="flex items-center gap-2 mb-1.5">
                         <span class="w-3.5 h-3.5 rounded-full shrink-0" style="background-color: #0284c7;"></span>
                         <span class="font-bold text-sm text-slate-800">Azul · Excelente</span>
                     </div>
-                    <p class="text-xs text-slate-600">Agua limpia, con alto oxígeno disuelto y sin riesgo relevante para la vida acuática.</p>
+                    <p class="text-xs text-slate-600">Agua limpia, alto oxígeno disuelto y ecosistema sano.</p>
                 </div>
 
                 <div class="rounded-xl p-4 border border-slate-200 bg-slate-50">
-                    <div class="flex items-center gap-2 mb-2">
+                    <div class="flex items-center gap-2 mb-1.5">
                         <span class="w-3.5 h-3.5 rounded-full shrink-0" style="background-color: #16a34a;"></span>
                         <span class="font-bold text-sm text-slate-800">Verde · Buena</span>
                     </div>
-                    <p class="text-xs text-slate-600">Calidad aceptable con baja carga orgánica; apta para conservación con vigilancia.</p>
+                    <p class="text-xs text-slate-600">Impacto mínimo; apta para conservación con vigilancia.</p>
                 </div>
 
                 <div class="rounded-xl p-4 border border-slate-200 bg-slate-50">
-                    <div class="flex items-center gap-2 mb-2">
+                    <div class="flex items-center gap-2 mb-1.5">
                         <span class="w-3.5 h-3.5 rounded-full shrink-0" style="background-color: #eab308;"></span>
                         <span class="font-bold text-sm text-slate-800">Amarillo · Aceptable</span>
                     </div>
-                    <p class="text-xs text-slate-600">Señales de impacto urbano o agrícola; requiere tratamiento antes de su aprovechamiento.</p>
+                    <p class="text-xs text-slate-600">Señales de carga urbana; requiere tratamiento previo.</p>
                 </div>
 
                 <div class="rounded-xl p-4 border border-slate-200 bg-slate-50">
-                    <div class="flex items-center gap-2 mb-2">
+                    <div class="flex items-center gap-2 mb-1.5">
                         <span class="w-3.5 h-3.5 rounded-full shrink-0" style="background-color: #f97316;"></span>
                         <span class="font-bold text-sm text-slate-800">Naranja · Contaminada</span>
                     </div>
-                    <p class="text-xs text-slate-600">Presencia elevada de descargas residuales, bacterias o sólidos; riesgo sanitario.</p>
+                    <p class="text-xs text-slate-600">Presencia alta de descargas, bacterias o sólidos.</p>
                 </div>
 
                 <div class="rounded-xl p-4 border border-slate-200 bg-slate-50">
-                    <div class="flex items-center gap-2 mb-2">
+                    <div class="flex items-center gap-2 mb-1.5">
                         <span class="w-3.5 h-3.5 rounded-full shrink-0" style="background-color: #dc2626;"></span>
                         <span class="font-bold text-sm text-slate-800">Rojo · Crítica</span>
                     </div>
-                    <p class="text-xs text-slate-600">Fuertemente contaminada: déficit severo de oxígeno, toxicidad o alta carga bacteriana.</p>
+                    <p class="text-xs text-slate-600">Déficit severo de oxígeno o toxicidad; atención urgente.</p>
                 </div>
             </div>
 
-            <div class="bg-slate-50 rounded-xl border border-slate-200 p-4 md:p-5">
-                <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">¿Qué miden los indicadores oficiales?</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-xs text-slate-600">
-                    <div><strong class="text-slate-800">DBO5 y DQO:</strong> Miden cuánta materia orgánica e industrial consume el oxígeno del río.</div>
-                    <div><strong class="text-slate-800">SST (Sólidos Suspendidos):</strong> Partículas, lodos y sedimentos que enturbian y azolvan el cauce.</div>
-                    <div><strong class="text-slate-800">Coliformes y E. coli:</strong> Indican contaminación por descargas de drenaje sin tratar.</div>
-                    <div><strong class="text-slate-800">Toxicidad Aguda (TOX):</strong> Evalúa el impacto químico inmediato sobre organismos vivos.</div>
-                    <div><strong class="text-slate-800">% Oxígeno Disuelto (%OD):</strong> Nivel de oxígeno disponible para sostener el ecosistema fluvial.</div>
-                </div>
+            <div
+                class="bg-slate-50 rounded-xl border border-slate-200 p-4 text-xs text-slate-600 flex flex-wrap gap-x-6 gap-y-2">
+                <span><strong class="text-slate-800">DBO5 / DQO:</strong> Consumo de oxígeno por materia
+                    orgánica.</span>
+                <span><strong class="text-slate-800">SST:</strong> Lodos y sólidos suspendidos.</span>
+                <span><strong class="text-slate-800">Coliformes y E. coli:</strong> Descargas de drenaje.</span>
+                <span><strong class="text-slate-800">TOX y %OD:</strong> Toxicidad y oxígeno disponible.</span>
             </div>
         </section>
 
-        <!-- Sección 3: ¿Cómo puedes ayudar desde casa y tu comunidad? -->
+        <!-- Sección 4: Micro-hábitos + Confianza para Reportar -->
         <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-8 animate-fade-in">
             <div class="mb-6">
-                <span class="text-xs font-bold text-primary uppercase tracking-wider">Participación Ciudadana</span>
-                <h3 class="text-xl md:text-2xl font-bold text-slate-800 mt-1">¿Cómo puedes ayudar desde casa y tu comunidad?</h3>
-                <p class="text-sm text-slate-500 mt-1">Todo lo que llega al drenaje pluvial o a una barranca termina en nuestros ríos.</p>
+                <span class="text-xs font-bold text-primary uppercase tracking-wider">Pequeños Pasos · Gran
+                    Impacto</span>
+                <h3 class="text-xl md:text-2xl font-bold text-slate-800 mt-1">¿Qué Puedes Hacer Hoy Desde Casa?</h3>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="rounded-xl border border-slate-200 p-5 flex items-start gap-4 hover:shadow-sm transition-shadow">
-                    <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                <div class="rounded-xl border border-slate-200 p-5 flex items-start gap-4">
+                    <div
+                        class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                         <span class="material-symbols-outlined">water_drop</span>
                     </div>
                     <div>
-                        <h4 class="font-bold text-slate-800 text-sm md:text-base">No arrojes aceite, solventes ni medicamentos al drenaje</h4>
-                        <p class="text-xs md:text-sm text-slate-600 mt-1">Un solo litro de aceite de cocina puede contaminar miles de litros de agua y dificultar el saneamiento.</p>
+                        <h4 class="font-bold text-slate-800 text-sm md:text-base">Cero aceite y químicos al fregadero
+                        </h4>
+                        <p class="text-xs md:text-sm text-slate-600 mt-1">Guarda el aceite usado en una botella y
+                            llévalo a un punto de acopio; 1 litro contamina miles de litros de agua.</p>
                     </div>
                 </div>
 
-                <div class="rounded-xl border border-slate-200 p-5 flex items-start gap-4 hover:shadow-sm transition-shadow">
-                    <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined">delete_sweep</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-800 text-sm md:text-base">Evita depositar basura o escombro en barrancas y riberas</h4>
-                        <p class="text-xs md:text-sm text-slate-600 mt-1">Los residuos sólidos taponan el cauce, provocan desbordamientos en lluvias y liberan microplásticos.</p>
-                    </div>
-                </div>
-
-                <div class="rounded-xl border border-slate-200 p-5 flex items-start gap-4 hover:shadow-sm transition-shadow">
-                    <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                <div class="rounded-xl border border-slate-200 p-5 flex items-start gap-4">
+                    <div
+                        class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                         <span class="material-symbols-outlined">photo_camera</span>
                     </div>
                     <div>
-                        <h4 class="font-bold text-slate-800 text-sm md:text-base">Documenta y reporta descargas clandestinas, espuma o cambio de color</h4>
-                        <p class="text-xs md:text-sm text-slate-600 mt-1">Ubicar el punto exacto en el mapa y adjuntar una fotografía permite priorizar la inspección ambiental.</p>
-                    </div>
-                </div>
-
-                <div class="rounded-xl border border-slate-200 p-5 flex items-start gap-4 hover:shadow-sm transition-shadow">
-                    <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined">groups</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-800 text-sm md:text-base">Comparte información y participa en jornadas de limpieza comunitaria</h4>
-                        <p class="text-xs md:text-sm text-slate-600 mt-1">La vigilancia vecinal organizada fortalece la prevención y visibiliza puntos críticos ante las autoridades.</p>
+                        <h4 class="font-bold text-slate-800 text-sm md:text-base">Reporta lo que ves con total confianza
+                        </h4>
+                        <p class="text-xs md:text-sm text-slate-600 mt-1">Cuando señalas un punto en el mapa, no estás
+                            solo: ayudas a que las brigadas ubiquen el foco exacto de contaminación.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sección 4: Banner CTA Final -->
-        <section class="bg-white rounded-2xl shadow-sm border-2 border-primary/20 border-t-4 border-t-cdmx-gold p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <!-- Sección 5: Banner CTA Cálido -->
+        <section
+            class="bg-gradient-to-r from-primary to-primary-dark text-white rounded-2xl shadow-lg p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="text-center md:text-left">
-                <h3 class="text-lg md:text-xl font-bold text-slate-800">¿Detectaste una descarga o afectación en algún río de Puebla?</h3>
-                <p class="text-sm text-slate-600 mt-1">Señala la ubicación en nuestro mapa interactivo y genera tu folio de seguimiento en menos de un minuto.</p>
+                <h3 class="text-xl md:text-2xl font-bold">Hagamos equipo por los ríos de Puebla</h3>
+                <p class="text-sm text-white/90 mt-1 max-w-2xl">
+                    Si viste una descarga, espuma o acumulación de basura, tu reporte toma menos de un minuto, es seguro
+                    y queda registrado con folio de seguimiento.
+                </p>
             </div>
-            <a href="ciudadano.html" class="bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition-all transform active:scale-95 flex items-center justify-center gap-2 text-sm md:text-base shrink-0 w-full md:w-auto">
+            <a href="ciudadano.html"
+                class="bg-cdmx-gold hover:bg-yellow-600 text-white font-bold py-3.5 px-7 rounded-xl shadow-lg transition-all transform active:scale-95 flex items-center justify-center gap-2 text-sm md:text-base shrink-0 w-full md:w-auto">
                 <span class="material-symbols-outlined">campaign</span>
-                Ir al Formulario de Quejas
+                Registrar mi Queja Ahora
             </a>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 py-6 md:py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+    <!-- Footer Institucional -->
+    <footer class="bg-white border-t-2 border-primary/20 mt-auto">
+        <div
+            class="max-w-7xl mx-auto px-4 py-6 md:py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <div>
-                <p class="text-sm font-semibold text-slate-700">Gobierno del Estado de Puebla</p>
-                <p class="text-xs text-slate-500 mt-1">Monitoreo, Detección y Prevención de Contaminación de Ríos © 2026</p>
+                <p class="text-sm font-bold text-slate-800">Gobierno del Estado de Puebla</p>
+                <p class="text-xs text-slate-500 mt-1">SIGMAH – Sistema de Gestión y Monitoreo Ambiental Hídrico © 2026</p>
+                <p class="text-[11px] text-slate-400 mt-1">Referencia Técnica: Semáforo de Calidad del Agua CONAGUA y NOM-001-SEMARNAT-2021.</p>
             </div>
-            <div class="flex gap-4 justify-center md:justify-start">
-                <a href="#" class="text-xs text-slate-500 hover:text-primary transition-colors">Términos y Condiciones</a>
-                <a href="#" class="text-xs text-slate-500 hover:text-primary transition-colors">Aviso de Privacidad</a>
+            <div class="flex gap-4 justify-center md:justify-start shrink-0">
+                <a href="ciudadano.html" class="text-xs font-semibold text-slate-600 hover:text-primary transition-colors">Portal de Denuncia Ciudadana</a>
+                <a href="index.html" class="text-xs font-semibold text-slate-600 hover:text-primary transition-colors">Acceso Institucional</a>
             </div>
         </div>
     </footer>
 </body>
+
 </html>

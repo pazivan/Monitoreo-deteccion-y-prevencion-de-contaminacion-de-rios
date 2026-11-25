@@ -1,4 +1,4 @@
-# Plan de Acción: Integración de Base de Datos (PostgreSQL) 🚀
+# Plan de Acción: Integración de Base de Datos (PostgreSQL) 
 
 Para conectar la increíble base de datos que compartiste (con soporte para Drones, IA y cuadrillas) a nuestras pantallas `ciudadano.html` y `dashboard.html`, dejaremos de usar la memoria temporal (`localStorage`) y pasaremos a un flujo profesional de cliente-servidor.
 

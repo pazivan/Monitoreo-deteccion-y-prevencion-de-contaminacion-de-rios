@@ -72,6 +72,7 @@ window.RiosPueblaMap = (function () {
         const renderer = L.canvas({ pane: paneName, padding: 0.5 });
         const riversLayer = L.layerGroup().addTo(map);
         const riosCargados = new Map();
+        const segmentosRios = [];
 
         const res = await fetch('./src/assets/rios-puebla.geojson');
         if (!res.ok) throw new Error('No se pudo cargar rios-puebla.geojson');
@@ -107,7 +108,7 @@ window.RiosPueblaMap = (function () {
                     lineCap: 'round', lineJoin: 'round'
                 })
                 .bindTooltip(nombre, { sticky: true })
-                .bindPopup(`<strong>🌊 ${nombre}</strong><br><span class="text-xs text-slate-600">Tipo: ${tipo === 'river' ? 'Río principal' : (tipo === 'canal' ? 'Canal' : 'Arroyo / Afluente')}</span>${osmLink}`);
+                .bindPopup(`<strong>${nombre}</strong><br><span class="text-xs text-slate-600">Tipo: ${tipo === 'river' ? 'Río principal' : (tipo === 'canal' ? 'Canal' : 'Arroyo / Afluente')}</span>${osmLink}`);
 
                 linea.on('mouseover', () => linea.setStyle({ color: '#9F2241' }));
                 linea.on('mouseout', () => linea.setStyle({ color }));
@@ -118,6 +119,7 @@ window.RiosPueblaMap = (function () {
                 halo.addTo(riversLayer);
                 linea.addTo(riversLayer);
                 riosCargados.set(`${osmId}-${subIdx}`, { halo, linea, tipo });
+                segmentosRios.push({ nombre, latlngs });
                 totalTramos++;
             });
         });
@@ -131,7 +133,24 @@ window.RiosPueblaMap = (function () {
             });
         });
 
-        return { totalTramos, riversLayer };
+        function detectarRioCercano(lat, lng, maxKm = 2.0) {
+            if (!segmentosRios.length) return null;
+            const punto = L.latLng(lat, lng);
+            let mejorRio = null;
+            let menorDistM = maxKm * 1000;
+            for (const seg of segmentosRios) {
+                for (let i = 0; i < seg.latlngs.length; i++) {
+                    const d = punto.distanceTo(seg.latlngs[i]);
+                    if (d < menorDistM) {
+                        menorDistM = d;
+                        mejorRio = seg.nombre;
+                    }
+                }
+            }
+            return mejorRio;
+        }
+
+        return { totalTramos, riversLayer, detectarRioCercano };
     }
 
     return { PUEBLA_COORDS, PUEBLA_BOUNDS, crearMapaPuebla, crearCapasBase, cargarRiosGeoJSON };
