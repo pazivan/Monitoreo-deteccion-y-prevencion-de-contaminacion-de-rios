@@ -85,7 +85,7 @@ INSERT INTO cuadrillas (nombre, especialidad, zona_asignada, disponible) VALUES
 ('Cuadrilla 3 - Inspección y Sellado', 'Clausura de descargas y estabilización de ribera', 'Río Zahuapan y Nexapa', true)
 ON CONFLICT DO NOTHING;
 
--- 4. Reportes ciudadanos iniciales georreferenciados (PostGIS)
+-- 4. Reportes ciudadanos iniciales georreferenciados (PostGIS - 20 registros con evidencia local)
 INSERT INTO reportes_usuarios (
     folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
     latitud, longitud, descripcion, evidencia_url, correo_electronico,
@@ -100,7 +100,7 @@ SELECT
     'Ribera del Río Atoyac, altura Complejo Cultural Universitario (CCU)',
     19.0195, -98.2415,
     'Se detectó vertido industrial con tonalidad azulada densa y olor penetrante a solvente. Afecta fauna acuática visible.',
-    'https://images.unsplash.com/photo-1618477388954-7852f32655ec?auto=format&fit=crop&q=80&w=600',
+    'http://localhost:3000/uploads/PUE-2026-001-1795595477753.jpeg',
     'guardavalles.pue@gmail.com', '2223456781', 5, 'Validando'
 WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'PUE-2026-001');
 
@@ -118,7 +118,7 @@ SELECT
     'Puente Álamos Vista Hermosa, margen oriente del Río Alseseca',
     19.0438, -98.1755,
     'Acumulación masiva de ramas, llantas y escombros de construcción provocando taponamiento severo y riesgo de desbordamiento.',
-    'https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&q=80&w=600',
+    'http://localhost:3000/uploads/PUE-2026-002-1795595479764.jpeg',
     'comunidad.alseseca@gmail.com', '2221987654', 4, 'Dron en Verificación'
 WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'PUE-2026-002');
 
@@ -136,7 +136,7 @@ SELECT
     'Confluencia de canal auxiliar con Río Zahuapan, límite poniente',
     19.0880, -98.2720,
     'Ducto de concreto descargando aguas negras directamente al cauce sin tratamiento. Se aprecian lodos densos y olor fétido constante.',
-    'https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&q=80&w=600',
+    'http://localhost:3000/uploads/PUE-2026-003-1795595481775.jpeg',
     'vecinos.cuautlan@gmail.com', '2225432109', 4, 'Cuadrilla Desplegada'
 WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'PUE-2026-003');
 
@@ -154,7 +154,7 @@ SELECT
     'Margen baja del Río Nexapa, zona de huertas y viveros',
     18.9120, -98.4410,
     'Erosión severa en el talud derecho del río con debilitamiento del bordo de contención tras el incremento de flujo pluvial.',
-    'https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&q=80&w=600',
+    'http://localhost:3000/uploads/PUE-2026-004-1795595483786.jpeg',
     'riego.nexapa@gmail.com', '2441238901', 4, 'Cotizado / En Saneamiento'
 WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'PUE-2026-004');
 
@@ -172,7 +172,7 @@ SELECT
     'Cruce con Camino Real a Cholula, cauce del Río Prieto',
     19.0550, -98.2830,
     'Capa de espuma blanca y aceites superficiales sobre el agua acumulada en las orillas con malos olores intermitentes.',
-    'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=600',
+    'http://localhost:3000/uploads/PUE-2026-005-1795595485797.jpeg',
     'cholula.verde@gmail.com', '2226789012', 3, 'Validando'
 WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'PUE-2026-005');
 
@@ -190,11 +190,263 @@ SELECT
     'Parque Lineal Atoyac, cerca de la Noria',
     19.0345, -98.2290,
     'Se completó la jornada de limpieza comunitaria y retiro de 4 toneladas de botellas PET, llantas y maleza en margen ribereña.',
-    'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&q=80&w=600',
+    'http://localhost:3000/uploads/PUE-2026-006-1795595487808.jpeg',
     'parques.puebla@ceaspue.gob.mx', '2221122334', 2, 'Concluido'
 WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'PUE-2026-006');
 
--- 5. Cotizaciones para folios en saneamiento / concluidos
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-4044',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P02'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Atoyac'),
+    'Río Atoyac',
+    'Tzicatlacoyan',
+    'Santa Cruz el Calvario, Tzicatlacoyan, Puebla, México',
+    18.8503110, -98.0479900,
+    'Hay mucha descarga de aguas residuales, huele feo',
+    'http://localhost:3000/uploads/INC-PUE-4044-1795589528662.jpeg',
+    'liebertj795@gmail.com', '9514323245', 4, 'Concluido'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-4044');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-9436',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P07'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Zahuapan'),
+    'Río Zahuapan',
+    'Tlaxcala',
+    'San Lucas Cuauhtelulpan, Municipio de Tlaxcala, Tlaxcala, 90070, México',
+    19.3038540, -98.2706440,
+    'hay mucha basura y, ademas, residuos en el rio',
+    'http://localhost:3000/uploads/INC-PUE-9436-1795589664323.jpeg',
+    'liebertj795@gmail.com', '9514323245', 2, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-9436');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-3285',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P05'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Nexapa'),
+    'Río Nexapa',
+    'Atlixco',
+    'Calle Emiliano Zapata Salazar, Emiliano Zapata Nexatengo, Santa Ana Yancuitlalpan (Chilhuacán), Atlixco, Puebla, 74320, México',
+    18.8841780, -98.4032310,
+    'Se observa una gran cantidad de espuma en las corrientes de agua, me asusta, será peligroso?',
+    'http://localhost:3000/uploads/INC-PUE-3285-1795590030027.jpeg',
+    'liebertj795@gmail.com', '9514323245', 3, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-3285');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-8650',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P04'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Zahuapan'),
+    'Río Zahuapan',
+    'San Lucas Tecopilco',
+    'San Lucas Tecopilco, Tlaxcala, México',
+    19.4872960, -98.2162300,
+    'Las corrientes de agua estan tapados por mucha basura',
+    'http://localhost:3000/uploads/INC-PUE-8650-1795590192495.jpeg',
+    'liebertj795@gmail.com', '9514323245', 4, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-8650');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-5182',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P01'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Atoyac'),
+    'Río Atoyac',
+    'San Martín Texmelucan',
+    'Corredor Industrial Quetzalcóatl, ribera del Río Atoyac, San Martín Texmelucan, Puebla, México',
+    19.2830160, -98.4187000,
+    'Se detecta descarga química e industrial con abundante espuma blanca densa sobre el cauce del río y olor penetrante a solvente proveniente de fábrica cercana.',
+    'http://localhost:3000/uploads/INC-PUE-5182-1795595264075.jpeg',
+    'reporte.texmelucan@gmail.com', '2481045821', 5, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-5182');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-7349',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P01'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Atoyac'),
+    'Río Atoyac',
+    'Puebla',
+    'Bajo el puente de Blvd. Hermanos Serdán y ribera del Río Atoyac, Puebla, Puebla, México',
+    19.0625820, -98.2420370,
+    'Vertido químico oscuro bajo el puente con agua muy turbia, grasa superficial, llanta atrapada en el cauce y fuerte olor tóxico industrial.',
+    'http://localhost:3000/uploads/INC-PUE-7349-1795595267212.jpeg',
+    'alerta.atoyac.pue@gmail.com', '2224189032', 5, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-7349');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-2914',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P02'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Alseseca'),
+    'Río Alseseca',
+    'Puebla',
+    'Puente Zaragoza, ribera del Río Alseseca, Col. El Cristo, Puebla, Puebla, México',
+    19.0337080, -98.1750970,
+    'Colector de drenaje en muro de concreto descargando aguas residuales y aguas negras directo al río de forma continua, generando espuma y mal olor.',
+    'http://localhost:3000/uploads/INC-PUE-2914-1795595270349.jpeg',
+    'vecinos.elcristo@gmail.com', '2227651140', 4, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-2914');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-6407',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P03'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Nexapa'),
+    'Río Nexapa',
+    'Atlixco',
+    'Camino a Santa Ana Yancuitlalpan, margen del Río Nexapa, Atlixco, Puebla, México',
+    18.8898850, -98.3983790,
+    'Riesgo de desbordamiento en el río por incremento del caudal tras lluvias intensas; se observa erosión severa del talud, lodo y daño en la ribera.',
+    'http://localhost:3000/uploads/INC-PUE-6407-1795595273486.jpeg',
+    'proteccion.nexapa@gmail.com', '2441127890', 4, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-6407');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-1853',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P03'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Alseseca'),
+    'Río Alseseca',
+    'Puebla',
+    'Calle Río Alseseca esq. Prol. 24 Sur, Col. Jardines de San Manuel, Puebla, Puebla, México',
+    19.0016090, -98.1901940,
+    'Desbordamiento del cauce sobre el muro de contención de la ribera provocando inundación en la vialidad, agua turbia, lodo y arrastre de basura.',
+    'http://localhost:3000/uploads/INC-PUE-1853-1795595276623.jpeg',
+    'colonia.sanmanuel@gmail.com', NULL, 4, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-1853');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-9026',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P04'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Prieto'),
+    'Río Prieto',
+    'San Pedro Cholula',
+    'Cruce con Camino Real a Momoxpan, cauce del Río Prieto, San Pedro Cholula, Puebla, México',
+    19.0946310, -98.3034350,
+    'Taponamiento del cauce bajo el ducto por acumulación de maleza, plásticos y escombros que impiden el flujo del agua y provocan estancamiento y azolve.',
+    'http://localhost:3000/uploads/INC-PUE-9026-1795595279760.jpeg',
+    'cholula.rios@gmail.com', '2228394510', 4, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-9026');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-4761',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P05'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Atoyac'),
+    'Río Atoyac',
+    'Cuautlancingo',
+    'Límite con Parque Industrial FINSA, ribera del Río Atoyac, Cuautlancingo, Puebla, México',
+    19.1454270, -98.2264500,
+    'Cambio drástico de color en el agua del río con tonalidad rojo tinte muy intensa y escombros en la ribera, probable descarga textil sin tratamiento.',
+    'http://localhost:3000/uploads/INC-PUE-4761-1795595282897.jpeg',
+    'observatorio.finsa@gmail.com', '2225093412', 3, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-4761');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-3598',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P06'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Prieto'),
+    'Río Prieto',
+    'Cuautlancingo',
+    'Fraccionamiento Bello Horizonte, margen del Río Prieto, Cuautlancingo, Puebla, México',
+    19.0786060, -98.2728380,
+    'Vecinos reportan malos olores fétidos y gases persistentes provenientes del arroyo; muestra de agua recolectada presenta coloración turbia verdosa y grasa.',
+    'http://localhost:3000/uploads/INC-PUE-3598-1795595286034.jpeg',
+    'comite.bellohorizonte@gmail.com', '2229146703', 3, 'Validando'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-3598');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-8215',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P07'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Alseseca'),
+    'Río Alseseca',
+    'Puebla',
+    'Puente de la 14 Sur y Ribera del Río Alseseca, Col. La Hacienda, Puebla, Puebla, México',
+    19.0176420, -98.1871730,
+    'Tiradero clandestino con acumulación de basura, llantas, envases de plástico y residuos sólidos dentro del cauce y en la ribera del río.',
+    'http://localhost:3000/uploads/INC-PUE-8215-1795595289171.jpeg',
+    'lahacienda.limpia@gmail.com', NULL, 2, 'Concluido'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-8215');
+
+INSERT INTO reportes_usuarios (
+    folio, id_tipo_problema, id_rio, rio_nombre, municipio, direccion,
+    latitud, longitud, descripcion, evidencia_url, correo_electronico,
+    telefono_opcional, prioridad_score, estado
+)
+SELECT
+    'INC-PUE-6894',
+    (SELECT id_tipo FROM catalogo_tipos_problema WHERE codigo = 'P02'),
+    (SELECT id_rio FROM rios_monitoreados WHERE nombre = 'Río Zahuapan'),
+    'Río Zahuapan',
+    'Zacatelco',
+    'Puente de acceso sur sobre el Río Zahuapan, Zacatelco, Tlaxcala, México',
+    19.2280770, -98.3009150,
+    'Descarga directa de aguas residuales desde alcantarilla en muro de piedra hacia el cauce del río, generando agua sucia, espuma y residuos flotantes.',
+    'http://localhost:3000/uploads/INC-PUE-6894-1795595292308.jpeg',
+    'vigilancia.zahuapan@gmail.com', '2461389204', 4, 'Dron en Verificación'
+WHERE NOT EXISTS (SELECT 1 FROM reportes_usuarios WHERE folio = 'INC-PUE-6894');
+
+-- 5. Cotizaciones para folios en despliegue / saneamiento / concluidos
 INSERT INTO cotizaciones_saneamiento (id_reporte, total_estimado_mxn, detalle_conceptos, aprobada)
 SELECT id_reporte, 38000.00, '[{"concepto":"Estabilización de margen / control de erosión","cantidad":1,"subtotal":19500},{"concepto":"Desazolve de cauce y liberación de taponamiento","cantidad":1,"subtotal":18500}]'::jsonb, false
 FROM reportes_usuarios WHERE folio = 'PUE-2026-004'
@@ -203,4 +455,43 @@ ON CONFLICT (id_reporte) DO NOTHING;
 INSERT INTO cotizaciones_saneamiento (id_reporte, total_estimado_mxn, detalle_conceptos, aprobada)
 SELECT id_reporte, 18500.00, '[{"concepto":"Retiro y disposición de residuos sólidos / escombro","cantidad":2,"subtotal":13000},{"concepto":"Muestreo de laboratorio (7 parámetros CONAGUA)","cantidad":1,"subtotal":4800}]'::jsonb, true
 FROM reportes_usuarios WHERE folio = 'PUE-2026-006'
+ON CONFLICT (id_reporte) DO NOTHING;
+
+INSERT INTO cotizaciones_saneamiento (
+    id_reporte, requiere_cuadrilla, costo_despliegue_mxn, costo_capex_mxn,
+    costo_opex_m3_mxn, costo_opex_mensual_mxn, magnitud_medida, unidad_medida,
+    volumen_m3_dia, tratamiento_aplicado, total_estimado_mxn, detalle_conceptos, aprobada
+)
+SELECT
+    id_reporte, true, 13300.00, 472500.00, 1.00, 3888.00, 1.50, 'L/s', 129.60,
+    'Humedales artificiales', 489688.00,
+    '[{"cantidad":1.5,"concepto":"Humedales artificiales (1.5 L/s - rango prom)","subtotal":472500},{"cantidad":1,"concepto":"Despliegue cuadrilla en campo y/o laboratorio NOM-001","subtotal":13300},{"cantidad":30,"concepto":"Operación OPEX primer mes (129.6 m³/día a $1/m³)","subtotal":3888}]'::jsonb,
+    true
+FROM reportes_usuarios WHERE folio = 'INC-PUE-4044'
+ON CONFLICT (id_reporte) DO NOTHING;
+
+INSERT INTO cotizaciones_saneamiento (
+    id_reporte, requiere_cuadrilla, costo_despliegue_mxn, costo_capex_mxn,
+    costo_opex_m3_mxn, costo_opex_mensual_mxn, magnitud_medida, unidad_medida,
+    volumen_m3_dia, tratamiento_aplicado, total_estimado_mxn, detalle_conceptos, aprobada
+)
+SELECT
+    id_reporte, true, 13300.00, 7445.00, 0.00, 0.00, 25.00, 'm3', 0.00,
+    'Desazolve mecánico y retiro de residuos (por m³ CONAGUA/CMIC)', 20745.00,
+    '[{"cantidad":25,"concepto":"Desazolve mecánico y retiro de residuos (por m³ CONAGUA/CMIC) (25 m3 - rango prom)","subtotal":7445},{"cantidad":1,"concepto":"Despliegue cuadrilla en campo y/o laboratorio NOM-001","subtotal":13300}]'::jsonb,
+    true
+FROM reportes_usuarios WHERE folio = 'INC-PUE-8215'
+ON CONFLICT (id_reporte) DO NOTHING;
+
+INSERT INTO cotizaciones_saneamiento (
+    id_reporte, requiere_cuadrilla, costo_despliegue_mxn, costo_capex_mxn,
+    costo_opex_m3_mxn, costo_opex_mensual_mxn, magnitud_medida, unidad_medida,
+    volumen_m3_dia, tratamiento_aplicado, total_estimado_mxn, detalle_conceptos, aprobada
+)
+SELECT
+    id_reporte, true, 5000.00, 0.00, 0.00, 0.00, 0.00, 'm3', 0.00,
+    NULL, 5000.00,
+    '[{"cantidad":1,"concepto":"Despliegue cuadrilla FASAR 1.55 (1 j.) + traslado","subtotal":3800},{"cantidad":1,"concepto":"Sobrevuelo dron térmico/multiespectral","subtotal":1200}]'::jsonb,
+    false
+FROM reportes_usuarios WHERE folio = 'INC-PUE-6894'
 ON CONFLICT (id_reporte) DO NOTHING;
